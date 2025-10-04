@@ -1,0 +1,15 @@
+source_node,target_table,target_column,transformation_logic,confidence_score,reasoning
+/Session/TransactionInfo/TransactionID,SILVER.POLICY,transaction_id,,0.95,Direct mapping based on historical patterns for unique transaction identifiers.
+/Session/TransactionInfo/SourceSystem,SILVER.POLICY,source_system,,0.95,Direct mapping as per historical data indicating the source system name.
+/Session/Data/PolicyData/ID,SILVER.POLICY,policy_id,,0.95,Direct mapping based on historical mappings for policy identifiers.
+/Session/Data/PolicyData/Number,SILVER.POLICY,policy_number,UPPER(value),0.9,Uppercase transformation consistent with historical data for policy numbers.
+/Session/Data/PolicyData/LineOfBusiness,SILVER.POLICY,policy_type,,0.9,Direct mapping as the line of business corresponds to policy type.
+/Session/Data/PolicyData/StatusCode,SILVER.POLICY,policy_status,,0.9,Direct mapping as status codes are used for policy status.
+/Session/Data/PolicyData/ProductDetails/ProdCode,SILVER.POLICY,product_code,,0.95,Direct mapping based on historical mappings for product codes.
+/Session/Data/PolicyData/PolicyDates/InceptionDate,SILVER.POLICY,effective_date,TO_DATE(value),0.9,Date conversion required as per historical mappings for effective dates.
+/Session/Data/PolicyData/PolicyDates/TerminationDate,SILVER.POLICY,expiration_date,TO_DATE(value),0.9,"Date conversion required for termination dates, similar to historical mappings."
+/Session/Data/PolicyData/PremiumInfo/TotalPremium,SILVER.POLICY,premium_amount,"CAST(value AS NUMBER(15,2))",0.9,Decimal conversion consistent with historical mappings for premium amounts.
+/Session/Data/PolicyData/PremiumInfo/BasePremium,SILVER.POLICY,base_premium,"CAST(value AS NUMBER(15,2))",0.85,"Decimal conversion needed for base premium, inferred from similar patterns."
+/Session/Data/PolicyData/PremiumInfo/TaxAmount,SILVER.POLICY,tax_amount,"CAST(value AS NUMBER(15,2))",0.85,"Decimal conversion for tax amount, following historical mapping patterns."
+/Session/Data/PolicyData/UnderwritingInfo/UnderwriterID,SILVER.POLICY,underwriter_id,,0.85,Direct mapping as underwriter IDs are directly used in the target schema.
+/Session/Data/PolicyData/UnderwritingInfo/Carrier,SILVER.POLICY,carrier,,0.8,Direct mapping inferred from the business meaning of carrier information.

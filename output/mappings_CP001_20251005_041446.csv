@@ -1,0 +1,14 @@
+source_node,target_table,target_column,transformation_logic,confidence_score,reasoning
+/Session/TransactionInfo/TransactionID,SILVER.POLICY,transaction_id,,0.95,Direct mapping from historical patterns where TransactionID is mapped to transaction_id in the POLICY table.
+/Session/TransactionInfo/SourceSystem,SILVER.POLICY,source_system,,0.95,Direct mapping based on historical data where SourceSystem is mapped to source_system in the POLICY table.
+/Session/Data/PolicyData/ID,SILVER.POLICY,policy_id,,0.95,Direct mapping from historical patterns where PolicyData/ID is mapped to policy_id in the POLICY table.
+/Session/Data/PolicyData/Number,SILVER.POLICY,policy_number,UPPER(value),0.9,Historical mappings show Number is converted to uppercase for policy_number.
+/Session/Data/PolicyData/LineOfBusiness,SILVER.POLICY,policy_type,,0.85,LineOfBusiness directly maps to policy_type as seen in historical commercial mappings.
+/Session/Data/PolicyData/StatusCode,SILVER.POLICY,policy_status,,0.85,StatusCode is directly mapped to policy_status in historical data.
+/Session/Data/PolicyData/ProductDetails/ProdCode,SILVER.POLICY,product_code,,0.9,ProdCode is directly mapped to product_code based on historical mappings.
+/Session/Data/PolicyData/PolicyDates/InceptionDate,SILVER.POLICY,effective_date,TO_DATE(value),0.9,InceptionDate is converted to a date format for effective_date as per historical mappings.
+/Session/Data/PolicyData/PolicyDates/TerminationDate,SILVER.POLICY,expiration_date,TO_DATE(value),0.9,"TerminationDate is converted to a date format for expiration_date, consistent with historical data."
+/Session/Data/PolicyData/PremiumInfo/TotalPremium,SILVER.POLICY,premium_amount,"CAST(value AS NUMBER(15,2))",0.9,"TotalPremium is cast to a decimal format for premium_amount, following historical conversion patterns."
+/Session/Data/PolicyData/UnderwritingInfo/UnderwriterID,SILVER.POLICY,underwriter_id,,0.8,"UnderwriterID is directly mapped to underwriter_id, inferred from business context."
+/Session/Data/PolicyData/UnderwritingInfo/Carrier,SILVER.POLICY,carrier,,0.75,"Carrier information is relevant to policy details, inferred mapping to carrier column."
+/Session/Data/PolicyData/UnderwritingInfo/UnderwritingState,SILVER.POLICY,underwriting_state,,0.75,"UnderwritingState is relevant to policy location, inferred mapping to underwriting_state column."

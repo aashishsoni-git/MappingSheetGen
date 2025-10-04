@@ -85,3 +85,272 @@
 2025-10-05 03:17:28 - main - INFO - 📁 Saved 17 mappings to output/mappings_HO003_20251005_031728.csv
 2025-10-05 03:17:28 - main - INFO - ✅ Pipeline completed successfully!
 2025-10-05 03:17:28 - utils.decorators - INFO - run completed in 58.02s
+2025-10-05 04:09:15 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 04:09:18 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 04:09:47 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 04:09:47 - utils.decorators - INFO - Starting run...
+2025-10-05 04:09:47 - main - INFO - 🔍 Auto-detecting product type...
+2025-10-05 04:09:47 - utils.product_detector - INFO - ✅ Detected product: CP001 with 36.8% confidence
+2025-10-05 04:09:47 - main - INFO - ✅ Detected: CP001 with 36.8% confidence
+2025-10-05 04:09:47 - main - INFO - 📊 Extracting XML metadata...
+2025-10-05 04:09:47 - main - INFO - ✅ Extracted 331 XML nodes
+2025-10-05 04:09:47 - main - INFO - ☁️ Loading to Snowflake stage layer...
+2025-10-05 04:09:49 - loaders.snowflake_loader - INFO - ✅ Loaded XML data to ETL_MAPPER.STAGE_XML_CP001
+2025-10-05 04:09:49 - main - INFO - ✅ Loaded to ETL_MAPPER.STAGE_XML_CP001
+2025-10-05 04:09:49 - main - INFO - 🗄️ Fetching Silver layer schema from Snowflake...
+2025-10-05 04:09:49 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 04:09:50 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 04:09:50 - main - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 04:09:50 - main - INFO - 📚 Finding and loading reference data with AI...
+2025-10-05 04:09:50 - utils.document_loader - INFO - 🔍 Found 9 potential reference files
+2025-10-05 04:09:52 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:09:52 - utils.document_loader - INFO - 📄 historical_mappings_personal_auto.xlsx: historical_mapping (relevance: 85%)
+2025-10-05 04:09:54 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:09:54 - utils.document_loader - INFO - 📄 historical_mappings_commercial.xlsx: historical_mapping (relevance: 85%)
+2025-10-05 04:09:55 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:09:55 - utils.document_loader - INFO - 📄 old_mappings.csv: historical_mapping (relevance: 85%)
+2025-10-05 04:09:57 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:09:57 - utils.document_loader - INFO - 📄 historical_mappings_homeowners.xlsx: historical_mapping (relevance: 85%)
+2025-10-05 04:09:59 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:09:59 - utils.document_loader - INFO - 📄 old_mappings_homeowners.csv: historical_mapping (relevance: 85%)
+2025-10-05 04:10:00 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:10:00 - utils.document_loader - INFO - 📄 old_mappings_personal_auto.csv: historical_mapping (relevance: 85%)
+2025-10-05 04:10:03 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:10:03 - utils.document_loader - INFO - 📄 old_mappings_commercial.csv: historical_mapping (relevance: 85%)
+2025-10-05 04:10:04 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:10:04 - utils.document_loader - INFO - 📄 data_dictionary.csv: data_dictionary (relevance: 90%)
+2025-10-05 04:10:06 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:10:06 - utils.document_loader - INFO - 📄 data_dictionary_complete.xlsx: data_dictionary (relevance: 90%)
+2025-10-05 04:10:06 - utils.document_loader - INFO - Loading file: reference_data/data_dictionary.csv (type: .csv)
+2025-10-05 04:10:07 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:10:07 - utils.document_loader - ERROR - Error loading reference_data/data_dictionary.csv: name 'true' is not defined
+2025-10-05 04:10:07 - utils.document_loader - INFO - Loading file: reference_data/data_dictionary_complete.xlsx (type: .xlsx)
+2025-10-05 04:10:07 - utils.document_loader - INFO - Found 3 sheets: ['DataDictionary', 'TableSummary', 'Metadata']
+2025-10-05 04:10:09 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:10:09 - utils.document_loader - INFO - AI understands this as: data_dictionary
+2025-10-05 04:10:09 - utils.document_loader - INFO - Loading file: reference_data/historical_mappings_personal_auto.xlsx (type: .xlsx)
+2025-10-05 04:10:09 - utils.document_loader - INFO - Found 2 sheets: ['Mappings', 'Metadata']
+2025-10-05 04:10:11 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:10:11 - utils.document_loader - INFO - AI understands this as: historical_mappings
+2025-10-05 04:10:11 - utils.document_loader - INFO - Loading file: reference_data/historical_mappings_commercial.xlsx (type: .xlsx)
+2025-10-05 04:10:11 - utils.document_loader - INFO - Found 1 sheets: ['Mappings']
+2025-10-05 04:10:13 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:10:13 - utils.document_loader - INFO - AI understands this as: historical_mappings
+2025-10-05 04:10:13 - utils.document_loader - INFO - Loading file: reference_data/old_mappings.csv (type: .csv)
+2025-10-05 04:10:15 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:10:15 - utils.document_loader - ERROR - Error loading reference_data/old_mappings.csv: name 'true' is not defined
+2025-10-05 04:10:15 - utils.document_loader - INFO - Loading file: reference_data/historical_mappings_homeowners.xlsx (type: .xlsx)
+2025-10-05 04:10:15 - utils.document_loader - INFO - Found 1 sheets: ['Mappings']
+2025-10-05 04:10:17 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:10:17 - utils.document_loader - INFO - AI understands this as: historical_mappings
+2025-10-05 04:10:17 - utils.document_loader - INFO - 
+============================================================
+2025-10-05 04:10:17 - utils.document_loader - INFO - ✅ LOADED REFERENCE DATA SUMMARY:
+2025-10-05 04:10:17 - utils.document_loader - INFO - ============================================================
+2025-10-05 04:10:17 - utils.document_loader - INFO -   📚 Historical mappings: 3 files
+2025-10-05 04:10:17 - utils.document_loader - INFO -      - historical_mappings_personal_auto.xlsx (51 rows)
+2025-10-05 04:10:17 - utils.document_loader - INFO -      - historical_mappings_commercial.xlsx (9 rows)
+2025-10-05 04:10:17 - utils.document_loader - INFO -      - historical_mappings_homeowners.xlsx (14 rows)
+2025-10-05 04:10:17 - utils.document_loader - INFO -   📖 Data dictionaries: 1 files
+2025-10-05 04:10:17 - utils.document_loader - INFO -      - data_dictionary_complete.xlsx (104 rows)
+2025-10-05 04:10:17 - utils.document_loader - INFO -   🗄️ Schema definitions: 0 files
+2025-10-05 04:10:17 - utils.document_loader - INFO -   📊 Reference data: 0 files
+2025-10-05 04:10:17 - utils.document_loader - INFO - ============================================================
+
+2025-10-05 04:10:17 - main - INFO - 🤖 Predicting mappings with AI (flexible mode)...
+2025-10-05 04:10:17 - utils.decorators - INFO - Starting wrapper...
+2025-10-05 04:10:17 - utils.validators - INFO - XML metadata validation passed: 331 nodes
+2025-10-05 04:10:17 - mapper.openai_mapper - INFO - 🤖 Generating mappings with flexible reference data...
+2025-10-05 04:10:17 - mapper.openai_mapper - INFO -    XML nodes: 331
+2025-10-05 04:10:17 - mapper.openai_mapper - INFO -    Silver columns: 137
+2025-10-05 04:10:17 - mapper.openai_mapper - INFO - 💰 Estimated tokens: ~7,746
+2025-10-05 04:10:36 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:10:36 - mapper.openai_mapper - INFO - ✅ Actual cost: $0.0226
+2025-10-05 04:10:36 - mapper.openai_mapper - INFO - 📊 Cumulative cost: $0.0226
+2025-10-05 04:10:36 - mapper.openai_mapper - INFO - ✅ Generated 12 mappings
+2025-10-05 04:10:36 - utils.decorators - INFO - wrapper completed in 18.74s
+2025-10-05 04:10:36 - main - INFO - 💾 Saving results...
+2025-10-05 04:10:36 - main - INFO - 📁 Saved 12 mappings to output/mappings_CP001_20251005_041036.csv
+2025-10-05 04:10:36 - main - INFO - ✅ Pipeline completed successfully!
+2025-10-05 04:10:36 - utils.decorators - INFO - run completed in 49.28s
+2025-10-05 04:10:39 - utils.database_helper - ERROR - Failed to save XML: 002014 (22000): SQL compilation error:
+Invalid expression [PARSE_JSON('{"TransactionInfo": {"TransactionID": {"#text": "TXN-POL-20251005-003"}, "TransactionType": {"#text": "NewBusiness"}, "TransactionDate": {"#text": "2025-10-05T16:45:00"}, "TransactionStatus": {"#text": "Success"}, "SourceSystem": {"#text": "DuckCreek"}, "SourceVersion": {"#text": "7.5.2"}, "ProcessedBy": {"#text": "DCPOLICY_ENGINE"}}, "Data": {"PolicyData": {"ID": {"#text": "POL-CP-2025-00456"}, "Number": {"#text": "CP-2025-00456"}, "Version": {"#text": "1"}, "LineOfBusiness": {"#text": "Commercial Property"}, "StatusCode": {"#text": "Active"}, "StatusDescription": {"#text": "In Force"}, "ProductDetails": {"ProdCode": {"#text": "CP001"}, "ProdDescription": {"#text": "Commercial Property Insurance - Building and Contents"}, "ProdVersion": {"#text": "2024.5"}, "LOB": {"#text": "Commercial Lines"}, "Category": {"#text": "Property"}, "SubCategory": {"#text": "Building"}}, "PolicyDates": {"InceptionDate": {"#text": "2025-11-15"}, "TerminationDate": {"#text": "2026-11-15"}, "BindDate": {"#text": "2025-10-05"}, "QuoteDate": {"#text": "2025-10-01"}}, "TermLength": {"#text": "12"}, "TermLengthUnit": {"#text": "Months"}, "PremiumInfo": {"BasePremium": {"#text": "8500.00"}, "AnnualPremium": {"#text": "9250.00"}, "MinimumPremium": {"#text": "5000.00"}, "DepositPremium": {"#text": "2312.50"}, "TaxAmount": {"#text": "647.50"}, "SurchargeAmount": {"#text": "750.00"}, "DiscountAmount": {"#text": "0.00"}, "FeeAmount": {"#text": "100.00"}, "TotalPremium": {"#text": "9997.50"}, "CoveredAmount": {"#text": "2500000"}}, "UnderwritingInfo": {"Carrier": {"#text": "ABC Commercial Insurance"}, "UnderwritingCompany": {"#text": "ABC Commercial Underwriters LLC"}, "UnderwritingState": {"#text": "IL"}, "RiskTier": {"#text": "Preferred"}, "UnderwriterID": {"#text": "UW-COM-089"}, "UnderwriterName": {"#text": "Jennifer Lee"}, "UnderwriterAuthority": {"#text": "Senior"}, "InspectionRequired": {"#text": "true"}, "InspectionDate": {"#text": "2025-10-20"}}, "SalesChannel": {"ChannelName": {"#text": "Broker"}, "SubChannel": {"#text": "Commercial Broker"}, "Region": {"#text": "Midwest"}, "Territory": {"#text": "IL-COOK-COMM-001"}}}, "AccountData": {"AccountIdentifier": {"#text": "ACC-COMM-2025-789"}, "AccountNumber": {"#text": "COMM-789"}, "AccountName": {"#text": "TechStart Solutions LLC"}, "AccountType": {"#text": "Commercial"}, "AccountStatus": {"#text": "Active"}, "BusinessInfo": {"LegalName": {"#text": "TechStart Solutions LLC"}, "DBAName": {"#text": "TechStart"}, "BusinessType": {"#text": "Technology Services"}, "IndustryCode": {"#text": "NAICS-541512"}, "IndustryDescription": {"#text": "Computer Systems Design Services"}, "YearsInBusiness": {"#text": "5"}, "NumberOfEmployees": {"#text": "45"}, "AnnualRevenue": {"#text": "8500000"}, "FederalTaxID": {"#text": "**-***7890"}, "EntityType": {"#text": "LLC"}, "StateOfIncorporation": {"#text": "IL"}, "IncorporationDate": {"#text": "2020-03-15"}}, "PrimaryContact": {"ContactName": {"#text": "David Chen"}, "Title": {"#text": "CEO"}, "DateOfBirth": {"#text": "1978-11-10"}, "Email": {"#text": "dchen@techstart.com"}, "Phone": {"PhoneType": {"#text": "Business"}, "PhoneNumber": {"#text": "312-555-2000"}, "Extension": {"#text": "101"}}}, "BusinessAddress": {"AddressType": {"#text": "Principal"}, "AddressLine1": {"#text": "500 Technology Plaza"}, "AddressLine2": {"#text": "Suite 300"}, "City": {"#text": "Chicago"}, "State": {"#text": "IL"}, "ZipCode": {"#text": "60611"}, "County": {"#text": "Cook"}, "Country": {"#text": "USA"}}, "MailingAddress": {"IsSameAsBusiness": {"#text": "false"}, "AddressLine1": {"#text": "PO Box 12345"}, "City": {"#text": "Chicago"}, "State": {"#text": "IL"}, "ZipCode": {"#text": "60690"}}}, "BrokerData": {"BrokerID": {"#text": "BRK-COMM-050"}, "BrokerName": {"#text": "Jennifer Wilson"}, "BrokerType": {"#text": "Commercial Lines Broker"}, "BrokerageFirm": {"#text": "Wilson Commercial Insurance Brokers"}, "BrokerageCode": {"#text": "WCSB-IL-050"}, "BrokerEmail": {"#text": "jwilson@wilsonbrokers.com"}, "BrokerPhone": {"#text": "312-555-9000"}, "CommissionRate": {"#text": "12.0"}, "CommissionAmount": {"#text": "1199.70"}, "LicenseNumber": {"#text": "IL-BRK-11223344"}, "LicenseState": {"#text": "IL"}, "AppointedDate": {"#text": "2018-05-01"}}, "QuoteData": {"QuoteIdentifier": {"#text": "Q-CP-2025-00299"}, "QuoteNumber": {"#text": "QT-CP-00299"}, "QuoteDate": {"#text": "2025-10-01"}, "QuoteExpiryDate": {"#text": "2025-10-31"}, "ConversionDate": {"#text": "2025-10-05"}, "QuoteStatus": {"#text": "Bound"}}, "RiskData": {"RiskIdentifier": {"#text": "RSK-CP-001"}, "RiskSequence": {"#text": "1"}, "RiskClass": {"#text": "Building"}, "RiskSummary": {"#text": "Office Building - 5 Story Mixed Use"}, "LocationDetails": {"LocationNumber": {"#text": "001"}, "LocationName": {"#text": "TechStart HQ Building"}, "AddressLine1": {"#text": "500 Technology Plaza"}, "AddressLine2": {"#text": "Suite 300"}, "City": {"#text": "Chicago"}, "State": {"#text": "IL"}, "ZipCode": {"#text": "60611"}, "County": {"#text": "Cook"}, "Country": {"#text": "USA"}, "Latitude": {"#text": "41.8915"}, "Longitude": {"#text": "-87.6195"}, "FloodZone": {"#text": "X"}, "WindZone": {"#text": "Zone 2"}, "EarthquakeZone": {"#text": "Low"}, "TerrorismRiskZone": {"#text": "Tier 1"}}, "BuildingDetails": {"BuildingNumber": {"#text": "1"}, "BuildingType": {"#text": "Office"}, "ConstructionClass": {"#text": "1"}, "ConstructionType": {"#text": "Fire Resistive"}, "ConstructionMaterial": {"#text": "Steel and Concrete"}, "YearBuilt": {"#text": "2015"}, "YearRenovated": {"#text": "2022"}, "NumberOfStories": {"#text": "5"}, "TotalSquareFootage": {"#text": "50000"}, "OccupiedSquareFootage": {"#text": "45000"}, "VacantSquareFootage": {"#text": "5000"}, "RoofType": {"#text": "Built-Up"}, "RoofMaterial": {"#text": "Membrane"}, "RoofAge": {"#text": "3"}, "RoofCondition": {"#text": "Excellent"}, "ExteriorWalls": {"#text": "Curtain Wall Glass"}, "HasBasement": {"#text": "true"}, "BasementLevels": {"#text": "1"}, "ElevatorCount": {"#text": "2"}, "ParkingType": {"#text": "Underground Garage"}, "ParkingSpaces": {"#text": "100"}}, "OccupancyInfo": {"PrimaryOccupancy": {"#text": "Office - Professional"}, "OccupancyCode": {"#text": "OCC-431"}, "SecondaryOccupancy": {"#text": "Retail - Ground Floor"}, "TenantCount": {"#text": "8"}, "OwnerOccupiedPercent": {"#text": "60"}, "HasRestaurant": {"#text": "true"}, "HasRetail": {"#text": "true"}, "HasResidential": {"#text": "false"}, "HasHazardousMaterials": {"#text": "false"}, "AverageOccupancyHours": {"#text": "0800-1800"}, "WeekendOccupancy": {"#text": "Limited"}}, "ValuationInfo": {"BuildingValue": {"#text": "2000000"}, "ContentsValue": {"#text": "500000"}, "BusinessPersonalProperty": {"#text": "500000"}, "TenantImprovements": {"#text": "250000"}, "LandValue": {"#text": "800000"}, "TotalInsurableValue": {"#text": "2500000"}, "ReplacementCost": {"#text": "2200000"}, "ActualCashValue": {"#text": "1800000"}, "AppraisalDate": {"#text": "2025-09-15"}, "AppraisalCompany": {"#text": "ABC Appraisals Inc"}}, "ProtectionInfo": {"FireProtectionClass": {"#text": "3"}, "FireHydrantDistance": {"#text": "200"}, "FireStationDistance": {"#text": "1.5"}, "HasSprinklerSystem": {"#text": "true"}, "SprinklerType": {"#text": "Wet Pipe"}, "SprinklerCoverage": {"#text": "100"}, "HasFireAlarm": {"#text": "true"}, "FireAlarmType": {"#text": "Central Station"}, "HasBurglarAlarm": {"#text": "true"}, "BurglarAlarmType": {"#text": "Central Station"}, "HasSecurityGuard": {"#text": "true"}, "SecurityGuardHours": {"#text": "24/7"}, "HasCCTV": {"#text": "true"}, "HasAccessControl": {"#text": "true"}, "MonitoringCompany": {"#text": "SecureCom Commercial"}}, "MechanicalSystems": {"HVACType": {"#text": "Central"}, "HVACAge": {"#text": "3"}, "HeatingType": {"#text": "Gas"}, "CoolingType": {"#text": "Electric"}, "ElectricalCapacity": {"#text": "2000"}, "HasBackupGenerator": {"#text": "true"}, "GeneratorCapacity": {"#text": "500"}, "PlumbingType": {"#text": "Copper"}, "WaterHeaterType": {"#text": "Commercial Gas"}, "WaterHeaterAge": {"#text": "3"}}, "MortgageInfo": {"IsMortgaged": {"#text": "true"}, "MortgageHolder": {"#text": "First Commercial Bank"}, "LoanNumber": {"#text": "COMM-MTG-9876543"}, "OutstandingBalance": {"#text": "1500000"}, "LoanToValue": {"#text": "60"}, "MortgageAddress": {"AddressLine1": {"#text": "1000 Banking Center"}, "City": {"#text": "Chicago"}, "State": {"#text": "IL"}, "ZipCode": {"#text": "60603"}}}, "LossHistory": {"HasPriorLosses": {"#text": "true"}, "Loss": {"LossDate": {"#text": "2023-12-10"}, "LossType": {"#text": "Water Damage"}, "LossCause": {"#text": "Pipe Burst"}, "LossAmount": {"#text": "45000"}, "LossDescription": {"#text": "Frozen pipe burst on 3rd floor"}, "ClaimNumber": {"#text": "CLM-2023-98765"}, "ClaimStatus": {"#text": "Closed"}, "ClaimPaid": {"#text": "42000"}}}, "ComplianceInfo": {"BuildingCodeCompliant": {"#text": "true"}, "FireCodeCompliant": {"#text": "true"}, "ADACompliant": {"#text": "true"}, "EnvironmentalCompliant": {"#text": "true"}, "LastInspectionDate": {"#text": "2025-08-15"}, "InspectionAgency": {"#text": "City of Chicago Building Department"}, "ViolationsOutstanding": {"#text": "0"}}}, "CoverageData": {"CoverageRecord": [{"CoverageIdentifier": {"#text": "COV-CP-001"}, "RiskIdentifier": {"#text": "RSK-CP-001"}, "CoverageSymbol": {"#text": "BLD"}, "CoverageDescription": {"#text": "Building Coverage"}, "CoverageClass": {"#text": "Property"}, "MaxLimit": {"#text": "2000000"}, "CoverageDeductible": {"#text": "10000"}, "CoverageBasis": {"#text": "Replacement Cost"}, "CoinsurancePercent": {"#text": "90"}, "CoveragePremium": {"#text": "5200.00"}, "CoverageStartDate": {"#text": "2025-11-15"}, "CoverageEndDate": {"#text": "2026-11-15"}, "PerilsCovered": {"#text": "All Risk"}, "IsMandatory": {"#text": "true"}}, {"CoverageIdentifier": {"#text": "COV-CP-002"}, "RiskIdentifier": {"#text": "RSK-CP-001"}, "CoverageSymbol": {"#text": "BPP"}, "CoverageDescription": {"#text": "Business Personal Property"}, "CoverageClass": {"#text": "Property"}, "MaxLimit": {"#text": "500000"}, "CoverageDeductible": {"#text": "5000"}, "CoverageBasis": {"#text": "Replacement Cost"}, "CoinsurancePercent": {"#text": "90"}, "CoveragePremium": {"#text": "1800.00"}, "CoverageStartDate": {"#text": "2025-11-15"}, "CoverageEndDate": {"#text": "2026-11-15"}, "PerilsCovered": {"#text": "All Risk"}, "IsMandatory": {"#text": "true"}}, {"CoverageIdentifier": {"#text": "COV-CP-003"}, "RiskIdentifier": {"#text": "RSK-CP-001"}, "CoverageSymbol": {"#text": "BI"}, "CoverageDescription": {"#text": "Business Interruption"}, "CoverageClass": {"#text": "Income"}, "MaxLimit": {"#text": "1000000"}, "CoverageDeductible": {"#text": "72"}, "DeductibleUnit": {"#text": "Hours"}, "IndemnityPeriod": {"#text": "12"}, "IndemnityPeriodUnit": {"#text": "Months"}, "CoveragePremium": {"#text": "1250.00"}, "CoverageStartDate": {"#text": "2025-11-15"}, "CoverageEndDate": {"#text": "2026-11-15"}, "IsMandatory": {"#text": "false"}}, {"CoverageIdentifier": {"#text": "COV-CP-004"}, "RiskIdentifier": {"#text": "RSK-CP-001"}, "CoverageSymbol": {"#text": "EQ"}, "CoverageDescription": {"#text": "Equipment Breakdown"}, "CoverageClass": {"#text": "Property"}, "MaxLimit": {"#text": "250000"}, "CoverageDeductible": {"#text": "2500"}, "CoveragePremium": {"#text": "500.00"}, "CoverageStartDate": {"#text": "2025-11-15"}, "CoverageEndDate": {"#text": "2026-11-15"}, "CoveredEquipment": {"#text": "HVAC, Elevators, Electrical"}, "IsMandatory": {"#text": "false"}}]}, "PaymentData": {"PaymentIdentifier": {"#text": "PAY-CP-001"}, "PaymentNumber": {"#text": "PAY-CP-001-001"}, "TransactionType": {"#text": "New Business Deposit"}, "PaymentMode": {"#text": "Wire Transfer"}, "StatusDescription": {"#text": "Pending"}, "ScheduledDate": {"#text": "2025-11-15"}, "TransactionAmount": {"#text": "2312.50"}, "BillingPlan": {"#text": "Quarterly"}, "TotalInstallments": {"#text": "4"}, "InstallmentAmount": {"#text": "2499.38"}, "PaymentAccountInfo": {"NameOnAccount": {"#text": "TechStart Solutions LLC"}, "FinancialInstitution": {"#text": "First Commercial Bank"}, "AccountNumber": {"#text": "****9876"}, "RoutingNumber": {"#text": "987654321"}, "AccountType": {"#text": "Business Checking"}}}, "SystemData": {"EnteredBy": {"#text": "jwilson"}, "EntryTimestamp": {"#text": "2025-10-05T16:45:00"}, "UpdatedBy": {"#text": "underwriter.system"}, "UpdateTimestamp": {"#text": "2025-10-05T17:30:00"}, "IssuedBy": {"#text": "policy.system"}, "IssuedTimestamp": {"#text": "2025-10-05T17:35:00"}, "WorkflowStatus": {"#text": "Issued"}, "ApprovalRequired": {"#text": "true"}, "ApprovalStatus": {"#text": "Approved"}, "ApprovedBy": {"#text": "UW-COM-089"}, "ApprovedDate": {"#text": "2025-10-05T17:00:00"}}}}')] in VALUES clause
+2025-10-05 04:14:01 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 04:14:04 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 04:14:11 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 04:14:11 - utils.decorators - INFO - Starting run...
+2025-10-05 04:14:11 - main - INFO - 🔍 Auto-detecting product type...
+2025-10-05 04:14:11 - utils.product_detector - INFO - ✅ Detected product: CP001 with 36.8% confidence
+2025-10-05 04:14:11 - main - INFO - ✅ Detected: CP001 with 36.8% confidence
+2025-10-05 04:14:11 - main - INFO - 📊 Extracting XML metadata...
+2025-10-05 04:14:11 - main - INFO - ✅ Extracted 331 XML nodes
+2025-10-05 04:14:11 - main - INFO - ☁️ Loading to Snowflake stage layer...
+2025-10-05 04:14:12 - loaders.snowflake_loader - INFO - ✅ Loaded XML data to ETL_MAPPER.STAGE_XML_CP001
+2025-10-05 04:14:12 - main - INFO - ✅ Loaded to ETL_MAPPER.STAGE_XML_CP001
+2025-10-05 04:14:12 - main - INFO - 🗄️ Fetching Silver layer schema from Snowflake...
+2025-10-05 04:14:12 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 04:14:13 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 04:14:13 - main - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 04:14:13 - main - INFO - 📚 Finding and loading reference data with AI...
+2025-10-05 04:14:13 - utils.document_loader - INFO - 🔍 Found 9 potential reference files
+2025-10-05 04:14:15 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:15 - utils.document_loader - INFO - 📄 historical_mappings_personal_auto.xlsx: historical_mapping (relevance: 85%)
+2025-10-05 04:14:16 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:16 - utils.document_loader - INFO - 📄 historical_mappings_commercial.xlsx: historical_mapping (relevance: 85%)
+2025-10-05 04:14:17 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:17 - utils.document_loader - INFO - 📄 old_mappings.csv: historical_mapping (relevance: 85%)
+2025-10-05 04:14:18 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:18 - utils.document_loader - INFO - 📄 historical_mappings_homeowners.xlsx: historical_mapping (relevance: 85%)
+2025-10-05 04:14:20 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:20 - utils.document_loader - INFO - 📄 old_mappings_homeowners.csv: historical_mapping (relevance: 85%)
+2025-10-05 04:14:21 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:21 - utils.document_loader - INFO - 📄 old_mappings_personal_auto.csv: historical_mapping (relevance: 85%)
+2025-10-05 04:14:22 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:22 - utils.document_loader - INFO - 📄 old_mappings_commercial.csv: historical_mapping (relevance: 85%)
+2025-10-05 04:14:23 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:23 - utils.document_loader - INFO - 📄 data_dictionary.csv: data_dictionary (relevance: 90%)
+2025-10-05 04:14:24 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:24 - utils.document_loader - INFO - 📄 data_dictionary_complete.xlsx: data_dictionary (relevance: 90%)
+2025-10-05 04:14:24 - utils.document_loader - INFO - Loading file: reference_data/data_dictionary.csv (type: .csv)
+2025-10-05 04:14:26 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:26 - utils.document_loader - ERROR - Error loading reference_data/data_dictionary.csv: name 'true' is not defined
+2025-10-05 04:14:26 - utils.document_loader - INFO - Loading file: reference_data/data_dictionary_complete.xlsx (type: .xlsx)
+2025-10-05 04:14:26 - utils.document_loader - INFO - Found 3 sheets: ['DataDictionary', 'TableSummary', 'Metadata']
+2025-10-05 04:14:29 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:29 - utils.document_loader - INFO - AI understands this as: data_dictionary
+2025-10-05 04:14:29 - utils.document_loader - INFO - Loading file: reference_data/historical_mappings_personal_auto.xlsx (type: .xlsx)
+2025-10-05 04:14:29 - utils.document_loader - INFO - Found 2 sheets: ['Mappings', 'Metadata']
+2025-10-05 04:14:31 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:31 - utils.document_loader - INFO - AI understands this as: historical_mappings
+2025-10-05 04:14:31 - utils.document_loader - INFO - Loading file: reference_data/historical_mappings_commercial.xlsx (type: .xlsx)
+2025-10-05 04:14:31 - utils.document_loader - INFO - Found 1 sheets: ['Mappings']
+2025-10-05 04:14:34 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:34 - utils.document_loader - INFO - AI understands this as: historical_mappings
+2025-10-05 04:14:34 - utils.document_loader - INFO - Loading file: reference_data/old_mappings.csv (type: .csv)
+2025-10-05 04:14:35 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:35 - utils.document_loader - ERROR - Error loading reference_data/old_mappings.csv: name 'true' is not defined
+2025-10-05 04:14:35 - utils.document_loader - INFO - Loading file: reference_data/historical_mappings_homeowners.xlsx (type: .xlsx)
+2025-10-05 04:14:35 - utils.document_loader - INFO - Found 1 sheets: ['Mappings']
+2025-10-05 04:14:38 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:38 - utils.document_loader - INFO - AI understands this as: historical_mappings
+2025-10-05 04:14:38 - utils.document_loader - INFO - 
+============================================================
+2025-10-05 04:14:38 - utils.document_loader - INFO - ✅ LOADED REFERENCE DATA SUMMARY:
+2025-10-05 04:14:38 - utils.document_loader - INFO - ============================================================
+2025-10-05 04:14:38 - utils.document_loader - INFO -   📚 Historical mappings: 3 files
+2025-10-05 04:14:38 - utils.document_loader - INFO -      - historical_mappings_personal_auto.xlsx (51 rows)
+2025-10-05 04:14:38 - utils.document_loader - INFO -      - historical_mappings_commercial.xlsx (9 rows)
+2025-10-05 04:14:38 - utils.document_loader - INFO -      - historical_mappings_homeowners.xlsx (14 rows)
+2025-10-05 04:14:38 - utils.document_loader - INFO -   📖 Data dictionaries: 1 files
+2025-10-05 04:14:38 - utils.document_loader - INFO -      - data_dictionary_complete.xlsx (104 rows)
+2025-10-05 04:14:38 - utils.document_loader - INFO -   🗄️ Schema definitions: 0 files
+2025-10-05 04:14:38 - utils.document_loader - INFO -   📊 Reference data: 0 files
+2025-10-05 04:14:38 - utils.document_loader - INFO - ============================================================
+
+2025-10-05 04:14:38 - main - INFO - 🤖 Predicting mappings with AI (flexible mode)...
+2025-10-05 04:14:38 - utils.decorators - INFO - Starting wrapper...
+2025-10-05 04:14:38 - utils.validators - INFO - XML metadata validation passed: 331 nodes
+2025-10-05 04:14:38 - mapper.openai_mapper - INFO - 🤖 Generating mappings with flexible reference data...
+2025-10-05 04:14:38 - mapper.openai_mapper - INFO -    XML nodes: 331
+2025-10-05 04:14:38 - mapper.openai_mapper - INFO -    Silver columns: 137
+2025-10-05 04:14:38 - mapper.openai_mapper - INFO - 💰 Estimated tokens: ~7,746
+2025-10-05 04:14:46 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:14:46 - mapper.openai_mapper - INFO - ✅ Actual cost: $0.0237
+2025-10-05 04:14:46 - mapper.openai_mapper - INFO - 📊 Cumulative cost: $0.0237
+2025-10-05 04:14:46 - mapper.openai_mapper - INFO - ✅ Generated 13 mappings
+2025-10-05 04:14:46 - utils.decorators - INFO - wrapper completed in 7.89s
+2025-10-05 04:14:46 - main - INFO - 💾 Saving results...
+2025-10-05 04:14:46 - main - INFO - 📁 Saved 13 mappings to output/mappings_CP001_20251005_041446.csv
+2025-10-05 04:14:46 - main - INFO - ✅ Pipeline completed successfully!
+2025-10-05 04:14:46 - utils.decorators - INFO - run completed in 34.67s
+2025-10-05 04:14:48 - utils.database_helper - ERROR - Failed to save XML: not all arguments converted during string formatting
+2025-10-05 04:16:19 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 04:16:22 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 04:16:25 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 04:16:25 - utils.decorators - INFO - Starting run...
+2025-10-05 04:16:25 - main - INFO - 🔍 Auto-detecting product type...
+2025-10-05 04:16:25 - utils.product_detector - INFO - ✅ Detected product: CP001 with 36.8% confidence
+2025-10-05 04:16:25 - main - INFO - ✅ Detected: CP001 with 36.8% confidence
+2025-10-05 04:16:25 - main - INFO - 📊 Extracting XML metadata...
+2025-10-05 04:16:25 - main - INFO - ✅ Extracted 331 XML nodes
+2025-10-05 04:16:25 - main - INFO - ☁️ Loading to Snowflake stage layer...
+2025-10-05 04:16:26 - loaders.snowflake_loader - INFO - ✅ Loaded XML data to ETL_MAPPER.STAGE_XML_CP001
+2025-10-05 04:16:26 - main - INFO - ✅ Loaded to ETL_MAPPER.STAGE_XML_CP001
+2025-10-05 04:16:26 - main - INFO - 🗄️ Fetching Silver layer schema from Snowflake...
+2025-10-05 04:16:26 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 04:16:28 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 04:16:28 - main - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 04:16:28 - main - INFO - 📚 Finding and loading reference data with AI...
+2025-10-05 04:16:28 - utils.document_loader - INFO - 🔍 Found 9 potential reference files
+2025-10-05 04:16:29 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:29 - utils.document_loader - INFO - 📄 historical_mappings_personal_auto.xlsx: historical_mapping (relevance: 85%)
+2025-10-05 04:16:30 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:30 - utils.document_loader - INFO - 📄 historical_mappings_commercial.xlsx: historical_mapping (relevance: 85%)
+2025-10-05 04:16:32 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:32 - utils.document_loader - INFO - 📄 old_mappings.csv: historical_mapping (relevance: 85%)
+2025-10-05 04:16:33 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:33 - utils.document_loader - INFO - 📄 historical_mappings_homeowners.xlsx: historical_mapping (relevance: 85%)
+2025-10-05 04:16:34 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:34 - utils.document_loader - INFO - 📄 old_mappings_homeowners.csv: historical_mapping (relevance: 85%)
+2025-10-05 04:16:35 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:35 - utils.document_loader - INFO - 📄 old_mappings_personal_auto.csv: historical_mapping (relevance: 85%)
+2025-10-05 04:16:36 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:36 - utils.document_loader - INFO - 📄 old_mappings_commercial.csv: historical_mapping (relevance: 85%)
+2025-10-05 04:16:38 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:38 - utils.document_loader - INFO - 📄 data_dictionary.csv: data_dictionary (relevance: 90%)
+2025-10-05 04:16:39 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:39 - utils.document_loader - INFO - 📄 data_dictionary_complete.xlsx: data_dictionary (relevance: 80%)
+2025-10-05 04:16:39 - utils.document_loader - INFO - Loading file: reference_data/data_dictionary.csv (type: .csv)
+2025-10-05 04:16:41 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:41 - utils.document_loader - ERROR - Error loading reference_data/data_dictionary.csv: name 'true' is not defined
+2025-10-05 04:16:41 - utils.document_loader - INFO - Loading file: reference_data/historical_mappings_personal_auto.xlsx (type: .xlsx)
+2025-10-05 04:16:41 - utils.document_loader - INFO - Found 2 sheets: ['Mappings', 'Metadata']
+2025-10-05 04:16:43 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:43 - utils.document_loader - INFO - AI understands this as: historical_mappings
+2025-10-05 04:16:43 - utils.document_loader - INFO - Loading file: reference_data/historical_mappings_commercial.xlsx (type: .xlsx)
+2025-10-05 04:16:43 - utils.document_loader - INFO - Found 1 sheets: ['Mappings']
+2025-10-05 04:16:45 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:45 - utils.document_loader - INFO - AI understands this as: historical_mappings
+2025-10-05 04:16:45 - utils.document_loader - INFO - Loading file: reference_data/old_mappings.csv (type: .csv)
+2025-10-05 04:16:46 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:46 - utils.document_loader - ERROR - Error loading reference_data/old_mappings.csv: name 'true' is not defined
+2025-10-05 04:16:46 - utils.document_loader - INFO - Loading file: reference_data/historical_mappings_homeowners.xlsx (type: .xlsx)
+2025-10-05 04:16:46 - utils.document_loader - INFO - Found 1 sheets: ['Mappings']
+2025-10-05 04:16:49 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:49 - utils.document_loader - INFO - AI understands this as: historical_mappings
+2025-10-05 04:16:49 - utils.document_loader - INFO - Loading file: reference_data/data_dictionary_complete.xlsx (type: .xlsx)
+2025-10-05 04:16:49 - utils.document_loader - INFO - Found 3 sheets: ['DataDictionary', 'TableSummary', 'Metadata']
+2025-10-05 04:16:51 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:51 - utils.document_loader - INFO - AI understands this as: data_dictionary
+2025-10-05 04:16:51 - utils.document_loader - INFO - 
+============================================================
+2025-10-05 04:16:51 - utils.document_loader - INFO - ✅ LOADED REFERENCE DATA SUMMARY:
+2025-10-05 04:16:51 - utils.document_loader - INFO - ============================================================
+2025-10-05 04:16:51 - utils.document_loader - INFO -   📚 Historical mappings: 3 files
+2025-10-05 04:16:51 - utils.document_loader - INFO -      - historical_mappings_personal_auto.xlsx (51 rows)
+2025-10-05 04:16:51 - utils.document_loader - INFO -      - historical_mappings_commercial.xlsx (9 rows)
+2025-10-05 04:16:51 - utils.document_loader - INFO -      - historical_mappings_homeowners.xlsx (14 rows)
+2025-10-05 04:16:51 - utils.document_loader - INFO -   📖 Data dictionaries: 1 files
+2025-10-05 04:16:51 - utils.document_loader - INFO -      - data_dictionary_complete.xlsx (104 rows)
+2025-10-05 04:16:51 - utils.document_loader - INFO -   🗄️ Schema definitions: 0 files
+2025-10-05 04:16:51 - utils.document_loader - INFO -   📊 Reference data: 0 files
+2025-10-05 04:16:51 - utils.document_loader - INFO - ============================================================
+
+2025-10-05 04:16:51 - main - INFO - 🤖 Predicting mappings with AI (flexible mode)...
+2025-10-05 04:16:51 - utils.decorators - INFO - Starting wrapper...
+2025-10-05 04:16:51 - utils.validators - INFO - XML metadata validation passed: 331 nodes
+2025-10-05 04:16:51 - mapper.openai_mapper - INFO - 🤖 Generating mappings with flexible reference data...
+2025-10-05 04:16:51 - mapper.openai_mapper - INFO -    XML nodes: 331
+2025-10-05 04:16:51 - mapper.openai_mapper - INFO -    Silver columns: 137
+2025-10-05 04:16:51 - mapper.openai_mapper - INFO - 💰 Estimated tokens: ~7,746
+2025-10-05 04:16:57 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 04:16:57 - mapper.openai_mapper - INFO - ✅ Actual cost: $0.0239
+2025-10-05 04:16:57 - mapper.openai_mapper - INFO - 📊 Cumulative cost: $0.0239
+2025-10-05 04:16:57 - mapper.openai_mapper - INFO - ✅ Generated 14 mappings
+2025-10-05 04:16:57 - utils.decorators - INFO - wrapper completed in 6.39s
+2025-10-05 04:16:57 - main - INFO - 💾 Saving results...
+2025-10-05 04:16:57 - main - INFO - 📁 Saved 14 mappings to output/mappings_CP001_20251005_041657.csv
+2025-10-05 04:16:57 - main - INFO - ✅ Pipeline completed successfully!
+2025-10-05 04:16:57 - utils.decorators - INFO - run completed in 32.03s
+2025-10-05 04:17:00 - utils.database_helper - ERROR - Failed to save XML: 002014 (22000): SQL compilation error:
+Invalid expression [PARSE_JSON('{"TransactionInfo": {"TransactionID": {"#text": "TXN-POL-20251005-003"}, "TransactionType": {"#text": "NewBusiness"}, "TransactionDate": {"#text": "2025-10-05T16:45:00"}, "TransactionStatus": {"#text": "Success"}, "SourceSystem": {"#text": "DuckCreek"}, "SourceVersion": {"#text": "7.5.2"}, "ProcessedBy": {"#text": "DCPOLICY_ENGINE"}}, "Data": {"PolicyData": {"ID": {"#text": "POL-CP-2025-00456"}, "Number": {"#text": "CP-2025-00456"}, "Version": {"#text": "1"}, "LineOfBusiness": {"#text": "Commercial Property"}, "StatusCode": {"#text": "Active"}, "StatusDescription": {"#text": "In Force"}, "ProductDetails": {"ProdCode": {"#text": "CP001"}, "ProdDescription": {"#text": "Commercial Property Insurance - Building and Contents"}, "ProdVersion": {"#text": "2024.5"}, "LOB": {"#text": "Commercial Lines"}, "Category": {"#text": "Property"}, "SubCategory": {"#text": "Building"}}, "PolicyDates": {"InceptionDate": {"#text": "2025-11-15"}, "TerminationDate": {"#text": "2026-11-15"}, "BindDate": {"#text": "2025-10-05"}, "QuoteDate": {"#text": "2025-10-01"}}, "TermLength": {"#text": "12"}, "TermLengthUnit": {"#text": "Months"}, "PremiumInfo": {"BasePremium": {"#text": "8500.00"}, "AnnualPremium": {"#text": "9250.00"}, "MinimumPremium": {"#text": "5000.00"}, "DepositPremium": {"#text": "2312.50"}, "TaxAmount": {"#text": "647.50"}, "SurchargeAmount": {"#text": "750.00"}, "DiscountAmount": {"#text": "0.00"}, "FeeAmount": {"#text": "100.00"}, "TotalPremium": {"#text": "9997.50"}, "CoveredAmount": {"#text": "2500000"}}, "UnderwritingInfo": {"Carrier": {"#text": "ABC Commercial Insurance"}, "UnderwritingCompany": {"#text": "ABC Commercial Underwriters LLC"}, "UnderwritingState": {"#text": "IL"}, "RiskTier": {"#text": "Preferred"}, "UnderwriterID": {"#text": "UW-COM-089"}, "UnderwriterName": {"#text": "Jennifer Lee"}, "UnderwriterAuthority": {"#text": "Senior"}, "InspectionRequired": {"#text": "true"}, "InspectionDate": {"#text": "2025-10-20"}}, "SalesChannel": {"ChannelName": {"#text": "Broker"}, "SubChannel": {"#text": "Commercial Broker"}, "Region": {"#text": "Midwest"}, "Territory": {"#text": "IL-COOK-COMM-001"}}}, "AccountData": {"AccountIdentifier": {"#text": "ACC-COMM-2025-789"}, "AccountNumber": {"#text": "COMM-789"}, "AccountName": {"#text": "TechStart Solutions LLC"}, "AccountType": {"#text": "Commercial"}, "AccountStatus": {"#text": "Active"}, "BusinessInfo": {"LegalName": {"#text": "TechStart Solutions LLC"}, "DBAName": {"#text": "TechStart"}, "BusinessType": {"#text": "Technology Services"}, "IndustryCode": {"#text": "NAICS-541512"}, "IndustryDescription": {"#text": "Computer Systems Design Services"}, "YearsInBusiness": {"#text": "5"}, "NumberOfEmployees": {"#text": "45"}, "AnnualRevenue": {"#text": "8500000"}, "FederalTaxID": {"#text": "**-***7890"}, "EntityType": {"#text": "LLC"}, "StateOfIncorporation": {"#text": "IL"}, "IncorporationDate": {"#text": "2020-03-15"}}, "PrimaryContact": {"ContactName": {"#text": "David Chen"}, "Title": {"#text": "CEO"}, "DateOfBirth": {"#text": "1978-11-10"}, "Email": {"#text": "dchen@techstart.com"}, "Phone": {"PhoneType": {"#text": "Business"}, "PhoneNumber": {"#text": "312-555-2000"}, "Extension": {"#text": "101"}}}, "BusinessAddress": {"AddressType": {"#text": "Principal"}, "AddressLine1": {"#text": "500 Technology Plaza"}, "AddressLine2": {"#text": "Suite 300"}, "City": {"#text": "Chicago"}, "State": {"#text": "IL"}, "ZipCode": {"#text": "60611"}, "County": {"#text": "Cook"}, "Country": {"#text": "USA"}}, "MailingAddress": {"IsSameAsBusiness": {"#text": "false"}, "AddressLine1": {"#text": "PO Box 12345"}, "City": {"#text": "Chicago"}, "State": {"#text": "IL"}, "ZipCode": {"#text": "60690"}}}, "BrokerData": {"BrokerID": {"#text": "BRK-COMM-050"}, "BrokerName": {"#text": "Jennifer Wilson"}, "BrokerType": {"#text": "Commercial Lines Broker"}, "BrokerageFirm": {"#text": "Wilson Commercial Insurance Brokers"}, "BrokerageCode": {"#text": "WCSB-IL-050"}, "BrokerEmail": {"#text": "jwilson@wilsonbrokers.com"}, "BrokerPhone": {"#text": "312-555-9000"}, "CommissionRate": {"#text": "12.0"}, "CommissionAmount": {"#text": "1199.70"}, "LicenseNumber": {"#text": "IL-BRK-11223344"}, "LicenseState": {"#text": "IL"}, "AppointedDate": {"#text": "2018-05-01"}}, "QuoteData": {"QuoteIdentifier": {"#text": "Q-CP-2025-00299"}, "QuoteNumber": {"#text": "QT-CP-00299"}, "QuoteDate": {"#text": "2025-10-01"}, "QuoteExpiryDate": {"#text": "2025-10-31"}, "ConversionDate": {"#text": "2025-10-05"}, "QuoteStatus": {"#text": "Bound"}}, "RiskData": {"RiskIdentifier": {"#text": "RSK-CP-001"}, "RiskSequence": {"#text": "1"}, "RiskClass": {"#text": "Building"}, "RiskSummary": {"#text": "Office Building - 5 Story Mixed Use"}, "LocationDetails": {"LocationNumber": {"#text": "001"}, "LocationName": {"#text": "TechStart HQ Building"}, "AddressLine1": {"#text": "500 Technology Plaza"}, "AddressLine2": {"#text": "Suite 300"}, "City": {"#text": "Chicago"}, "State": {"#text": "IL"}, "ZipCode": {"#text": "60611"}, "County": {"#text": "Cook"}, "Country": {"#text": "USA"}, "Latitude": {"#text": "41.8915"}, "Longitude": {"#text": "-87.6195"}, "FloodZone": {"#text": "X"}, "WindZone": {"#text": "Zone 2"}, "EarthquakeZone": {"#text": "Low"}, "TerrorismRiskZone": {"#text": "Tier 1"}}, "BuildingDetails": {"BuildingNumber": {"#text": "1"}, "BuildingType": {"#text": "Office"}, "ConstructionClass": {"#text": "1"}, "ConstructionType": {"#text": "Fire Resistive"}, "ConstructionMaterial": {"#text": "Steel and Concrete"}, "YearBuilt": {"#text": "2015"}, "YearRenovated": {"#text": "2022"}, "NumberOfStories": {"#text": "5"}, "TotalSquareFootage": {"#text": "50000"}, "OccupiedSquareFootage": {"#text": "45000"}, "VacantSquareFootage": {"#text": "5000"}, "RoofType": {"#text": "Built-Up"}, "RoofMaterial": {"#text": "Membrane"}, "RoofAge": {"#text": "3"}, "RoofCondition": {"#text": "Excellent"}, "ExteriorWalls": {"#text": "Curtain Wall Glass"}, "HasBasement": {"#text": "true"}, "BasementLevels": {"#text": "1"}, "ElevatorCount": {"#text": "2"}, "ParkingType": {"#text": "Underground Garage"}, "ParkingSpaces": {"#text": "100"}}, "OccupancyInfo": {"PrimaryOccupancy": {"#text": "Office - Professional"}, "OccupancyCode": {"#text": "OCC-431"}, "SecondaryOccupancy": {"#text": "Retail - Ground Floor"}, "TenantCount": {"#text": "8"}, "OwnerOccupiedPercent": {"#text": "60"}, "HasRestaurant": {"#text": "true"}, "HasRetail": {"#text": "true"}, "HasResidential": {"#text": "false"}, "HasHazardousMaterials": {"#text": "false"}, "AverageOccupancyHours": {"#text": "0800-1800"}, "WeekendOccupancy": {"#text": "Limited"}}, "ValuationInfo": {"BuildingValue": {"#text": "2000000"}, "ContentsValue": {"#text": "500000"}, "BusinessPersonalProperty": {"#text": "500000"}, "TenantImprovements": {"#text": "250000"}, "LandValue": {"#text": "800000"}, "TotalInsurableValue": {"#text": "2500000"}, "ReplacementCost": {"#text": "2200000"}, "ActualCashValue": {"#text": "1800000"}, "AppraisalDate": {"#text": "2025-09-15"}, "AppraisalCompany": {"#text": "ABC Appraisals Inc"}}, "ProtectionInfo": {"FireProtectionClass": {"#text": "3"}, "FireHydrantDistance": {"#text": "200"}, "FireStationDistance": {"#text": "1.5"}, "HasSprinklerSystem": {"#text": "true"}, "SprinklerType": {"#text": "Wet Pipe"}, "SprinklerCoverage": {"#text": "100"}, "HasFireAlarm": {"#text": "true"}, "FireAlarmType": {"#text": "Central Station"}, "HasBurglarAlarm": {"#text": "true"}, "BurglarAlarmType": {"#text": "Central Station"}, "HasSecurityGuard": {"#text": "true"}, "SecurityGuardHours": {"#text": "24/7"}, "HasCCTV": {"#text": "true"}, "HasAccessControl": {"#text": "true"}, "MonitoringCompany": {"#text": "SecureCom Commercial"}}, "MechanicalSystems": {"HVACType": {"#text": "Central"}, "HVACAge": {"#text": "3"}, "HeatingType": {"#text": "Gas"}, "CoolingType": {"#text": "Electric"}, "ElectricalCapacity": {"#text": "2000"}, "HasBackupGenerator": {"#text": "true"}, "GeneratorCapacity": {"#text": "500"}, "PlumbingType": {"#text": "Copper"}, "WaterHeaterType": {"#text": "Commercial Gas"}, "WaterHeaterAge": {"#text": "3"}}, "MortgageInfo": {"IsMortgaged": {"#text": "true"}, "MortgageHolder": {"#text": "First Commercial Bank"}, "LoanNumber": {"#text": "COMM-MTG-9876543"}, "OutstandingBalance": {"#text": "1500000"}, "LoanToValue": {"#text": "60"}, "MortgageAddress": {"AddressLine1": {"#text": "1000 Banking Center"}, "City": {"#text": "Chicago"}, "State": {"#text": "IL"}, "ZipCode": {"#text": "60603"}}}, "LossHistory": {"HasPriorLosses": {"#text": "true"}, "Loss": {"LossDate": {"#text": "2023-12-10"}, "LossType": {"#text": "Water Damage"}, "LossCause": {"#text": "Pipe Burst"}, "LossAmount": {"#text": "45000"}, "LossDescription": {"#text": "Frozen pipe burst on 3rd floor"}, "ClaimNumber": {"#text": "CLM-2023-98765"}, "ClaimStatus": {"#text": "Closed"}, "ClaimPaid": {"#text": "42000"}}}, "ComplianceInfo": {"BuildingCodeCompliant": {"#text": "true"}, "FireCodeCompliant": {"#text": "true"}, "ADACompliant": {"#text": "true"}, "EnvironmentalCompliant": {"#text": "true"}, "LastInspectionDate": {"#text": "2025-08-15"}, "InspectionAgency": {"#text": "City of Chicago Building Department"}, "ViolationsOutstanding": {"#text": "0"}}}, "CoverageData": {"CoverageRecord": [{"CoverageIdentifier": {"#text": "COV-CP-001"}, "RiskIdentifier": {"#text": "RSK-CP-001"}, "CoverageSymbol": {"#text": "BLD"}, "CoverageDescription": {"#text": "Building Coverage"}, "CoverageClass": {"#text": "Property"}, "MaxLimit": {"#text": "2000000"}, "CoverageDeductible": {"#text": "10000"}, "CoverageBasis": {"#text": "Replacement Cost"}, "CoinsurancePercent": {"#text": "90"}, "CoveragePremium": {"#text": "5200.00"}, "CoverageStartDate": {"#text": "2025-11-15"}, "CoverageEndDate": {"#text": "2026-11-15"}, "PerilsCovered": {"#text": "All Risk"}, "IsMandatory": {"#text": "true"}}, {"CoverageIdentifier": {"#text": "COV-CP-002"}, "RiskIdentifier": {"#text": "RSK-CP-001"}, "CoverageSymbol": {"#text": "BPP"}, "CoverageDescription": {"#text": "Business Personal Property"}, "CoverageClass": {"#text": "Property"}, "MaxLimit": {"#text": "500000"}, "CoverageDeductible": {"#text": "5000"}, "CoverageBasis": {"#text": "Replacement Cost"}, "CoinsurancePercent": {"#text": "90"}, "CoveragePremium": {"#text": "1800.00"}, "CoverageStartDate": {"#text": "2025-11-15"}, "CoverageEndDate": {"#text": "2026-11-15"}, "PerilsCovered": {"#text": "All Risk"}, "IsMandatory": {"#text": "true"}}, {"CoverageIdentifier": {"#text": "COV-CP-003"}, "RiskIdentifier": {"#text": "RSK-CP-001"}, "CoverageSymbol": {"#text": "BI"}, "CoverageDescription": {"#text": "Business Interruption"}, "CoverageClass": {"#text": "Income"}, "MaxLimit": {"#text": "1000000"}, "CoverageDeductible": {"#text": "72"}, "DeductibleUnit": {"#text": "Hours"}, "IndemnityPeriod": {"#text": "12"}, "IndemnityPeriodUnit": {"#text": "Months"}, "CoveragePremium": {"#text": "1250.00"}, "CoverageStartDate": {"#text": "2025-11-15"}, "CoverageEndDate": {"#text": "2026-11-15"}, "IsMandatory": {"#text": "false"}}, {"CoverageIdentifier": {"#text": "COV-CP-004"}, "RiskIdentifier": {"#text": "RSK-CP-001"}, "CoverageSymbol": {"#text": "EQ"}, "CoverageDescription": {"#text": "Equipment Breakdown"}, "CoverageClass": {"#text": "Property"}, "MaxLimit": {"#text": "250000"}, "CoverageDeductible": {"#text": "2500"}, "CoveragePremium": {"#text": "500.00"}, "CoverageStartDate": {"#text": "2025-11-15"}, "CoverageEndDate": {"#text": "2026-11-15"}, "CoveredEquipment": {"#text": "HVAC, Elevators, Electrical"}, "IsMandatory": {"#text": "false"}}]}, "PaymentData": {"PaymentIdentifier": {"#text": "PAY-CP-001"}, "PaymentNumber": {"#text": "PAY-CP-001-001"}, "TransactionType": {"#text": "New Business Deposit"}, "PaymentMode": {"#text": "Wire Transfer"}, "StatusDescription": {"#text": "Pending"}, "ScheduledDate": {"#text": "2025-11-15"}, "TransactionAmount": {"#text": "2312.50"}, "BillingPlan": {"#text": "Quarterly"}, "TotalInstallments": {"#text": "4"}, "InstallmentAmount": {"#text": "2499.38"}, "PaymentAccountInfo": {"NameOnAccount": {"#text": "TechStart Solutions LLC"}, "FinancialInstitution": {"#text": "First Commercial Bank"}, "AccountNumber": {"#text": "****9876"}, "RoutingNumber": {"#text": "987654321"}, "AccountType": {"#text": "Business Checking"}}}, "SystemData": {"EnteredBy": {"#text": "jwilson"}, "EntryTimestamp": {"#text": "2025-10-05T16:45:00"}, "UpdatedBy": {"#text": "underwriter.system"}, "UpdateTimestamp": {"#text": "2025-10-05T17:30:00"}, "IssuedBy": {"#text": "policy.system"}, "IssuedTimestamp": {"#text": "2025-10-05T17:35:00"}, "WorkflowStatus": {"#text": "Issued"}, "ApprovalRequired": {"#text": "true"}, "ApprovalStatus": {"#text": "Approved"}, "ApprovedBy": {"#text": "UW-COM-089"}, "ApprovedDate": {"#text": "2025-10-05T17:00:00"}}}}')] in VALUES clause

@@ -1,0 +1,13 @@
+source_node,target_table,target_column,transformation_logic,confidence_score,reasoning
+/Session/TransactionInfo/TransactionID,SILVER.POLICY,transaction_id,,0.95,Direct mapping as seen in historical data for transaction identifiers.
+/Session/TransactionInfo/SourceSystem,SILVER.POLICY,source_system,,0.95,Direct mapping based on historical patterns for source system identification.
+/Session/Data/PolicyData/ID,SILVER.POLICY,policy_id,,0.95,Direct mapping as per historical data for policy identifiers.
+/Session/Data/PolicyData/Number,SILVER.POLICY,policy_number,UPPER(value),0.9,Historical data shows transformation to uppercase for policy numbers.
+/Session/Data/PolicyData/LineOfBusiness,SILVER.POLICY,policy_type,,0.9,Direct mapping based on historical data for line of business to policy type.
+/Session/Data/PolicyData/StatusCode,SILVER.POLICY,policy_status,,0.9,Direct mapping as seen in historical data for status codes.
+/Session/Data/PolicyData/ProductDetails/ProdCode,SILVER.POLICY,product_code,,0.9,Direct mapping from product code in historical data.
+/Session/Data/PolicyData/PolicyDates/InceptionDate,SILVER.POLICY,effective_date,TO_DATE(value),0.9,Date conversion required as per historical mappings for effective dates.
+/Session/Data/PolicyData/PolicyDates/TerminationDate,SILVER.POLICY,expiration_date,TO_DATE(value),0.9,Date conversion required for termination date to expiration date as per historical data.
+/Session/Data/PolicyData/PremiumInfo/TotalPremium,SILVER.POLICY,premium_amount,"CAST(value AS NUMBER(15,2))",0.9,Decimal conversion needed for total premium as seen in historical mappings.
+/Session/Data/PolicyData/UnderwritingInfo/UnderwriterID,SILVER.POLICY,underwriter_id,,0.85,Direct mapping inferred from historical patterns for underwriter ID.
+/Session/Data/PolicyData/UnderwritingInfo/UnderwriterName,SILVER.POLICY,created_by,,0.75,Inferred mapping based on role of underwriter as creator in historical context.
