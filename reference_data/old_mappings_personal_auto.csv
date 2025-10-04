@@ -1,0 +1,9 @@
+source_system,source_node,target_table,target_column,transformation,product_code
+DuckCreek,/Session/Data/Policy/PolicyID,SILVER.POLICY,policy_id,,PA001
+DuckCreek,/Session/Data/Policy/PolicyNumber,SILVER.POLICY,policy_number,,PA001
+DuckCreek,/Session/Data/Quote/QuoteID,SILVER.QUOTE,quote_id,,PA001
+DuckCreek,/Session/Data/Quote/QuoteNumber,SILVER.QUOTE,quote_number,,PA001
+DuckCreek,/Session/Data/Risk/RiskID,SILVER.RISK,risk_id,,PA001
+DuckCreek,/Session/Data/Risk/Vehicle/Make,SILVER.RISK,vehicle_make,,PA001
+DuckCreek,/Session/Data/Risk/Vehicle/Model,SILVER.RISK,vehicle_model,,PA001
+DuckCreek,/Session/Data/Risk/Vehicle/VIN,SILVER.RISK,vehicle_vin,,PA001

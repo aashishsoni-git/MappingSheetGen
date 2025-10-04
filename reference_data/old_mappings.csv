@@ -1,0 +1,194 @@
+source_system,source_node,source_attribute,target_table,target_column,transformation,notes,product_code
+DuckCreek,/Session/Data/Policy/PolicyID,,SILVER.POLICY,policy_id,,Direct mapping,PA001
+DuckCreek,/Session/Data/Policy/PolicyNumber,,SILVER.POLICY,policy_number,,Direct mapping,PA001
+DuckCreek,/Session/Data/Policy/PolicyType,,SILVER.POLICY,policy_type,,Direct mapping,PA001
+DuckCreek,/Session/Data/Policy/Status,,SILVER.POLICY,policy_status,,Direct mapping,PA001
+DuckCreek,/Session/Data/Policy/Product/ProductCode,,SILVER.POLICY,product_code,,Direct mapping,PA001
+DuckCreek,/Session/Data/Policy/Product/ProductName,,SILVER.POLICY,product_name,,Direct mapping,PA001
+DuckCreek,/Session/Data/Policy/Dates/EffectiveDate,,SILVER.POLICY,effective_date,TO_DATE(value),Date conversion,PA001
+DuckCreek,/Session/Data/Policy/Dates/ExpirationDate,,SILVER.POLICY,expiration_date,TO_DATE(value),Date conversion,PA001
+DuckCreek,/Session/Data/Policy/Dates/RenewalDate,,SILVER.POLICY,renewal_date,TO_DATE(value),Date conversion,PA001
+DuckCreek,/Session/Data/Policy/PolicyTerm,,SILVER.POLICY,policy_term_months,CAST(value AS INTEGER),Integer conversion,PA001
+DuckCreek,/Session/Data/Policy/Premium/PremiumAmount,,SILVER.POLICY,premium_amount,CAST(value AS DECIMAL(15,2)),Decimal conversion,PA001
+DuckCreek,/Session/Data/Policy/Premium/TotalInsuredValue,,SILVER.POLICY,total_insured_value,CAST(value AS DECIMAL(15,2)),Decimal conversion,PA001
+DuckCreek,/Session/Data/Policy/Underwriting/UnderwritingCompany,,SILVER.POLICY,underwriting_company,,Direct mapping,PA001
+DuckCreek,/Session/Data/Policy/Distribution/Channel,,SILVER.POLICY,distribution_channel,,Direct mapping,PA001
+DuckCreek,/Session/Data/Account/AccountID,,SILVER.POLICY,account_id,,Direct mapping,PA001
+DuckCreek,/Session/Data/QuoteReference/QuoteID,,SILVER.POLICY,quote_id,,Direct mapping,PA001
+DuckCreek,/Session/Data/PolicyAdmin/CreatedBy,,SILVER.POLICY,created_by,,Direct mapping,PA001
+DuckCreek,/Session/Data/PolicyAdmin/CreatedDate,,SILVER.POLICY,created_date,TO_TIMESTAMP_NTZ(value),Timestamp conversion,PA001
+DuckCreek,/Session/Data/PolicyAdmin/ModifiedBy,,SILVER.POLICY,modified_by,,Direct mapping,PA001
+DuckCreek,/Session/Data/PolicyAdmin/ModifiedDate,,SILVER.POLICY,modified_date,TO_TIMESTAMP_NTZ(value),Timestamp conversion,PA001
+DuckCreek,/Session/TransactionInfo/SourceSystem,,SILVER.POLICY,source_system,,Direct mapping,PA001
+DuckCreek,/Session/TransactionInfo/TransactionID,,SILVER.POLICY,transaction_id,,Direct mapping,PA001
+DuckCreek,/Session/Data/Quote/QuoteID,,SILVER.QUOTE,quote_id,,Direct mapping for quote transactions,PA001
+DuckCreek,/Session/Data/Quote/QuoteNumber,,SILVER.QUOTE,quote_number,,Direct mapping,PA001
+DuckCreek,/Session/Data/Quote/Status,,SILVER.QUOTE,quote_status,,Direct mapping,PA001
+DuckCreek,/Session/Data/Quote/Product/ProductCode,,SILVER.QUOTE,product_code,,Direct mapping,PA001
+DuckCreek,/Session/Data/Quote/Product/ProductName,,SILVER.QUOTE,product_name,,Direct mapping,PA001
+DuckCreek,/Session/Data/Quote/QuoteDate,,SILVER.QUOTE,quote_date,TO_DATE(value),Date conversion,PA001
+DuckCreek,/Session/Data/Quote/ExpiryDate,,SILVER.QUOTE,expiry_date,TO_DATE(value),Date conversion,PA001
+DuckCreek,/Session/Data/Quote/EffectiveDate,,SILVER.QUOTE,effective_date,TO_DATE(value),Date conversion,PA001
+DuckCreek,/Session/Data/Quote/Premium/QuotedPremium,,SILVER.QUOTE,quoted_premium,CAST(value AS DECIMAL(15,2)),Decimal conversion,PA001
+DuckCreek,/Session/Data/Quote/Premium/DiscountAmount,,SILVER.QUOTE,discount_amount,CAST(value AS DECIMAL(15,2)),Decimal conversion,PA001
+DuckCreek,/Session/Data/Quote/Premium/TaxAmount,,SILVER.QUOTE,tax_amount,CAST(value AS DECIMAL(15,2)),Decimal conversion,PA001
+DuckCreek,/Session/Data/Quote/Premium/TotalPremium,,SILVER.QUOTE,total_premium,CAST(value AS DECIMAL(15,2)),Decimal conversion,PA001
+DuckCreek,/Session/Data/Account/AccountID,,SILVER.QUOTE,account_id,,Direct mapping,PA001
+DuckCreek,/Session/Data/Agent/AgentCode,,SILVER.QUOTE,agent_code,,Direct mapping,PA001
+DuckCreek,/Session/Data/Agent/AgentName,,SILVER.QUOTE,agent_name,,Direct mapping,PA001
+DuckCreek,/Session/Data/Underwriter/UnderwriterName,,SILVER.QUOTE,underwriter_name,,Direct mapping,PA001
+DuckCreek,/Session/Data/Quote/BusinessInfo/BusinessType,,SILVER.QUOTE,business_type,,Direct mapping,PA001
+DuckCreek,/Session/Data/Quote/BusinessInfo/DistributionChannel,,SILVER.QUOTE,distribution_channel,,Direct mapping,PA001
+DuckCreek,/Session/Data/UserDetails/CreatedBy,,SILVER.QUOTE,created_by,,Direct mapping,PA001
+DuckCreek,/Session/Data/UserDetails/CreatedDate,,SILVER.QUOTE,created_date,TO_TIMESTAMP_NTZ(value),Timestamp conversion,PA001
+DuckCreek,/Session/TransactionInfo/SourceSystem,,SILVER.QUOTE,source_system,,Direct mapping,PA001
+DuckCreek,/Session/Data/Risk/RiskID,,SILVER.RISK,risk_id,,Direct mapping,PA001
+DuckCreek,/Session/Data/Policy/PolicyID,,SILVER.RISK,policy_id,,Link to policy,PA001
+DuckCreek,/Session/Data/Quote/QuoteID,,SILVER.RISK,quote_id,,Link to quote,PA001
+DuckCreek,/Session/Data/Risk/RiskType,,SILVER.RISK,risk_type,,Direct mapping,PA001
+DuckCreek,/Session/Data/Risk/RiskNumber,,SILVER.RISK,risk_number,CAST(value AS INTEGER),Integer conversion,PA001
+DuckCreek,/Session/Data/Risk/Vehicle/Make,,SILVER.RISK,vehicle_make,,Auto-specific field,PA001
+DuckCreek,/Session/Data/Risk/Vehicle/Model,,SILVER.RISK,vehicle_model,,Auto-specific field,PA001
+DuckCreek,/Session/Data/Risk/Vehicle/Year,,SILVER.RISK,vehicle_year,CAST(value AS INTEGER),Integer conversion,PA001
+DuckCreek,/Session/Data/Risk/Vehicle/VIN,,SILVER.RISK,vehicle_vin,,Auto-specific field,PA001
+DuckCreek,/Session/Data/Risk/Vehicle/Usage,,SILVER.RISK,vehicle_usage,,Auto-specific field,PA001
+DuckCreek,/Session/Data/Risk/Vehicle/AnnualMileage,,SILVER.RISK,annual_mileage,CAST(value AS INTEGER),Integer conversion,PA001
+DuckCreek,/Session/Data/Risk/Driver/Age,,SILVER.RISK,driver_age,CAST(value AS INTEGER),Integer conversion,PA001
+DuckCreek,/Session/Data/Risk/Driver/Gender,,SILVER.RISK,driver_gender,,Auto-specific field,PA001
+DuckCreek,/Session/TransactionInfo/SourceSystem,,SILVER.RISK,source_system,,Direct mapping,PA001
+DuckCreek,/Session/Data/Coverage/CoverageItem/CoverageID,,SILVER.COVERAGE,coverage_id,,Direct mapping,PA001
+DuckCreek,/Session/Data/Policy/PolicyID,,SILVER.COVERAGE,policy_id,,Link to policy,PA001
+DuckCreek,/Session/Data/Quote/QuoteID,,SILVER.COVERAGE,quote_id,,Link to quote,PA001
+DuckCreek,/Session/Data/Coverage/CoverageItem/CoverageCode,,SILVER.COVERAGE,coverage_code,,Direct mapping,PA001
+DuckCreek,/Session/Data/Coverage/CoverageItem/CoverageName,,SILVER.COVERAGE,coverage_name,,Direct mapping,PA001
+DuckCreek,/Session/Data/Coverage/CoverageItem/CoverageType,,SILVER.COVERAGE,coverage_type,,Direct mapping,PA001
+DuckCreek,/Session/Data/Coverage/CoverageItem/Limit,,SILVER.COVERAGE,coverage_limit,CAST(value AS DECIMAL(15,2)),Decimal conversion,PA001
+DuckCreek,/Session/Data/Coverage/CoverageItem/Deductible,,SILVER.COVERAGE,coverage_deductible,CAST(value AS DECIMAL(15,2)),Decimal conversion,PA001
+DuckCreek,/Session/Data/Coverage/CoverageItem/Premium,,SILVER.COVERAGE,coverage_premium,CAST(value AS DECIMAL(15,2)),Decimal conversion,PA001
+DuckCreek,/Session/Data/Coverage/CoverageItem/IsMandatory,,SILVER.COVERAGE,is_mandatory,"CASE WHEN LOWER(value)='true' THEN TRUE ELSE FALSE END",Boolean conversion,PA001
+DuckCreek,/Session/TransactionInfo/SourceSystem,,SILVER.COVERAGE,source_system,,Direct mapping,PA001
+DuckCreek,/Session/Data/Payment/PaymentID,,SILVER.PAYMENT,payment_id,,Direct mapping,PA001
+DuckCreek,/Session/Data/Policy/PolicyID,,SILVER.PAYMENT,policy_id,,Link to policy,PA001
+DuckCreek,/Session/Data/Quote/QuoteID,,SILVER.PAYMENT,quote_id,,Link to quote,PA001
+DuckCreek,/Session/Data/Payment/PaymentType,,SILVER.PAYMENT,payment_type,,Direct mapping,PA001
+DuckCreek,/Session/Data/Payment/PaymentMethod,,SILVER.PAYMENT,payment_method,,Direct mapping,PA001
+DuckCreek,/Session/Data/Payment/PaymentTerm,,SILVER.PAYMENT,payment_term,,Direct mapping,PA001
+DuckCreek,/Session/Data/Payment/TotalInstallments,,SILVER.PAYMENT,total_installments,CAST(value AS INTEGER),Integer conversion,PA001
+DuckCreek,/Session/Data/Payment/DueDate,,SILVER.PAYMENT,due_date,TO_DATE(value),Date conversion,PA001
+DuckCreek,/Session/Data/Payment/PaymentAmount,,SILVER.PAYMENT,payment_amount,CAST(value AS DECIMAL(15,2)),Decimal conversion,PA001
+DuckCreek,/Session/Data/Payment/BankDetails/AccountHolderName,,SILVER.PAYMENT,account_holder_name,,Direct mapping,PA001
+DuckCreek,/Session/Data/Payment/BankDetails/BankName,,SILVER.PAYMENT,bank_name,,Direct mapping,PA001
+DuckCreek,/Session/TransactionInfo/SourceSystem,,SILVER.PAYMENT,source_system,,Direct mapping,PA001
+DuckCreek,/Session/Data/Policy/PolicyID,,SILVER.POLICY,policy_id,,Direct mapping,HO003
+DuckCreek,/Session/Data/Policy/PolicyNumber,,SILVER.POLICY,policy_number,,Direct mapping,HO003
+DuckCreek,/Session/Data/Policy/PolicyType,,SILVER.POLICY,policy_type,,Direct mapping,HO003
+DuckCreek,/Session/Data/Policy/Status,,SILVER.POLICY,policy_status,,Direct mapping,HO003
+DuckCreek,/Session/Data/Policy/Product/ProductCode,,SILVER.POLICY,product_code,,Direct mapping,HO003
+DuckCreek,/Session/Data/Policy/Product/ProductName,,SILVER.POLICY,product_name,,Direct mapping,HO003
+DuckCreek,/Session/Data/Policy/Dates/EffectiveDate,,SILVER.POLICY,effective_date,TO_DATE(value),Date conversion,HO003
+DuckCreek,/Session/Data/Policy/Dates/ExpirationDate,,SILVER.POLICY,expiration_date,TO_DATE(value),Date conversion,HO003
+DuckCreek,/Session/Data/Policy/Dates/RenewalDate,,SILVER.POLICY,renewal_date,TO_DATE(value),Date conversion,HO003
+DuckCreek,/Session/Data/Policy/PolicyTerm,,SILVER.POLICY,policy_term_months,CAST(value AS INTEGER),Integer conversion,HO003
+DuckCreek,/Session/Data/Policy/Premium/PremiumAmount,,SILVER.POLICY,premium_amount,CAST(value AS DECIMAL(15,2)),Decimal conversion,HO003
+DuckCreek,/Session/Data/Policy/Premium/TotalInsuredValue,,SILVER.POLICY,total_insured_value,CAST(value AS DECIMAL(15,2)),Decimal conversion,HO003
+DuckCreek,/Session/Data/Policy/Underwriting/UnderwritingCompany,,SILVER.POLICY,underwriting_company,,Direct mapping,HO003
+DuckCreek,/Session/Data/Policy/Distribution/Channel,,SILVER.POLICY,distribution_channel,,Direct mapping,HO003
+DuckCreek,/Session/Data/Account/AccountID,,SILVER.POLICY,account_id,,Direct mapping,HO003
+DuckCreek,/Session/Data/QuoteReference/QuoteID,,SILVER.POLICY,quote_id,,Direct mapping,HO003
+DuckCreek,/Session/Data/PolicyAdmin/CreatedBy,,SILVER.POLICY,created_by,,Direct mapping,HO003
+DuckCreek,/Session/Data/PolicyAdmin/CreatedDate,,SILVER.POLICY,created_date,TO_TIMESTAMP_NTZ(value),Timestamp conversion,HO003
+DuckCreek,/Session/Data/PolicyAdmin/ModifiedBy,,SILVER.POLICY,modified_by,,Direct mapping,HO003
+DuckCreek,/Session/Data/PolicyAdmin/ModifiedDate,,SILVER.POLICY,modified_date,TO_TIMESTAMP_NTZ(value),Timestamp conversion,HO003
+DuckCreek,/Session/TransactionInfo/SourceSystem,,SILVER.POLICY,source_system,,Direct mapping,HO003
+DuckCreek,/Session/TransactionInfo/TransactionID,,SILVER.POLICY,transaction_id,,Direct mapping,HO003
+DuckCreek,/Session/Data/Risk/RiskID,,SILVER.RISK,risk_id,,Direct mapping,HO003
+DuckCreek,/Session/Data/Policy/PolicyID,,SILVER.RISK,policy_id,,Link to policy,HO003
+DuckCreek,/Session/Data/Risk/RiskType,,SILVER.RISK,risk_type,,Direct mapping,HO003
+DuckCreek,/Session/Data/Risk/RiskNumber,,SILVER.RISK,risk_number,CAST(value AS INTEGER),Integer conversion,HO003
+DuckCreek,/Session/Data/Risk/Description,,SILVER.RISK,risk_description,,Direct mapping,HO003
+DuckCreek,/Session/Data/Risk/Location/AddressLine1,,SILVER.RISK,risk_address_line1,,Property-specific field,HO003
+DuckCreek,/Session/Data/Risk/Location/AddressLine2,,SILVER.RISK,risk_address_line2,,Property-specific field,HO003
+DuckCreek,/Session/Data/Risk/Location/City,,SILVER.RISK,risk_city,,Property-specific field,HO003
+DuckCreek,/Session/Data/Risk/Location/State,,SILVER.RISK,risk_state,,Property-specific field,HO003
+DuckCreek,/Session/Data/Risk/Location/ZipCode,,SILVER.RISK,risk_zip,,Property-specific field,HO003
+DuckCreek,/Session/Data/Risk/Location/Country,,SILVER.RISK,risk_country,,Property-specific field,HO003
+DuckCreek,/Session/Data/Risk/PropertyDetails/ConstructionType,,SILVER.RISK,construction_type,,Property-specific field,HO003
+DuckCreek,/Session/Data/Risk/PropertyDetails/OccupancyType,,SILVER.RISK,occupancy_type,,Property-specific field,HO003
+DuckCreek,/Session/Data/Risk/PropertyDetails/BuildingYear,,SILVER.RISK,building_year,CAST(value AS INTEGER),Integer conversion,HO003
+DuckCreek,/Session/Data/Risk/PropertyDetails/SquareFootage,,SILVER.RISK,square_footage,CAST(value AS INTEGER),Integer conversion,HO003
+DuckCreek,/Session/Data/Risk/PropertyDetails/NumberOfStories,,SILVER.RISK,number_of_stories,CAST(value AS INTEGER),Integer conversion,HO003
+DuckCreek,/Session/Data/Risk/PropertyDetails/PropertyValue,,SILVER.RISK,property_value,CAST(value AS DECIMAL(15,2)),Decimal conversion,HO003
+DuckCreek,/Session/Data/Risk/PropertyDetails/ReplacementCost,,SILVER.RISK,replacement_cost,CAST(value AS DECIMAL(15,2)),Decimal conversion,HO003
+DuckCreek,/Session/TransactionInfo/SourceSystem,,SILVER.RISK,source_system,,Direct mapping,HO003
+DuckCreek,/Session/Data/Coverage/CoverageItem/CoverageID,,SILVER.COVERAGE,coverage_id,,Direct mapping,HO003
+DuckCreek,/Session/Data/Policy/PolicyID,,SILVER.COVERAGE,policy_id,,Link to policy,HO003
+DuckCreek,/Session/Data/Coverage/CoverageItem/CoverageCode,,SILVER.COVERAGE,coverage_code,,Direct mapping,HO003
+DuckCreek,/Session/Data/Coverage/CoverageItem/CoverageName,,SILVER.COVERAGE,coverage_name,,Direct mapping,HO003
+DuckCreek,/Session/Data/Coverage/CoverageItem/Category,,SILVER.COVERAGE,coverage_category,,Direct mapping,HO003
+DuckCreek,/Session/Data/Coverage/CoverageItem/Limit,,SILVER.COVERAGE,coverage_limit,CAST(value AS DECIMAL(15,2)),Decimal conversion,HO003
+DuckCreek,/Session/Data/Coverage/CoverageItem/Deductible,,SILVER.COVERAGE,coverage_deductible,CAST(value AS DECIMAL(15,2)),Decimal conversion,HO003
+DuckCreek,/Session/Data/Coverage/CoverageItem/Premium,,SILVER.COVERAGE,coverage_premium,CAST(value AS DECIMAL(15,2)),Decimal conversion,HO003
+DuckCreek,/Session/Data/Coverage/CoverageItem/Dates/EffectiveDate,,SILVER.COVERAGE,effective_date,TO_DATE(value),Date conversion,HO003
+DuckCreek,/Session/Data/Coverage/CoverageItem/Dates/ExpirationDate,,SILVER.COVERAGE,expiration_date,TO_DATE(value),Date conversion,HO003
+DuckCreek,/Session/TransactionInfo/SourceSystem,,SILVER.COVERAGE,source_system,,Direct mapping,HO003
+DuckCreek,/Session/Data/Payment/PaymentID,,SILVER.PAYMENT,payment_id,,Direct mapping,HO003
+DuckCreek,/Session/Data/Policy/PolicyID,,SILVER.PAYMENT,policy_id,,Link to policy,HO003
+DuckCreek,/Session/Data/Payment/PaymentType,,SILVER.PAYMENT,payment_type,,Direct mapping,HO003
+DuckCreek,/Session/Data/Payment/PaymentMethod,,SILVER.PAYMENT,payment_method,,Direct mapping,HO003
+DuckCreek,/Session/Data/Payment/PaymentTerm,,SILVER.PAYMENT,payment_term,,Direct mapping,HO003
+DuckCreek,/Session/Data/Payment/TotalInstallments,,SILVER.PAYMENT,total_installments,CAST(value AS INTEGER),Integer conversion,HO003
+DuckCreek,/Session/Data/Payment/DueDate,,SILVER.PAYMENT,due_date,TO_DATE(value),Date conversion,HO003
+DuckCreek,/Session/Data/Payment/PaymentAmount,,SILVER.PAYMENT,payment_amount,CAST(value AS DECIMAL(15,2)),Decimal conversion,HO003
+DuckCreek,/Session/Data/Payment/BankDetails/AccountHolderName,,SILVER.PAYMENT,account_holder_name,,Direct mapping,HO003
+DuckCreek,/Session/Data/Payment/BankDetails/BankName,,SILVER.PAYMENT,bank_name,,Direct mapping,HO003
+DuckCreek,/Session/Data/Payment/BankDetails/AccountNumber,,SILVER.PAYMENT,account_number,,Masked value,HO003
+DuckCreek,/Session/Data/Payment/BankDetails/RoutingNumber,,SILVER.PAYMENT,routing_number,,Direct mapping,HO003
+DuckCreek,/Session/TransactionInfo/SourceSystem,,SILVER.PAYMENT,source_system,,Direct mapping,HO003
+DuckCreek,/Session/Data/PolicyData/ID,,SILVER.POLICY,policy_id,,Alternate node name,CP001
+DuckCreek,/Session/Data/PolicyData/Number,,SILVER.POLICY,policy_number,,Alternate node name,CP001
+DuckCreek,/Session/Data/PolicyData/LineOfBusiness,,SILVER.POLICY,policy_type,,Alternate node name,CP001
+DuckCreek,/Session/Data/PolicyData/StatusCode,,SILVER.POLICY,policy_status,,Alternate node name,CP001
+DuckCreek,/Session/Data/PolicyData/ProductDetails/ProdCode,,SILVER.POLICY,product_code,,Alternate node name,CP001
+DuckCreek,/Session/Data/PolicyData/ProductDetails/ProdDescription,,SILVER.POLICY,product_name,,Alternate node name,CP001
+DuckCreek,/Session/Data/PolicyData/PolicyDates/InceptionDate,,SILVER.POLICY,effective_date,TO_DATE(value),Date conversion,CP001
+DuckCreek,/Session/Data/PolicyData/PolicyDates/TerminationDate,,SILVER.POLICY,expiration_date,TO_DATE(value),Date conversion,CP001
+DuckCreek,/Session/Data/PolicyData/TermLength,,SILVER.POLICY,policy_term_months,CAST(value AS INTEGER),Integer conversion,CP001
+DuckCreek,/Session/Data/PolicyData/PremiumInfo/AnnualPremium,,SILVER.POLICY,premium_amount,CAST(value AS DECIMAL(15,2)),Decimal conversion,CP001
+DuckCreek,/Session/Data/PolicyData/PremiumInfo/CoveredAmount,,SILVER.POLICY,total_insured_value,CAST(value AS DECIMAL(15,2)),Decimal conversion,CP001
+DuckCreek,/Session/Data/PolicyData/UnderwritingInfo/Carrier,,SILVER.POLICY,underwriting_company,,Alternate node name,CP001
+DuckCreek,/Session/Data/PolicyData/SalesChannel/ChannelName,,SILVER.POLICY,distribution_channel,,Alternate node name,CP001
+DuckCreek,/Session/Data/AccountData/AccountIdentifier,,SILVER.POLICY,account_id,,Alternate node name,CP001
+DuckCreek,/Session/Data/QuoteData/QuoteIdentifier,,SILVER.POLICY,quote_id,,Alternate node name,CP001
+DuckCreek,/Session/Data/SystemData/EnteredBy,,SILVER.POLICY,created_by,,Alternate node name,CP001
+DuckCreek,/Session/Data/SystemData/EntryTimestamp,,SILVER.POLICY,created_date,TO_TIMESTAMP_NTZ(value),Timestamp conversion,CP001
+DuckCreek,/Session/Data/SystemData/UpdatedBy,,SILVER.POLICY,modified_by,,Alternate node name,CP001
+DuckCreek,/Session/Data/SystemData/UpdateTimestamp,,SILVER.POLICY,modified_date,TO_TIMESTAMP_NTZ(value),Timestamp conversion,CP001
+DuckCreek,/Session/TransactionInfo/SourceSystem,,SILVER.POLICY,source_system,,Direct mapping,CP001
+DuckCreek,/Session/TransactionInfo/TransactionID,,SILVER.POLICY,transaction_id,,Direct mapping,CP001
+DuckCreek,/Session/Data/RiskData/RiskIdentifier,,SILVER.RISK,risk_id,,Alternate node name,CP001
+DuckCreek,/Session/Data/PolicyData/ID,,SILVER.RISK,policy_id,,Link to policy,CP001
+DuckCreek,/Session/Data/RiskData/RiskClass,,SILVER.RISK,risk_type,,Alternate node name,CP001
+DuckCreek,/Session/Data/RiskData/RiskSequence,,SILVER.RISK,risk_number,CAST(value AS INTEGER),Integer conversion,CP001
+DuckCreek,/Session/Data/RiskData/RiskSummary,,SILVER.RISK,risk_description,,Alternate node name,CP001
+DuckCreek,/Session/TransactionInfo/SourceSystem,,SILVER.RISK,source_system,,Direct mapping,CP001
+DuckCreek,/Session/Data/CoverageData/CoverageRecord/CoverageIdentifier,,SILVER.COVERAGE,coverage_id,,Alternate node name,CP001
+DuckCreek,/Session/Data/PolicyData/ID,,SILVER.COVERAGE,policy_id,,Link to policy,CP001
+DuckCreek,/Session/Data/CoverageData/CoverageRecord/CoverageSymbol,,SILVER.COVERAGE,coverage_code,,Alternate node name,CP001
+DuckCreek,/Session/Data/CoverageData/CoverageRecord/CoverageDescription,,SILVER.COVERAGE,coverage_name,,Alternate node name,CP001
+DuckCreek,/Session/Data/CoverageData/CoverageRecord/CoverageClass,,SILVER.COVERAGE,coverage_type,,Alternate node name,CP001
+DuckCreek,/Session/Data/CoverageData/CoverageRecord/MaxLimit,,SILVER.COVERAGE,coverage_limit,CAST(value AS DECIMAL(15,2)),Decimal conversion,CP001
+DuckCreek,/Session/Data/CoverageData/CoverageRecord/CoveragePremium,,SILVER.COVERAGE,coverage_premium,CAST(value AS DECIMAL(15,2)),Decimal conversion,CP001
+DuckCreek,/Session/Data/CoverageData/CoverageRecord/CoverageStartDate,,SILVER.COVERAGE,effective_date,TO_DATE(value),Date conversion,CP001
+DuckCreek,/Session/Data/CoverageData/CoverageRecord/CoverageEndDate,,SILVER.COVERAGE,expiration_date,TO_DATE(value),Date conversion,CP001
+DuckCreek,/Session/TransactionInfo/SourceSystem,,SILVER.COVERAGE,source_system,,Direct mapping,CP001
+DuckCreek,/Session/Data/PaymentData/PaymentIdentifier,,SILVER.PAYMENT,payment_id,,Alternate node name,CP001
+DuckCreek,/Session/Data/PolicyData/ID,,SILVER.PAYMENT,policy_id,,Link to policy,CP001
+DuckCreek,/Session/Data/PaymentData/TransactionType,,SILVER.PAYMENT,payment_type,,Alternate node name,CP001
+DuckCreek,/Session/Data/PaymentData/PaymentMode,,SILVER.PAYMENT,payment_method,,Alternate node name,CP001
+DuckCreek,/Session/Data/PaymentData/StatusDescription,,SILVER.PAYMENT,payment_status,,Alternate node name,CP001
+DuckCreek,/Session/Data/PaymentData/ScheduledDate,,SILVER.PAYMENT,due_date,TO_DATE(value),Date conversion,CP001
+DuckCreek,/Session/Data/PaymentData/TransactionAmount,,SILVER.PAYMENT,payment_amount,CAST(value AS DECIMAL(15,2)),Decimal conversion,CP001
+DuckCreek,/Session/Data/PaymentData/BillingPlan,,SILVER.PAYMENT,payment_term,,Alternate node name,CP001
+DuckCreek,/Session/Data/PaymentData/PaymentAccountInfo/NameOnAccount,,SILVER.PAYMENT,account_holder_name,,Alternate node name,CP001
+DuckCreek,/Session/Data/PaymentData/PaymentAccountInfo/FinancialInstitution,,SILVER.PAYMENT,bank_name,,Alternate node name,CP001
+DuckCreek,/Session/TransactionInfo/SourceSystem,,SILVER.PAYMENT,source_system,,Direct mapping,CP001

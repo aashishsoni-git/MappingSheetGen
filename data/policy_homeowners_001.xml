@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Session>
+    <TransactionInfo>
+        <TransactionID>TXN-POL-20251005-002</TransactionID>
+        <TransactionType>NewBusiness</TransactionType>
+        <TransactionDate>2025-10-05T14:15:00</TransactionDate>
+        <TransactionStatus>Success</TransactionStatus>
+        <SourceSystem>DuckCreek</SourceSystem>
+        <SourceVersion>7.5.2</SourceVersion>
+        <ProcessedBy>DCPOLICY_ENGINE</ProcessedBy>
+    </TransactionInfo>
+    <Data>
+        <Policy>
+            <PolicyID>POL-HO-2025-00234</PolicyID>
+            <PolicyNumber>POL-HO-00234</PolicyNumber>
+            <PolicyVersion>1</PolicyVersion>
+            <PolicyType>Homeowners</PolicyType>
+            <PolicyStatus>InForce</PolicyStatus>
+            <Product>
+                <ProductCode>HO003</ProductCode>
+                <ProductName>Homeowners HO-3 Special Form</ProductName>
+                <ProductVersion>2024.2</ProductVersion>
+                <LOB>Personal Lines</LOB>
+                <Category>Property</Category>
+            </Product>
+            <Dates>
+                <EffectiveDate>2025-11-01</EffectiveDate>
+                <ExpirationDate>2026-11-01</ExpirationDate>
+                <InceptionDate>2025-11-01</InceptionDate>
+                <RenewalDate>2026-11-01</RenewalDate>
+                <IssueDate>2025-10-05</IssueDate>
+            </Dates>
+            <PolicyTerm>12</PolicyTerm>
+            <PolicyTermUnit>Months</PolicyTermUnit>
+            <Premium>
+                <PolicyPremium>1850.00</PolicyPremium>
+                <BasePremium>1750.00</BasePremium>
+                <SurchargeAmount>100.00</SurchargeAmount>
+                <DiscountAmount>75.00</DiscountAmount>
+                <TaxAmount>129.50</TaxAmount>
+                <FeeAmount>35.00</FeeAmount>
+                <TotalPremium>1939.50</TotalPremium>
+                <AnnualPremium>1939.50</AnnualPremium>
+            </Premium>
+            <Underwriting>
+                <UnderwritingCompany>ABC Insurance Company</UnderwritingCompany>
+                <UnderwritingCarrier>ABC Carrier</UnderwritingCarrier>
+                <UnderwritingState>IL</UnderwritingState>
+                <UnderwritingTier>Standard</UnderwritingTier>
+                <RiskScore>72</RiskScore>
+                <UnderwriterApproval>Approved</UnderwriterApproval>
+            </Underwriting>
+            <Distribution>
+                <Channel>Agent</Channel>
+                <SubChannel>Independent Agent</SubChannel>
+                <Region>Midwest</Region>
+                <Territory>IL-WILL-002</Territory>
+            </Distribution>
+        </Policy>
+        <Account>
+            <AccountID>ACC-2025-5432</AccountID>
+            <AccountNumber>ACC-5432</AccountNumber>
+            <AccountName>Emily Davis</AccountName>
+            <AccountType>Personal</AccountType>
+            <AccountStatus>Active</AccountStatus>
+            <AccountOpenDate>2025-10-05</AccountOpenDate>
+            <PrimaryInsured>
+                <FirstName>Emily</FirstName>
+                <MiddleName>Grace</MiddleName>
+                <LastName>Davis</LastName>
+                <DateOfBirth>1982-09-22</DateOfBirth>
+                <Age>43</Age>
+                <Gender>F</Gender>
+                <MaritalStatus>Single</MaritalStatus>
+                <SSN>***-**-5678</SSN>
+                <Occupation>Marketing Manager</Occupation>
+                <CreditScore>780</CreditScore>
+            </PrimaryInsured>
+            <ContactInfo>
+                <Email>emily.davis@email.com</Email>
+                <PreferredContactMethod>Email</PreferredContactMethod>
+                <Phone>
+                    <PhoneType>Mobile</PhoneType>
+                    <PhoneNumber>815-555-0234</PhoneNumber>
+                    <IsPrimary>true</IsPrimary>
+                </Phone>
+                <Phone>
+                    <PhoneType>Work</PhoneType>
+                    <PhoneNumber>815-555-9999</PhoneNumber>
+                    <IsPrimary>false</IsPrimary>
+                </Phone>
+            </ContactInfo>
+            <MailingAddress>
+                <AddressType>Mailing</AddressType>
+                <AddressLine1>456 Oak Avenue</AddressLine1>
+                <AddressLine2></AddressLine2>
+                <City>Naperville</City>
+                <State>IL</State>
+                <ZipCode>60540</ZipCode>
+                <County>Will</County>
+                <Country>USA</Country>
+            </MailingAddress>
+        </Account>
+        <Agent>
+            <AgentCode>AGT-HO-025</AgentCode>
+            <AgentName>Robert Martinez</AgentName>
+            <AgentType>Independent</AgentType>
+            <AgencyName>Martinez Insurance Group</AgencyName>
+            <AgencyCode>AGENCY-IL-025</AgencyCode>
+            <AgentEmail>robert.martinez@insurance.com</AgentEmail>
+            <AgentPhone>815-555-7777</AgentPhone>
+            <CommissionRate>15.0</CommissionRate>
+            <CommissionAmount>290.93</CommissionAmount>
+            <LicenseNumber>IL-87654321</LicenseNumber>
+            <LicenseState>IL</LicenseState>
+            <AppointmentDate>2020-01-15</AppointmentDate>
+        </Agent>
+        <QuoteReference>
+            <QuoteID>Q-HO-2025-00189</QuoteID>
+            <QuoteNumber>QT-HO-00189</QuoteNumber>
+            <QuoteDate>2025-10-03</QuoteDate>
+            <ConversionDate>2025-10-05</ConversionDate>
+        </QuoteReference>
+        <Risks>
+            <Risk>
+                <RiskID>RSK-HO-001</RiskID>
+                <RiskNumber>1</RiskNumber>
+                <RiskType>Dwelling</RiskType>
+                <RiskDescription>Single Family Home - Primary Residence</RiskDescription>
+                <Location>
+                    <LocationNumber>1</LocationNumber>
+                    <AddressLine1>456 Oak Avenue</AddressLine1>
+                    <AddressLine2></AddressLine2>
+                    <City>Naperville</City>
+                    <State>IL</State>
+                    <ZipCode>60540</ZipCode>
+                    <County>Will</County>
+                    <Country>USA</Country>
+                    <Latitude>41.7508</Latitude>
+                    <Longitude>-88.1535</Longitude>
+                    <CensusTract>17197860400</CensusTract>
+                </Location>
+                <PropertyDetails>
+                    <PropertyType>Single Family</PropertyType>
+                    <ConstructionType>Frame</ConstructionType>
+                    <ConstructionQuality>Standard</ConstructionQuality>
+                    <RoofType>Asphalt Shingle</RoofType>
+                    <RoofAge>5</RoofAge>
+                    <RoofCondition>Good</RoofCondition>
+                    <ExteriorWalls>Vinyl Siding</ExteriorWalls>
+                    <Foundation>Concrete Slab</Foundation>
+                    <BuildingYear>1995</BuildingYear>
+                    <YearBuilt>1995</YearBuilt>
+                    <EffectiveAge>30</EffectiveAge>
+                    <SquareFootage>2200</SquareFootage>
+                    <NumberOfStories>2</NumberOfStories>
+                    <NumberOfRooms>8</NumberOfRooms>
+                    <NumberOfBedrooms>4</NumberOfBedrooms>
+                    <NumberOfBathrooms>2.5</NumberOfBathrooms>
+                    <GarageType>Attached</GarageType>
+                    <GarageSize>2</GarageSize>
+                    <HasBasement>true</HasBasement>
+                    <BasementFinished>true</BasementFinished>
+                    <BasementPercentFinished>75</BasementPercentFinished>
+                    <HasPool>false</HasPool>
+                    <HasSpa>false</HasSpa>
+                    <HasFireplace>true</HasFireplace>
+                    <NumberOfFireplaces>1</NumberOfFireplaces>
+                </PropertyDetails>
+                <OccupancyDetails>
+                    <OccupancyType>Owner Occupied</OccupancyType>
+                    <ResidencyType>Primary</ResidencyType>
+                    <NumberOfFamilies>1</NumberOfFamilies>
+                    <NumberOfOccupants>2</NumberOfOccupants>
+                    <VacantDaysPerYear>0</VacantDaysPerYear>
+                    <HasRenters>false</HasRenters>
+                    <BusinessOnPremises>false</BusinessOnPremises>
+                </OccupancyDetails>
+                <PropertyValue>
+                    <MarketValue>450000</MarketValue>
+                    <ReplacementCost>380000</ReplacementCost>
+                    <LandValue>100000</LandValue>
+                    <ImprovementValue>350000</ImprovementValue>
+                    <PurchasePrice>420000</PurchasePrice>
+                    <PurchaseDate>2023-08-15</PurchaseDate>
+                </PropertyValue>
+                <MortgageInfo>
+                    <IsMortgaged>true</IsMortgaged>
+                    <MortgageCompany>First National Bank</MortgageCompany>
+                    <MortgageNumber>MTG-123456789</MortgageNumber>
+                    <MortgageBalance>350000</MortgageBalance>
+                    <MortgageAddress>
+                        <AddressLine1>789 Bank Plaza</AddressLine1>
+                        <City>Chicago</City>
+                        <State>IL</State>
+                        <ZipCode>60602</ZipCode>
+                    </MortgageAddress>
+                </MortgageInfo>
+                <ProtectionDevices>
+                    <FireAlarm>true</FireAlarm>
+                    <FireAlarmType>Monitored</FireAlarmType>
+                    <BurglarAlarm>true</BurglarAlarm>
+                    <BurglarAlarmType>Monitored</BurglarAlarmType>
+                    <SmokeDetector>true</SmokeDetector>
+                    <SprinklerSystem>false</SprinklerSystem>
+                    <FireExtinguisher>true</FireExtinguisher>
+                    <DeadboltsOnDoors>true</DeadboltsOnDoors>
+                    <GatedCommunity>false</GatedCommunity>
+                    <MonitoringCompany>SecureHome Inc</MonitoringCompany>
+                </ProtectionDevices>
+                <DistanceToProtection>
+                    <FireHydrantDistance>500</FireHydrantDistance>
+                    <FireHydrantDistanceUnit>Feet</FireHydrantDistanceUnit>
+                    <FireStationDistance>2.5</FireStationDistance>
+                    <FireStationDistanceUnit>Miles</FireStationDistanceUnit>
+                    <PoliceStationDistance>3.0</PoliceStationDistance>
+                    <PoliceStationDistanceUnit>Miles</PoliceStationDistanceUnit>
+                    <ProtectionClass>3</ProtectionClass>
+                </DistanceToProtection>
+                <PriorLosses>
+                    <HasPriorLosses>true</HasPriorLosses>
+                    <Loss>
+                        <LossDate>2022-06-15</LossDate>
+                        <LossType>Water Damage</LossType>
+                        <LossCause>Plumbing Leak</LossCause>
+                        <LossAmount>8500</LossAmount>
+                        <ClaimPaid>7200</ClaimPaid>
+                    </Loss>
+                </PriorLosses>
+            </Risk>
+        </Risks>
+        <Coverages>
+            <Coverage>
+                <CoverageID>COV-HO-001</CoverageID>
+                <RiskID>RSK-HO-001</RiskID>
+                <CoverageCode>DWELL</CoverageCode>
+                <CoverageName>Dwelling Coverage A</CoverageName>
+                <CoverageType>Property</CoverageType>
+                <CoverageCategory>Primary</CoverageCategory>
+                <Limit>380000</Limit>
+                <CoverageBasis>Replacement Cost</CoverageBasis>
+                <Deductible>2500</Deductible>
+                <Premium>980.00</Premium>
+                <EffectiveDate>2025-11-01</EffectiveDate>
+                <ExpirationDate>2026-11-01</ExpirationDate>
+                <CoinsurancePercent>80</CoinsurancePercent>
+                <IsMandatory>true</IsMandatory>
+            </Coverage>
+            <Coverage>
+                <CoverageID>COV-HO-002</CoverageID>
+                <RiskID>RSK-HO-001</RiskID>
+                <CoverageCode>OTHERSTR</CoverageCode>
+                <CoverageName>Other Structures Coverage B</CoverageName>
+                <CoverageType>Property</CoverageType>
+                <CoverageCategory>Primary</CoverageCategory>
+                <Limit>38000</Limit>
+                <LimitPercent>10</LimitPercent>
+                <CoverageBasis>Replacement Cost</CoverageBasis>
+                <Deductible>2500</Deductible>
+                <Premium>95.00</Premium>
+                <EffectiveDate>2025-11-01</EffectiveDate>
+                <ExpirationDate>2026-11-01</ExpirationDate>
+                <IsMandatory>false</IsMandatory>
+            </Coverage>
+            <Coverage>
+                <CoverageID>COV-HO-003</CoverageID>
+                <RiskID>RSK-HO-001</RiskID>
+                <CoverageCode>PERSPRP</CoverageCode>
+                <CoverageName>Personal Property Coverage C</CoverageName>
+                <CoverageType>Property</CoverageType>
+                <CoverageCategory>Primary</CoverageCategory>
+                <Limit>190000</Limit>
+                <LimitPercent>50</LimitPercent>
+                <CoverageBasis>Replacement Cost</CoverageBasis>
+                <Deductible>2500</Deductible>
+                <Premium>475.00</Premium>
+                <EffectiveDate>2025-11-01</EffectiveDate>
+                <ExpirationDate>2026-11-01</ExpirationDate>
+                <IsMandatory>false</IsMandatory>
+            </Coverage>
+            <Coverage>
+                <CoverageID>COV-HO-004</CoverageID>
+                <RiskID>RSK-HO-001</RiskID>
+                <CoverageCode>LOSSUSE</CoverageCode>
+                <CoverageName>Loss of Use Coverage D</CoverageName>
+                <CoverageType>Living Expenses</CoverageType>
+                <CoverageCategory>Primary</CoverageCategory>
+                <Limit>76000</Limit>
+                <LimitPercent>20</LimitPercent>
+                <Deductible>0</Deductible>
+                <Premium>125.00</Premium>
+                <EffectiveDate>2025-11-01</EffectiveDate>
+                <ExpirationDate>2026-11-01</ExpirationDate>
+                <IsMandatory>false</IsMandatory>
+            </Coverage>
+            <Coverage>
+                <CoverageID>COV-HO-005</CoverageID>
+                <RiskID>RSK-HO-001</RiskID>
+                <CoverageCode>PERSLIAB</CoverageCode>
+                <CoverageName>Personal Liability Coverage E</CoverageName>
+                <CoverageType>Liability</CoverageType>
+                <CoverageCategory>Primary</CoverageCategory>
+                <Limit>300000</Limit>
+                <PerOccurrenceLimit>300000</PerOccurrenceLimit>
+                <Deductible>0</Deductible>
+                <Premium>125.00</Premium>
+                <EffectiveDate>2025-11-01</EffectiveDate>
+                <ExpirationDate>2026-11-01</ExpirationDate>
+                <IsMandatory>true</IsMandatory>
+            </Coverage>
+            <Coverage>
+                <CoverageID>COV-HO-006</CoverageID>
+                <RiskID>RSK-HO-001</RiskID>
+                <CoverageCode>MEDPAY</CoverageCode>
+                <CoverageName>Medical Payments Coverage F</CoverageName>
+                <CoverageType>Medical</CoverageType>
+                <CoverageCategory>Primary</CoverageCategory>
+                <Limit>5000</Limit>
+                <PerPersonLimit>5000</PerPersonLimit>
+                <Deductible>0</Deductible>
+                <Premium>50.00</Premium>
+                <EffectiveDate>2025-11-01</EffectiveDate>
+                <ExpirationDate>2026-11-01</ExpirationDate>
+                <IsMandatory>false</IsMandatory>
+            </Coverage>
+        </Coverages>
+        <Payment>
+            <PaymentID>PAY-HO-001</PaymentID>
+            <PaymentNumber>PAY-HO-001-001</PaymentNumber>
+            <PaymentType>Renewal</PaymentType>
+            <PaymentMethod>BankTransfer</PaymentMethod>
+            <PaymentStatus>Scheduled</PaymentStatus>
+            <PaymentTerm>Quarterly</PaymentTerm>
+            <PaymentFrequency>Quarterly</PaymentFrequency>
+            <TotalInstallments>4</TotalInstallments>
+            <InstallmentAmount>484.88</InstallmentAmount>
+            <FirstPaymentDate>2025-11-01</FirstPaymentDate>
+            <OutstandingAmount>1939.50</OutstandingAmount>
+            <BankDetails>
+                <AccountHolderName>Emily Davis</AccountHolderName>
+                <BankName>State Bank</BankName>
+                <AccountNumber>****5678</AccountNumber>
+                <RoutingNumber>123456789</RoutingNumber>
+                <AccountType>Checking</AccountType>
+            </BankDetails>
+        </Payment>
+        <PolicyAdmin>
+            <CreatedBy>robert.martinez</CreatedBy>
+            <CreatedDate>2025-10-05T14:15:00</CreatedDate>
+            <ModifiedBy>robert.martinez</ModifiedBy>
+            <ModifiedDate>2025-10-05T14:15:00</ModifiedDate>
+            <IssuedBy>system.auto</IssuedBy>
+            <IssuedDate>2025-10-05T14:20:00</IssuedDate>
+            <CreatedBySystem>DuckCreek Policy</CreatedBySystem>
+            <WorkflowStatus>Completed</WorkflowStatus>
+            <ApprovalStatus>Approved</ApprovalStatus>
+        </PolicyAdmin>
+    </Data>
+</Session>

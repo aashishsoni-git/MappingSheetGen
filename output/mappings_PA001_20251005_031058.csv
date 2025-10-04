@@ -1,0 +1,15 @@
+source_node,target_table,target_column,transformation_logic,confidence_score,reasoning
+/Session/TransactionInfo/TransactionID,SILVER.POLICY,transaction_id,,0.95,Direct mapping based on historical pattern and unique identifier role.
+/Session/TransactionInfo/SourceSystem,SILVER.POLICY,source_system,,0.95,Direct mapping based on historical pattern and source system identification.
+/Session/Data/Quote/QuoteID,SILVER.QUOTE,quote_id,,0.95,"Direct mapping as it serves as a unique identifier for the quote, matching historical patterns."
+/Session/Data/Quote/QuoteNumber,SILVER.QUOTE,quote_number,UPPER(value),0.9,Historical pattern suggests uppercase standardization for quote numbers.
+/Session/Data/Quote/Status,SILVER.QUOTE,quote_status,,0.9,Direct mapping based on historical pattern and semantic meaning.
+/Session/Data/Quote/QuoteDate,SILVER.QUOTE,quote_date,TO_DATE(value),0.9,Date conversion is consistent with historical patterns for date fields.
+/Session/Data/Quote/ExpiryDate,SILVER.QUOTE,expiry_date,TO_DATE(value),0.9,Date conversion is consistent with historical patterns for date fields.
+/Session/Data/Quote/EffectiveDate,SILVER.QUOTE,effective_date,TO_DATE(value),0.9,Date conversion is consistent with historical patterns for date fields.
+/Session/Data/Quote/Product/ProductCode,SILVER.QUOTE,product_code,,0.95,Direct mapping based on historical pattern and product identification.
+/Session/Data/Quote/Product/ProductName,SILVER.QUOTE,product_name,,0.95,Direct mapping based on historical pattern and descriptive role.
+/Session/Data/Quote/Premium/QuotedPremium,SILVER.QUOTE,quoted_premium,"CAST(value AS NUMBER(15,2))",0.9,Decimal conversion with precision is consistent with historical patterns for premium fields.
+/Session/Data/Quote/Premium/DiscountAmount,SILVER.QUOTE,discount_amount,"CAST(value AS NUMBER(15,2))",0.9,Decimal conversion with precision is consistent with historical patterns for discount fields.
+/Session/Data/Quote/Premium/TaxAmount,SILVER.QUOTE,tax_amount,"CAST(value AS NUMBER(15,2))",0.9,Decimal conversion with precision is consistent with historical patterns for tax fields.
+/Session/Data/Quote/Premium/TotalPremium,SILVER.QUOTE,total_premium,"CAST(value AS NUMBER(15,2))",0.9,Decimal conversion with precision is consistent with historical patterns for premium fields.

@@ -1,0 +1,18 @@
+source_node,target_table,target_column,transformation_logic,confidence_score,reasoning
+/Session/TransactionInfo/TransactionID,SILVER.POLICY,transaction_id,,0.95,"Direct mapping from XML TransactionID to Silver transaction_id, as seen in historical mappings."
+/Session/TransactionInfo/SourceSystem,SILVER.POLICY,source_system,,0.95,"Direct mapping from XML SourceSystem to Silver source_system, based on historical mappings."
+/Session/Data/Policy/PolicyID,SILVER.POLICY,policy_id,,0.95,"Direct mapping from XML PolicyID to Silver policy_id, confirmed by historical mappings for homeowners."
+/Session/Data/Policy/PolicyNumber,SILVER.POLICY,policy_number,UPPER(value),0.95,Historical mappings indicate uppercase transformation for policy numbers.
+/Session/Data/Policy/PolicyType,SILVER.POLICY,policy_type,,0.95,Direct mapping based on historical patterns and data dictionary description.
+/Session/Data/Policy/PolicyStatus,SILVER.POLICY,policy_status,,0.95,"Direct mapping from XML PolicyStatus to Silver policy_status, as per historical mappings."
+/Session/Data/Policy/Product/ProductCode,SILVER.POLICY,product_code,,0.95,"Direct mapping from XML ProductCode to Silver product_code, confirmed by historical mappings."
+/Session/Data/Policy/Dates/EffectiveDate,SILVER.POLICY,effective_date,TO_DATE(value),0.95,Date conversion is consistent with historical mappings and data dictionary requirements.
+/Session/Data/Policy/Dates/ExpirationDate,SILVER.POLICY,expiration_date,TO_DATE(value),0.95,Date conversion aligns with historical mappings and data dictionary rules.
+/Session/Data/Policy/Premium/TotalPremium,SILVER.POLICY,premium_amount,"CAST(value AS NUMBER(15,2))",0.95,Decimal conversion is consistent with historical mappings for premium amounts.
+/Session/Data/Policy/Premium/BasePremium,SILVER.POLICY,base_premium,"CAST(value AS NUMBER(15,2))",0.95,Decimal conversion aligns with data dictionary precision requirements.
+/Session/Data/Policy/Premium/DiscountAmount,SILVER.POLICY,discount_amount,"CAST(value AS NUMBER(15,2))",0.95,Decimal conversion matches historical mappings for discount amounts.
+/Session/Data/Policy/Premium/TaxAmount,SILVER.POLICY,tax_amount,"CAST(value AS NUMBER(15,2))",0.95,Decimal conversion is consistent with historical mappings for tax amounts.
+/Session/TransactionInfo/TransactionDate,SILVER.COVERAGE,CREATED_DATE,TO_TIMESTAMP(value),0.85,"TransactionDate maps to CREATED_DATE with timestamp conversion, inferred from context."
+/Session/Data/Policy/Dates/EffectiveDate,SILVER.COVERAGE,EFFECTIVE_DATE,TO_DATE(value),0.85,"EffectiveDate is relevant for coverage effective date, inferred from context."
+/Session/Data/Policy/Dates/ExpirationDate,SILVER.COVERAGE,EXPIRATION_DATE,TO_DATE(value),0.85,"ExpirationDate is relevant for coverage expiration date, inferred from context."
+/Session/TransactionInfo/SourceSystem,SILVER.COVERAGE,SOURCE_SYSTEM,,0.85,SourceSystem is directly relevant for tracking data lineage in coverage table.

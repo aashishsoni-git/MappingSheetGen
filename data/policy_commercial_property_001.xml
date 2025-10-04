@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Session>
+    <TransactionInfo>
+        <TransactionID>TXN-POL-20251005-003</TransactionID>
+        <TransactionType>NewBusiness</TransactionType>
+        <TransactionDate>2025-10-05T16:45:00</TransactionDate>
+        <TransactionStatus>Success</TransactionStatus>
+        <SourceSystem>DuckCreek</SourceSystem>
+        <SourceVersion>7.5.2</SourceVersion>
+        <ProcessedBy>DCPOLICY_ENGINE</ProcessedBy>
+    </TransactionInfo>
+    <Data>
+        <PolicyData>
+            <ID>POL-CP-2025-00456</ID>
+            <Number>CP-2025-00456</Number>
+            <Version>1</Version>
+            <LineOfBusiness>Commercial Property</LineOfBusiness>
+            <StatusCode>Active</StatusCode>
+            <StatusDescription>In Force</StatusDescription>
+            <ProductDetails>
+                <ProdCode>CP001</ProdCode>
+                <ProdDescription>Commercial Property Insurance - Building and Contents</ProdDescription>
+                <ProdVersion>2024.5</ProdVersion>
+                <LOB>Commercial Lines</LOB>
+                <Category>Property</Category>
+                <SubCategory>Building</SubCategory>
+            </ProductDetails>
+            <PolicyDates>
+                <InceptionDate>2025-11-15</InceptionDate>
+                <TerminationDate>2026-11-15</TerminationDate>
+                <BindDate>2025-10-05</BindDate>
+                <QuoteDate>2025-10-01</QuoteDate>
+            </PolicyDates>
+            <TermLength>12</TermLength>
+            <TermLengthUnit>Months</TermLengthUnit>
+            <PremiumInfo>
+                <BasePremium>8500.00</BasePremium>
+                <AnnualPremium>9250.00</AnnualPremium>
+                <MinimumPremium>5000.00</MinimumPremium>
+                <DepositPremium>2312.50</DepositPremium>
+                <TaxAmount>647.50</TaxAmount>
+                <SurchargeAmount>750.00</SurchargeAmount>
+                <DiscountAmount>0.00</DiscountAmount>
+                <FeeAmount>100.00</FeeAmount>
+                <TotalPremium>9997.50</TotalPremium>
+                <CoveredAmount>2500000</CoveredAmount>
+            </PremiumInfo>
+            <UnderwritingInfo>
+                <Carrier>ABC Commercial Insurance</Carrier>
+                <UnderwritingCompany>ABC Commercial Underwriters LLC</UnderwritingCompany>
+                <UnderwritingState>IL</UnderwritingState>
+                <RiskTier>Preferred</RiskTier>
+                <UnderwriterID>UW-COM-089</UnderwriterID>
+                <UnderwriterName>Jennifer Lee</UnderwriterName>
+                <UnderwriterAuthority>Senior</UnderwriterAuthority>
+                <InspectionRequired>true</InspectionRequired>
+                <InspectionDate>2025-10-20</InspectionDate>
+            </UnderwritingInfo>
+            <SalesChannel>
+                <ChannelName>Broker</ChannelName>
+                <SubChannel>Commercial Broker</SubChannel>
+                <Region>Midwest</Region>
+                <Territory>IL-COOK-COMM-001</Territory>
+            </SalesChannel>
+        </PolicyData>
+        <AccountData>
+            <AccountIdentifier>ACC-COMM-2025-789</AccountIdentifier>
+            <AccountNumber>COMM-789</AccountNumber>
+            <AccountName>TechStart Solutions LLC</AccountName>
+            <AccountType>Commercial</AccountType>
+            <AccountStatus>Active</AccountStatus>
+            <BusinessInfo>
+                <LegalName>TechStart Solutions LLC</LegalName>
+                <DBAName>TechStart</DBAName>
+                <BusinessType>Technology Services</BusinessType>
+                <IndustryCode>NAICS-541512</IndustryCode>
+                <IndustryDescription>Computer Systems Design Services</IndustryDescription>
+                <YearsInBusiness>5</YearsInBusiness>
+                <NumberOfEmployees>45</NumberOfEmployees>
+                <AnnualRevenue>8500000</AnnualRevenue>
+                <FederalTaxID>**-***7890</FederalTaxID>
+                <EntityType>LLC</EntityType>
+                <StateOfIncorporation>IL</StateOfIncorporation>
+                <IncorporationDate>2020-03-15</IncorporationDate>
+            </BusinessInfo>
+            <PrimaryContact>
+                <ContactName>David Chen</ContactName>
+                <Title>CEO</Title>
+                <DateOfBirth>1978-11-10</DateOfBirth>
+                <Email>dchen@techstart.com</Email>
+                <Phone>
+                    <PhoneType>Business</PhoneType>
+                    <PhoneNumber>312-555-2000</PhoneNumber>
+                    <Extension>101</Extension>
+                </Phone>
+            </PrimaryContact>
+            <BusinessAddress>
+                <AddressType>Principal</AddressType>
+                <AddressLine1>500 Technology Plaza</AddressLine1>
+                <AddressLine2>Suite 300</AddressLine2>
+                <City>Chicago</City>
+                <State>IL</State>
+                <ZipCode>60611</ZipCode>
+                <County>Cook</County>
+                <Country>USA</Country>
+            </BusinessAddress>
+            <MailingAddress>
+                <IsSameAsBusiness>false</IsSameAsBusiness>
+                <AddressLine1>PO Box 12345</AddressLine1>
+                <City>Chicago</City>
+                <State>IL</State>
+                <ZipCode>60690</ZipCode>
+            </MailingAddress>
+        </AccountData>
+        <BrokerData>
+            <BrokerID>BRK-COMM-050</BrokerID>
+            <BrokerName>Jennifer Wilson</BrokerName>
+            <BrokerType>Commercial Lines Broker</BrokerType>
+            <BrokerageFirm>Wilson Commercial Insurance Brokers</BrokerageFirm>
+            <BrokerageCode>WCSB-IL-050</BrokerageCode>
+            <BrokerEmail>jwilson@wilsonbrokers.com</BrokerEmail>
+            <BrokerPhone>312-555-9000</BrokerPhone>
+            <CommissionRate>12.0</CommissionRate>
+            <CommissionAmount>1199.70</CommissionAmount>
+            <LicenseNumber>IL-BRK-11223344</LicenseNumber>
+            <LicenseState>IL</LicenseState>
+            <AppointedDate>2018-05-01</AppointedDate>
+        </BrokerData>
+        <QuoteData>
+            <QuoteIdentifier>Q-CP-2025-00299</QuoteIdentifier>
+            <QuoteNumber>QT-CP-00299</QuoteNumber>
+            <QuoteDate>2025-10-01</QuoteDate>
+            <QuoteExpiryDate>2025-10-31</QuoteExpiryDate>
+            <ConversionDate>2025-10-05</ConversionDate>
+            <QuoteStatus>Bound</QuoteStatus>
+        </QuoteData>
+        <RiskData>
+            <RiskIdentifier>RSK-CP-001</RiskIdentifier>
+            <RiskSequence>1</RiskSequence>
+            <RiskClass>Building</RiskClass>
+            <RiskSummary>Office Building - 5 Story Mixed Use</RiskSummary>
+            <LocationDetails>
+                <LocationNumber>001</LocationNumber>
+                <LocationName>TechStart HQ Building</LocationName>
+                <AddressLine1>500 Technology Plaza</AddressLine1>
+                <AddressLine2>Suite 300</AddressLine2>
+                <City>Chicago</City>
+                <State>IL</State>
+                <ZipCode>60611</ZipCode>
+                <County>Cook</County>
+                <Country>USA</Country>
+                <Latitude>41.8915</Latitude>
+                <Longitude>-87.6195</Longitude>
+                <FloodZone>X</FloodZone>
+                <WindZone>Zone 2</WindZone>
+                <EarthquakeZone>Low</EarthquakeZone>
+                <TerrorismRiskZone>Tier 1</TerrorismRiskZone>
+            </LocationDetails>
+            <BuildingDetails>
+                <BuildingNumber>1</BuildingNumber>
+                <BuildingType>Office</BuildingType>
+                <ConstructionClass>1</ConstructionClass>
+                <ConstructionType>Fire Resistive</ConstructionType>
+                <ConstructionMaterial>Steel and Concrete</ConstructionMaterial>
+                <YearBuilt>2015</YearBuilt>
+                <YearRenovated>2022</YearRenovated>
+                <NumberOfStories>5</NumberOfStories>
+                <TotalSquareFootage>50000</TotalSquareFootage>
+                <OccupiedSquareFootage>45000</OccupiedSquareFootage>
+                <VacantSquareFootage>5000</VacantSquareFootage>
+                <RoofType>Built-Up</RoofType>
+                <RoofMaterial>Membrane</RoofMaterial>
+                <RoofAge>3</RoofAge>
+                <RoofCondition>Excellent</RoofCondition>
+                <ExteriorWalls>Curtain Wall Glass</ExteriorWalls>
+                <HasBasement>true</HasBasement>
+                <BasementLevels>1</BasementLevels>
+                <ElevatorCount>2</ElevatorCount>
+                <ParkingType>Underground Garage</ParkingType>
+                <ParkingSpaces>100</ParkingSpaces>
+            </BuildingDetails>
+            <OccupancyInfo>
+                <PrimaryOccupancy>Office - Professional</PrimaryOccupancy>
+                <OccupancyCode>OCC-431</OccupancyCode>
+                <SecondaryOccupancy>Retail - Ground Floor</SecondaryOccupancy>
+                <TenantCount>8</TenantCount>
+                <OwnerOccupiedPercent>60</OwnerOccupiedPercent>
+                <HasRestaurant>true</HasRestaurant>
+                <HasRetail>true</HasRetail>
+                <HasResidential>false</HasResidential>
+                <HasHazardousMaterials>false</HasHazardousMaterials>
+                <AverageOccupancyHours>0800-1800</AverageOccupancyHours>
+                <WeekendOccupancy>Limited</WeekendOccupancy>
+            </OccupancyInfo>
+            <ValuationInfo>
+                <BuildingValue>2000000</BuildingValue>
+                <ContentsValue>500000</ContentsValue>
+                <BusinessPersonalProperty>500000</BusinessPersonalProperty>
+                <TenantImprovements>250000</TenantImprovements>
+                <LandValue>800000</LandValue>
+                <TotalInsurableValue>2500000</TotalInsurableValue>
+                <ReplacementCost>2200000</ReplacementCost>
+                <ActualCashValue>1800000</ActualCashValue>
+                <AppraisalDate>2025-09-15</AppraisalDate>
+                <AppraisalCompany>ABC Appraisals Inc</AppraisalCompany>
+            </ValuationInfo>
+            <ProtectionInfo>
+                <FireProtectionClass>3</FireProtectionClass>
+                <FireHydrantDistance>200</FireHydrantDistance>
+                <FireStationDistance>1.5</FireStationDistance>
+                <HasSprinklerSystem>true</HasSprinklerSystem>
+                <SprinklerType>Wet Pipe</SprinklerType>
+                <SprinklerCoverage>100</SprinklerCoverage>
+                <HasFireAlarm>true</HasFireAlarm>
+                <FireAlarmType>Central Station</FireAlarmType>
+                <HasBurglarAlarm>true</HasBurglarAlarm>
+                <BurglarAlarmType>Central Station</BurglarAlarmType>
+                <HasSecurityGuard>true</HasSecurityGuard>
+                <SecurityGuardHours>24/7</SecurityGuardHours>
+                <HasCCTV>true</HasCCTV>
+                <HasAccessControl>true</HasAccessControl>
+                <MonitoringCompany>SecureCom Commercial</MonitoringCompany>
+            </ProtectionInfo>
+            <MechanicalSystems>
+                <HVACType>Central</HVACType>
+                <HVACAge>3</HVACAge>
+                <HeatingType>Gas</HeatingType>
+                <CoolingType>Electric</CoolingType>
+                <ElectricalCapacity>2000</ElectricalCapacity>
+                <HasBackupGenerator>true</HasBackupGenerator>
+                <GeneratorCapacity>500</GeneratorCapacity>
+                <PlumbingType>Copper</PlumbingType>
+                <WaterHeaterType>Commercial Gas</WaterHeaterType>
+                <WaterHeaterAge>3</WaterHeaterAge>
+            </MechanicalSystems>
+            <MortgageInfo>
+                <IsMortgaged>true</IsMortgaged>
+                <MortgageHolder>First Commercial Bank</MortgageHolder>
+                <LoanNumber>COMM-MTG-9876543</LoanNumber>
+                <OutstandingBalance>1500000</OutstandingBalance>
+                <LoanToValue>60</LoanToValue>
+                <MortgageAddress>
+                    <AddressLine1>1000 Banking Center</AddressLine1>
+                    <City>Chicago</City>
+                    <State>IL</State>
+                    <ZipCode>60603</ZipCode>
+                </MortgageAddress>
+            </MortgageInfo>
+            <LossHistory>
+                <HasPriorLosses>true</HasPriorLosses>
+                <Loss>
+                    <LossDate>2023-12-10</LossDate>
+                    <LossType>Water Damage</LossType>
+                    <LossCause>Pipe Burst</LossCause>
+                    <LossAmount>45000</LossAmount>
+                    <LossDescription>Frozen pipe burst on 3rd floor</LossDescription>
+                    <ClaimNumber>CLM-2023-98765</ClaimNumber>
+                    <ClaimStatus>Closed</ClaimStatus>
+                    <ClaimPaid>42000</ClaimPaid>
+                </Loss>
+            </LossHistory>
+            <ComplianceInfo>
+                <BuildingCodeCompliant>true</BuildingCodeCompliant>
+                <FireCodeCompliant>true</FireCodeCompliant>
+                <ADACompliant>true</ADACompliant>
+                <EnvironmentalCompliant>true</EnvironmentalCompliant>
+                <LastInspectionDate>2025-08-15</LastInspectionDate>
+                <InspectionAgency>City of Chicago Building Department</InspectionAgency>
+                <ViolationsOutstanding>0</ViolationsOutstanding>
+            </ComplianceInfo>
+        </RiskData>
+        <CoverageData>
+            <CoverageRecord>
+                <CoverageIdentifier>COV-CP-001</CoverageIdentifier>
+                <RiskIdentifier>RSK-CP-001</RiskIdentifier>
+                <CoverageSymbol>BLD</CoverageSymbol>
+                <CoverageDescription>Building Coverage</CoverageDescription>
+                <CoverageClass>Property</CoverageClass>
+                <MaxLimit>2000000</MaxLimit>
+                <CoverageDeductible>10000</CoverageDeductible>
+                <CoverageBasis>Replacement Cost</CoverageBasis>
+                <CoinsurancePercent>90</CoinsurancePercent>
+                <CoveragePremium>5200.00</CoveragePremium>
+                <CoverageStartDate>2025-11-15</CoverageStartDate>
+                <CoverageEndDate>2026-11-15</CoverageEndDate>
+                <PerilsCovered>All Risk</PerilsCovered>
+                <IsMandatory>true</IsMandatory>
+            </CoverageRecord>
+            <CoverageRecord>
+                <CoverageIdentifier>COV-CP-002</CoverageIdentifier>
+                <RiskIdentifier>RSK-CP-001</RiskIdentifier>
+                <CoverageSymbol>BPP</CoverageSymbol>
+                <CoverageDescription>Business Personal Property</CoverageDescription>
+                <CoverageClass>Property</CoverageClass>
+                <MaxLimit>500000</MaxLimit>
+                <CoverageDeductible>5000</CoverageDeductible>
+                <CoverageBasis>Replacement Cost</CoverageBasis>
+                <CoinsurancePercent>90</CoinsurancePercent>
+                <CoveragePremium>1800.00</CoveragePremium>
+                <CoverageStartDate>2025-11-15</CoverageStartDate>
+                <CoverageEndDate>2026-11-15</CoverageEndDate>
+                <PerilsCovered>All Risk</PerilsCovered>
+                <IsMandatory>true</IsMandatory>
+            </CoverageRecord>
+            <CoverageRecord>
+                <CoverageIdentifier>COV-CP-003</CoverageIdentifier>
+                <RiskIdentifier>RSK-CP-001</RiskIdentifier>
+                <CoverageSymbol>BI</CoverageSymbol>
+                <CoverageDescription>Business Interruption</CoverageDescription>
+                <CoverageClass>Income</CoverageClass>
+                <MaxLimit>1000000</MaxLimit>
+                <CoverageDeductible>72</CoverageDeductible>
+                <DeductibleUnit>Hours</DeductibleUnit>
+                <IndemnityPeriod>12</IndemnityPeriod>
+                <IndemnityPeriodUnit>Months</IndemnityPeriodUnit>
+                <CoveragePremium>1250.00</CoveragePremium>
+                <CoverageStartDate>2025-11-15</CoverageStartDate>
+                <CoverageEndDate>2026-11-15</CoverageEndDate>
+                <IsMandatory>false</IsMandatory>
+            </CoverageRecord>
+            <CoverageRecord>
+                <CoverageIdentifier>COV-CP-004</CoverageIdentifier>
+                <RiskIdentifier>RSK-CP-001</RiskIdentifier>
+                <CoverageSymbol>EQ</CoverageSymbol>
+                <CoverageDescription>Equipment Breakdown</CoverageDescription>
+                <CoverageClass>Property</CoverageClass>
+                <MaxLimit>250000</MaxLimit>
+                <CoverageDeductible>2500</CoverageDeductible>
+                <CoveragePremium>500.00</CoveragePremium>
+                <CoverageStartDate>2025-11-15</CoverageStartDate>
+                <CoverageEndDate>2026-11-15</CoverageEndDate>
+                <CoveredEquipment>HVAC, Elevators, Electrical</CoveredEquipment>
+                <IsMandatory>false</IsMandatory>
+            </CoverageRecord>
+        </CoverageData>
+        <PaymentData>
+            <PaymentIdentifier>PAY-CP-001</PaymentIdentifier>
+            <PaymentNumber>PAY-CP-001-001</PaymentNumber>
+            <TransactionType>New Business Deposit</TransactionType>
+            <PaymentMode>Wire Transfer</PaymentMode>
+            <StatusDescription>Pending</StatusDescription>
+            <ScheduledDate>2025-11-15</ScheduledDate>
+            <TransactionAmount>2312.50</TransactionAmount>
+            <BillingPlan>Quarterly</BillingPlan>
+            <TotalInstallments>4</TotalInstallments>
+            <InstallmentAmount>2499.38</InstallmentAmount>
+            <PaymentAccountInfo>
+                <NameOnAccount>TechStart Solutions LLC</NameOnAccount>
+                <FinancialInstitution>First Commercial Bank</FinancialInstitution>
+                <AccountNumber>****9876</AccountNumber>
+                <RoutingNumber>987654321</RoutingNumber>
+                <AccountType>Business Checking</AccountType>
+            </PaymentAccountInfo>
+        </PaymentData>
+        <SystemData>
+            <EnteredBy>jwilson</EnteredBy>
+            <EntryTimestamp>2025-10-05T16:45:00</EntryTimestamp>
+            <UpdatedBy>underwriter.system</UpdatedBy>
+            <UpdateTimestamp>2025-10-05T17:30:00</UpdateTimestamp>
+            <IssuedBy>policy.system</IssuedBy>
+            <IssuedTimestamp>2025-10-05T17:35:00</IssuedTimestamp>
+            <WorkflowStatus>Issued</WorkflowStatus>
+            <ApprovalRequired>true</ApprovalRequired>
+            <ApprovalStatus>Approved</ApprovalStatus>
+            <ApprovedBy>UW-COM-089</ApprovedBy>
+            <ApprovedDate>2025-10-05T17:00:00</ApprovedDate>
+        </SystemData>
+    </Data>
+</Session>

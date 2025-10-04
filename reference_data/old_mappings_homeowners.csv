@@ -1,0 +1,5 @@
+source_system,source_node,target_table,target_column,transformation,product_code
+DuckCreek,/Session/Data/Policy/PolicyID,SILVER.POLICY,policy_id,,HO003
+DuckCreek,/Session/Data/Policy/PolicyNumber,SILVER.POLICY,policy_number,,HO003
+DuckCreek,/Session/Data/Risk/RiskID,SILVER.RISK,risk_id,,HO003
+DuckCreek,/Session/Data/Risk/PropertyDetails/ConstructionType,SILVER.RISK,construction_type,,HO003

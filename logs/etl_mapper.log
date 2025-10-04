@@ -1,0 +1,87 @@
+2025-10-05 03:16:27 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 03:16:30 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 03:16:30 - utils.decorators - INFO - Starting run...
+2025-10-05 03:16:30 - main - INFO - 🔍 Auto-detecting product type...
+2025-10-05 03:16:30 - utils.product_detector - INFO - ✅ Detected product: HO003 with 67.3% confidence
+2025-10-05 03:16:30 - main - INFO - ✅ Detected: HO003 with 67.3% confidence
+2025-10-05 03:16:30 - main - INFO - 📊 Extracting XML metadata...
+2025-10-05 03:16:30 - main - INFO - ✅ Extracted 319 XML nodes
+2025-10-05 03:16:30 - main - INFO - ☁️ Loading to Snowflake stage layer...
+2025-10-05 03:16:31 - loaders.snowflake_loader - INFO - ✅ Loaded XML data to ETL_MAPPER.STAGE_XML_HO003
+2025-10-05 03:16:31 - main - INFO - ✅ Loaded to ETL_MAPPER.STAGE_XML_HO003
+2025-10-05 03:16:31 - main - INFO - 🗄️ Fetching Silver layer schema from Snowflake...
+2025-10-05 03:16:31 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 03:16:32 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 03:16:32 - main - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 03:16:32 - main - INFO - 📚 Finding and loading reference data with AI...
+2025-10-05 03:16:32 - utils.document_loader - INFO - 🔍 Found 9 potential reference files
+2025-10-05 03:16:34 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:34 - utils.document_loader - INFO - 📄 historical_mappings_personal_auto.xlsx: historical_mapping (relevance: 85%)
+2025-10-05 03:16:35 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:35 - utils.document_loader - INFO - 📄 historical_mappings_commercial.xlsx: historical_mapping (relevance: 85%)
+2025-10-05 03:16:36 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:36 - utils.document_loader - INFO - 📄 old_mappings.csv: historical_mapping (relevance: 85%)
+2025-10-05 03:16:37 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:37 - utils.document_loader - INFO - 📄 historical_mappings_homeowners.xlsx: historical_mapping (relevance: 85%)
+2025-10-05 03:16:39 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:39 - utils.document_loader - INFO - 📄 old_mappings_homeowners.csv: historical_mapping (relevance: 85%)
+2025-10-05 03:16:41 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:41 - utils.document_loader - INFO - 📄 old_mappings_personal_auto.csv: historical_mapping (relevance: 85%)
+2025-10-05 03:16:42 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:42 - utils.document_loader - INFO - 📄 old_mappings_commercial.csv: historical_mapping (relevance: 85%)
+2025-10-05 03:16:43 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:43 - utils.document_loader - INFO - 📄 data_dictionary.csv: data_dictionary (relevance: 90%)
+2025-10-05 03:16:45 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:45 - utils.document_loader - INFO - 📄 data_dictionary_complete.xlsx: data_dictionary (relevance: 85%)
+2025-10-05 03:16:45 - utils.document_loader - INFO - Loading file: reference_data/data_dictionary.csv (type: .csv)
+2025-10-05 03:16:47 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:47 - utils.document_loader - ERROR - Error loading reference_data/data_dictionary.csv: name 'true' is not defined
+2025-10-05 03:16:47 - utils.document_loader - INFO - Loading file: reference_data/historical_mappings_personal_auto.xlsx (type: .xlsx)
+2025-10-05 03:16:47 - utils.document_loader - INFO - Found 2 sheets: ['Mappings', 'Metadata']
+2025-10-05 03:16:50 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:50 - utils.document_loader - INFO - AI understands this as: historical_mappings
+2025-10-05 03:16:50 - utils.document_loader - INFO - Loading file: reference_data/historical_mappings_commercial.xlsx (type: .xlsx)
+2025-10-05 03:16:50 - utils.document_loader - INFO - Found 1 sheets: ['Mappings']
+2025-10-05 03:16:53 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:53 - utils.document_loader - INFO - AI understands this as: historical_mappings
+2025-10-05 03:16:53 - utils.document_loader - INFO - Loading file: reference_data/old_mappings.csv (type: .csv)
+2025-10-05 03:16:54 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:54 - utils.document_loader - ERROR - Error loading reference_data/old_mappings.csv: name 'true' is not defined
+2025-10-05 03:16:54 - utils.document_loader - INFO - Loading file: reference_data/historical_mappings_homeowners.xlsx (type: .xlsx)
+2025-10-05 03:16:54 - utils.document_loader - INFO - Found 1 sheets: ['Mappings']
+2025-10-05 03:16:56 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:56 - utils.document_loader - INFO - AI understands this as: historical_mappings
+2025-10-05 03:16:56 - utils.document_loader - INFO - Loading file: reference_data/data_dictionary_complete.xlsx (type: .xlsx)
+2025-10-05 03:16:57 - utils.document_loader - INFO - Found 3 sheets: ['DataDictionary', 'TableSummary', 'Metadata']
+2025-10-05 03:16:59 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:16:59 - utils.document_loader - INFO - AI understands this as: data_dictionary
+2025-10-05 03:16:59 - utils.document_loader - INFO - 
+============================================================
+2025-10-05 03:16:59 - utils.document_loader - INFO - ✅ LOADED REFERENCE DATA SUMMARY:
+2025-10-05 03:16:59 - utils.document_loader - INFO - ============================================================
+2025-10-05 03:16:59 - utils.document_loader - INFO -   📚 Historical mappings: 3 files
+2025-10-05 03:16:59 - utils.document_loader - INFO -      - historical_mappings_personal_auto.xlsx (51 rows)
+2025-10-05 03:16:59 - utils.document_loader - INFO -      - historical_mappings_commercial.xlsx (9 rows)
+2025-10-05 03:16:59 - utils.document_loader - INFO -      - historical_mappings_homeowners.xlsx (14 rows)
+2025-10-05 03:16:59 - utils.document_loader - INFO -   📖 Data dictionaries: 1 files
+2025-10-05 03:16:59 - utils.document_loader - INFO -      - data_dictionary_complete.xlsx (104 rows)
+2025-10-05 03:16:59 - utils.document_loader - INFO -   🗄️ Schema definitions: 0 files
+2025-10-05 03:16:59 - utils.document_loader - INFO -   📊 Reference data: 0 files
+2025-10-05 03:16:59 - utils.document_loader - INFO - ============================================================
+
+2025-10-05 03:16:59 - main - INFO - 🤖 Predicting mappings with AI (flexible mode)...
+2025-10-05 03:16:59 - utils.decorators - INFO - Starting wrapper...
+2025-10-05 03:16:59 - utils.validators - INFO - XML metadata validation passed: 319 nodes
+2025-10-05 03:16:59 - mapper.openai_mapper - INFO - 🤖 Generating mappings with flexible reference data...
+2025-10-05 03:16:59 - mapper.openai_mapper - INFO -    XML nodes: 319
+2025-10-05 03:16:59 - mapper.openai_mapper - INFO -    Silver columns: 137
+2025-10-05 03:16:59 - mapper.openai_mapper - INFO - 💰 Estimated tokens: ~7,300
+2025-10-05 03:17:28 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 03:17:28 - mapper.openai_mapper - INFO - ✅ Actual cost: $0.0256
+2025-10-05 03:17:28 - mapper.openai_mapper - INFO - 📊 Cumulative cost: $0.0256
+2025-10-05 03:17:28 - mapper.openai_mapper - INFO - ✅ Generated 17 mappings
+2025-10-05 03:17:28 - utils.decorators - INFO - wrapper completed in 28.88s
+2025-10-05 03:17:28 - main - INFO - 💾 Saving results...
+2025-10-05 03:17:28 - main - INFO - 📁 Saved 17 mappings to output/mappings_HO003_20251005_031728.csv
+2025-10-05 03:17:28 - main - INFO - ✅ Pipeline completed successfully!
+2025-10-05 03:17:28 - utils.decorators - INFO - run completed in 58.02s

@@ -1,0 +1,4 @@
+source_system,source_node,target_table,target_column,transformation,product_code
+DuckCreek,/Session/Data/Policy/PolicyID,SILVER.POLICY,policy_id,,CP001
+DuckCreek,/Session/Data/Policy/PolicyNumber,SILVER.POLICY,policy_number,,CP001
+DuckCreek,/Session/Data/Risk/RiskID,SILVER.RISK,risk_id,,CP001

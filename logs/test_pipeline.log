@@ -1,0 +1,554 @@
+2025-10-05 01:50:31 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 01:50:34 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 01:50:34 - loaders.snowflake_loader - INFO - ✅ Connection test successful!
+2025-10-05 01:50:34 - loaders.snowflake_loader - INFO -    Version: 9.30.0
+2025-10-05 01:50:34 - loaders.snowflake_loader - INFO -    Database: INSURANCE
+2025-10-05 01:50:34 - loaders.snowflake_loader - INFO -    Schema: ETL_MAPPER
+2025-10-05 01:50:34 - loaders.snowflake_loader - INFO -    Role: ACCOUNTADMIN
+2025-10-05 01:50:34 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 01:50:37 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.SILVER with role ACCOUNTADMIN
+2025-10-05 01:50:37 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 01:50:41 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 01:50:41 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 01:50:41 - utils.product_detector - ERROR - Error detecting product: XML or text declaration not at start of entity: line 2, column 0
+2025-10-05 01:50:41 - utils.product_detector - ERROR - Error detecting product: XML or text declaration not at start of entity: line 2, column 0
+2025-10-05 01:50:41 - utils.product_detector - ERROR - Error detecting product: XML or text declaration not at start of entity: line 2, column 0
+2025-10-05 01:50:41 - utils.product_detector - INFO - ✅ Detected product: UMB001 with 52.9% confidence
+2025-10-05 01:50:41 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 01:50:41 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 01:50:41 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 01:50:41 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 01:50:41 - utils.product_detector - ERROR - Error loading reference_data/old_mappings_personal_auto.csv: Error tokenizing data. C error: Expected 8 fields in line 12, saw 9
+
+2025-10-05 01:50:41 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 01:50:41 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 01:50:41 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 01:50:41 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 01:50:41 - utils.product_detector - ERROR - Error loading reference_data/old_mappings_homeowners.csv: Error tokenizing data. C error: Expected 8 fields in line 12, saw 9
+
+2025-10-05 01:50:41 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 01:50:41 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 01:50:41 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 01:50:41 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 01:50:41 - utils.product_detector - ERROR - Error loading reference_data/old_mappings_commercial.csv: Error tokenizing data. C error: Expected 8 fields in line 11, saw 9
+
+2025-10-05 01:59:35 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 01:59:37 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 01:59:38 - loaders.snowflake_loader - INFO - ✅ Connection test successful!
+2025-10-05 01:59:38 - loaders.snowflake_loader - INFO -    Version: 9.30.0
+2025-10-05 01:59:38 - loaders.snowflake_loader - INFO -    Database: INSURANCE
+2025-10-05 01:59:38 - loaders.snowflake_loader - INFO -    Schema: ETL_MAPPER
+2025-10-05 01:59:38 - loaders.snowflake_loader - INFO -    Role: ACCOUNTADMIN
+2025-10-05 01:59:38 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 01:59:40 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.SILVER with role ACCOUNTADMIN
+2025-10-05 01:59:40 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 01:59:42 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 01:59:42 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 01:59:42 - utils.product_detector - ERROR - Error detecting product: XML or text declaration not at start of entity: line 2, column 0
+2025-10-05 01:59:42 - utils.product_detector - ERROR - Error detecting product: XML or text declaration not at start of entity: line 2, column 0
+2025-10-05 01:59:42 - utils.product_detector - ERROR - Error detecting product: XML or text declaration not at start of entity: line 2, column 0
+2025-10-05 01:59:42 - utils.product_detector - INFO - ✅ Detected product: UMB001 with 52.9% confidence
+2025-10-05 01:59:42 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 01:59:42 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 01:59:42 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 01:59:42 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 01:59:42 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 01:59:42 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 01:59:42 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 01:59:42 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 01:59:42 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 01:59:42 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 01:59:42 - utils.product_detector - ERROR - Error loading reference_data/old_mappings_homeowners.csv: Error tokenizing data. C error: Expected 8 fields in line 12, saw 9
+
+2025-10-05 01:59:42 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 01:59:42 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 01:59:42 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 01:59:42 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 01:59:42 - utils.product_detector - ERROR - Error loading reference_data/old_mappings_commercial.csv: Error tokenizing data. C error: Expected 8 fields in line 11, saw 9
+
+2025-10-05 01:59:43 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 01:59:43 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 01:59:59 - utils.decorators - INFO - Starting run...
+2025-10-05 01:59:59 - main - INFO - 🔍 Auto-detecting product type...
+2025-10-05 01:59:59 - utils.product_detector - ERROR - Error detecting product: XML or text declaration not at start of entity: line 2, column 0
+2025-10-05 01:59:59 - utils.decorators - ERROR - run failed after 0.00s: Could not detect product type. Please specify product_code manually.
+2025-10-05 02:06:51 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:06:53 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:06:53 - loaders.snowflake_loader - INFO - ✅ Connection test successful!
+2025-10-05 02:06:53 - loaders.snowflake_loader - INFO -    Version: 9.30.0
+2025-10-05 02:06:53 - loaders.snowflake_loader - INFO -    Database: INSURANCE
+2025-10-05 02:06:53 - loaders.snowflake_loader - INFO -    Schema: ETL_MAPPER
+2025-10-05 02:06:53 - loaders.snowflake_loader - INFO -    Role: ACCOUNTADMIN
+2025-10-05 02:06:54 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:06:56 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.SILVER with role ACCOUNTADMIN
+2025-10-05 02:06:56 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:06:57 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:06:57 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:06:57 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:06:57 - utils.product_detector - INFO - ✅ Detected product: HO003 with 53.1% confidence
+2025-10-05 02:06:57 - utils.product_detector - INFO - ✅ Detected product: CP001 with 42.1% confidence
+2025-10-05 02:06:57 - utils.product_detector - INFO - Found 0 relevant mapping files for PA001
+2025-10-05 02:06:57 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:06:57 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:06:57 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:06:57 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:06:57 - utils.product_detector - INFO - Loaded 4 mappings from old_mappings_homeowners.csv
+2025-10-05 02:06:57 - utils.product_detector - INFO - ✅ Loaded 4 total mappings from 1 files
+2025-10-05 02:06:57 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:06:57 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:06:57 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:06:57 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:06:57 - utils.product_detector - INFO - Loaded 3 mappings from old_mappings_commercial.csv
+2025-10-05 02:06:57 - utils.product_detector - INFO - ✅ Loaded 3 total mappings from 1 files
+2025-10-05 02:06:57 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:06:57 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:06:57 - utils.decorators - INFO - Starting run...
+2025-10-05 02:06:57 - main - INFO - 🔍 Auto-detecting product type...
+2025-10-05 02:06:57 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:06:57 - main - INFO - ✅ Detected: PA001 with 52.8% confidence
+2025-10-05 02:06:57 - main - INFO - 📊 Extracting XML metadata...
+2025-10-05 02:06:57 - utils.decorators - ERROR - run failed after 0.00s: 'XMLMetadataExtractor' object has no attribute '_get_parent_path'
+2025-10-05 02:09:50 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:09:53 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:09:53 - loaders.snowflake_loader - INFO - ✅ Connection test successful!
+2025-10-05 02:09:53 - loaders.snowflake_loader - INFO -    Version: 9.30.0
+2025-10-05 02:09:53 - loaders.snowflake_loader - INFO -    Database: INSURANCE
+2025-10-05 02:09:53 - loaders.snowflake_loader - INFO -    Schema: ETL_MAPPER
+2025-10-05 02:09:53 - loaders.snowflake_loader - INFO -    Role: ACCOUNTADMIN
+2025-10-05 02:09:53 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:09:55 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.SILVER with role ACCOUNTADMIN
+2025-10-05 02:09:55 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:09:56 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:09:56 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:09:56 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:09:56 - utils.product_detector - INFO - ✅ Detected product: HO003 with 53.1% confidence
+2025-10-05 02:09:56 - utils.product_detector - INFO - ✅ Detected product: CP001 with 42.1% confidence
+2025-10-05 02:09:56 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:09:56 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:09:56 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:09:56 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:09:56 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 02:09:56 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 02:09:56 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:09:56 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:09:56 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:09:56 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:09:56 - utils.product_detector - INFO - Loaded 4 mappings from old_mappings_homeowners.csv
+2025-10-05 02:09:56 - utils.product_detector - INFO - ✅ Loaded 4 total mappings from 1 files
+2025-10-05 02:09:56 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:09:56 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:09:56 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:09:56 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:09:56 - utils.product_detector - INFO - Loaded 3 mappings from old_mappings_commercial.csv
+2025-10-05 02:09:56 - utils.product_detector - INFO - ✅ Loaded 3 total mappings from 1 files
+2025-10-05 02:09:56 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:09:56 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:09:57 - utils.decorators - INFO - Starting run...
+2025-10-05 02:09:57 - main - INFO - 🔍 Auto-detecting product type...
+2025-10-05 02:09:57 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:09:57 - main - INFO - ✅ Detected: PA001 with 52.8% confidence
+2025-10-05 02:09:57 - main - INFO - 📊 Extracting XML metadata...
+2025-10-05 02:09:57 - main - INFO - ✅ Extracted 19 XML nodes
+2025-10-05 02:09:57 - main - INFO - ☁️ Loading to Snowflake stage layer...
+2025-10-05 02:09:58 - loaders.snowflake_loader - INFO - ✅ Loaded XML data to ETL_MAPPER.STAGE_XML_PA001
+2025-10-05 02:09:58 - main - INFO - ✅ Loaded to ETL_MAPPER.STAGE_XML_PA001
+2025-10-05 02:09:58 - main - INFO - 🗄️ Fetching Silver layer schema from Snowflake...
+2025-10-05 02:09:58 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:09:59 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:09:59 - main - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:09:59 - main - INFO - 📚 Finding relevant reference mappings...
+2025-10-05 02:09:59 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:09:59 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:09:59 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 02:09:59 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 02:09:59 - main - INFO - ✅ Loaded 8 relevant historical mappings
+2025-10-05 02:09:59 - utils.decorators - ERROR - run failed after 2.50s: Error tokenizing data. C error: Expected 9 fields in line 13, saw 10
+
+2025-10-05 02:11:08 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:11:11 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:11:11 - loaders.snowflake_loader - INFO - ✅ Connection test successful!
+2025-10-05 02:11:11 - loaders.snowflake_loader - INFO -    Version: 9.30.0
+2025-10-05 02:11:11 - loaders.snowflake_loader - INFO -    Database: INSURANCE
+2025-10-05 02:11:11 - loaders.snowflake_loader - INFO -    Schema: ETL_MAPPER
+2025-10-05 02:11:11 - loaders.snowflake_loader - INFO -    Role: ACCOUNTADMIN
+2025-10-05 02:11:11 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:11:13 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.SILVER with role ACCOUNTADMIN
+2025-10-05 02:11:13 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:11:14 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:11:15 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:11:15 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:11:15 - utils.product_detector - INFO - ✅ Detected product: HO003 with 53.1% confidence
+2025-10-05 02:11:15 - utils.product_detector - INFO - ✅ Detected product: CP001 with 42.1% confidence
+2025-10-05 02:11:15 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:11:15 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:11:15 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:11:15 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:11:15 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 02:11:15 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 02:11:15 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:11:15 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:11:15 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:11:15 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:11:15 - utils.product_detector - INFO - Loaded 4 mappings from old_mappings_homeowners.csv
+2025-10-05 02:11:15 - utils.product_detector - INFO - ✅ Loaded 4 total mappings from 1 files
+2025-10-05 02:11:15 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:11:15 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:11:15 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:11:15 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:11:15 - utils.product_detector - INFO - Loaded 3 mappings from old_mappings_commercial.csv
+2025-10-05 02:11:15 - utils.product_detector - INFO - ✅ Loaded 3 total mappings from 1 files
+2025-10-05 02:11:15 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:11:15 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:11:15 - utils.decorators - INFO - Starting run...
+2025-10-05 02:11:15 - main - INFO - 🔍 Auto-detecting product type...
+2025-10-05 02:11:15 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:11:15 - main - INFO - ✅ Detected: PA001 with 52.8% confidence
+2025-10-05 02:11:15 - main - INFO - 📊 Extracting XML metadata...
+2025-10-05 02:11:15 - main - INFO - ✅ Extracted 19 XML nodes
+2025-10-05 02:11:15 - main - INFO - ☁️ Loading to Snowflake stage layer...
+2025-10-05 02:11:16 - loaders.snowflake_loader - INFO - ✅ Loaded XML data to ETL_MAPPER.STAGE_XML_PA001
+2025-10-05 02:11:16 - main - INFO - ✅ Loaded to ETL_MAPPER.STAGE_XML_PA001
+2025-10-05 02:11:16 - main - INFO - 🗄️ Fetching Silver layer schema from Snowflake...
+2025-10-05 02:11:16 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:11:17 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:11:17 - main - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:11:17 - main - INFO - 📚 Finding relevant reference mappings...
+2025-10-05 02:11:17 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:11:17 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:11:17 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 02:11:17 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 02:11:17 - main - INFO - ✅ Loaded 8 relevant historical mappings
+2025-10-05 02:11:17 - utils.decorators - ERROR - run failed after 1.73s: Error tokenizing data. C error: Expected 6 fields in line 7, saw 7
+
+2025-10-05 02:18:58 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:19:00 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:19:00 - loaders.snowflake_loader - INFO - ✅ Connection test successful!
+2025-10-05 02:19:00 - loaders.snowflake_loader - INFO -    Version: 9.30.0
+2025-10-05 02:19:00 - loaders.snowflake_loader - INFO -    Database: INSURANCE
+2025-10-05 02:19:00 - loaders.snowflake_loader - INFO -    Schema: ETL_MAPPER
+2025-10-05 02:19:00 - loaders.snowflake_loader - INFO -    Role: ACCOUNTADMIN
+2025-10-05 02:19:01 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:19:03 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.SILVER with role ACCOUNTADMIN
+2025-10-05 02:19:03 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:19:04 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:19:04 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:19:04 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:19:04 - utils.product_detector - INFO - ✅ Detected product: HO003 with 53.1% confidence
+2025-10-05 02:19:04 - utils.product_detector - INFO - ✅ Detected product: CP001 with 42.1% confidence
+2025-10-05 02:19:04 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:19:04 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:19:04 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:19:04 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:19:04 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 02:19:04 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 02:19:04 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:19:04 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:19:04 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:19:04 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:19:04 - utils.product_detector - INFO - Loaded 4 mappings from old_mappings_homeowners.csv
+2025-10-05 02:19:04 - utils.product_detector - INFO - ✅ Loaded 4 total mappings from 1 files
+2025-10-05 02:19:04 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:19:04 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:19:04 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:19:04 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:19:04 - utils.product_detector - INFO - Loaded 3 mappings from old_mappings_commercial.csv
+2025-10-05 02:19:04 - utils.product_detector - INFO - ✅ Loaded 3 total mappings from 1 files
+2025-10-05 02:19:04 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:19:05 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:19:05 - utils.decorators - INFO - Starting run...
+2025-10-05 02:19:05 - main - INFO - 🔍 Auto-detecting product type...
+2025-10-05 02:19:05 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:19:05 - main - INFO - ✅ Detected: PA001 with 52.8% confidence
+2025-10-05 02:19:05 - main - INFO - 📊 Extracting XML metadata...
+2025-10-05 02:19:05 - main - INFO - ✅ Extracted 19 XML nodes
+2025-10-05 02:19:05 - main - INFO - ☁️ Loading to Snowflake stage layer...
+2025-10-05 02:19:05 - loaders.snowflake_loader - INFO - ✅ Loaded XML data to ETL_MAPPER.STAGE_XML_PA001
+2025-10-05 02:19:05 - main - INFO - ✅ Loaded to ETL_MAPPER.STAGE_XML_PA001
+2025-10-05 02:19:05 - main - INFO - 🗄️ Fetching Silver layer schema from Snowflake...
+2025-10-05 02:19:05 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:19:06 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:19:06 - main - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:19:06 - main - INFO - 📚 Finding relevant reference mappings...
+2025-10-05 02:19:06 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:19:06 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:19:06 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 02:19:06 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 02:19:06 - main - INFO - ✅ Loaded 8 relevant historical mappings
+2025-10-05 02:19:06 - main - INFO - 💰 Estimating API costs...
+2025-10-05 02:19:06 - main - INFO - 💵 Estimated cost: $0.1281
+2025-10-05 02:19:06 - main - INFO - 🤖 Predicting mappings with OpenAI...
+2025-10-05 02:19:06 - utils.decorators - INFO - Starting wrapper...
+2025-10-05 02:19:06 - utils.validators - INFO - XML metadata validation passed: 19 nodes
+2025-10-05 02:19:06 - mapper.openai_mapper - INFO - Estimated cost: $0.1281
+2025-10-05 02:19:06 - utils.decorators - ERROR - Unexpected error in wrapper: 'AIETLMapper' object has no attribute '_build_prompt'
+Traceback (most recent call last):
+  File "/Users/aashishsoni/codeNtest/MappingSheetGen/utils/decorators.py", line 75, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/aashishsoni/codeNtest/MappingSheetGen/utils/decorators.py", line 174, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/aashishsoni/codeNtest/MappingSheetGen/mapper/openai_mapper.py", line 41, in predict_mappings
+    prompt = self._build_prompt(
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'AIETLMapper' object has no attribute '_build_prompt'
+2025-10-05 02:19:06 - utils.decorators - ERROR - wrapper failed after 0.00s: 'AIETLMapper' object has no attribute '_build_prompt'
+2025-10-05 02:19:06 - utils.decorators - ERROR - run failed after 1.43s: 'AIETLMapper' object has no attribute '_build_prompt'
+2025-10-05 02:21:00 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:21:02 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:21:03 - loaders.snowflake_loader - INFO - ✅ Connection test successful!
+2025-10-05 02:21:03 - loaders.snowflake_loader - INFO -    Version: 9.30.0
+2025-10-05 02:21:03 - loaders.snowflake_loader - INFO -    Database: INSURANCE
+2025-10-05 02:21:03 - loaders.snowflake_loader - INFO -    Schema: ETL_MAPPER
+2025-10-05 02:21:03 - loaders.snowflake_loader - INFO -    Role: ACCOUNTADMIN
+2025-10-05 02:21:03 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:21:05 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.SILVER with role ACCOUNTADMIN
+2025-10-05 02:21:05 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:21:08 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:21:08 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:21:08 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:21:08 - utils.product_detector - INFO - ✅ Detected product: HO003 with 53.1% confidence
+2025-10-05 02:21:08 - utils.product_detector - INFO - ✅ Detected product: CP001 with 42.1% confidence
+2025-10-05 02:21:08 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:21:08 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:21:08 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:21:08 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:21:08 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 02:21:08 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 02:21:08 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:21:08 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:21:08 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:21:08 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:21:08 - utils.product_detector - INFO - Loaded 4 mappings from old_mappings_homeowners.csv
+2025-10-05 02:21:08 - utils.product_detector - INFO - ✅ Loaded 4 total mappings from 1 files
+2025-10-05 02:21:08 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:21:08 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:21:08 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:21:08 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:21:08 - utils.product_detector - INFO - Loaded 3 mappings from old_mappings_commercial.csv
+2025-10-05 02:21:08 - utils.product_detector - INFO - ✅ Loaded 3 total mappings from 1 files
+2025-10-05 02:21:09 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:21:09 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:21:09 - utils.decorators - INFO - Starting run...
+2025-10-05 02:21:09 - main - INFO - 🔍 Auto-detecting product type...
+2025-10-05 02:21:09 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:21:09 - main - INFO - ✅ Detected: PA001 with 52.8% confidence
+2025-10-05 02:21:09 - main - INFO - 📊 Extracting XML metadata...
+2025-10-05 02:21:09 - main - INFO - ✅ Extracted 19 XML nodes
+2025-10-05 02:21:09 - main - INFO - ☁️ Loading to Snowflake stage layer...
+2025-10-05 02:21:11 - loaders.snowflake_loader - INFO - ✅ Loaded XML data to ETL_MAPPER.STAGE_XML_PA001
+2025-10-05 02:21:11 - main - INFO - ✅ Loaded to ETL_MAPPER.STAGE_XML_PA001
+2025-10-05 02:21:11 - main - INFO - 🗄️ Fetching Silver layer schema from Snowflake...
+2025-10-05 02:21:11 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:21:12 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:21:12 - main - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:21:12 - main - INFO - 📚 Finding relevant reference mappings...
+2025-10-05 02:21:12 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:21:12 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:21:12 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 02:21:12 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 02:21:12 - main - INFO - ✅ Loaded 8 relevant historical mappings
+2025-10-05 02:21:12 - main - INFO - 💰 Estimating API costs...
+2025-10-05 02:21:12 - main - INFO - 💵 Estimated cost: $0.1281
+2025-10-05 02:21:12 - main - INFO - 🤖 Predicting mappings with OpenAI...
+2025-10-05 02:21:12 - utils.decorators - INFO - Starting wrapper...
+2025-10-05 02:21:12 - utils.validators - INFO - XML metadata validation passed: 19 nodes
+2025-10-05 02:21:12 - mapper.openai_mapper - INFO - Estimated cost: $0.1281
+2025-10-05 02:21:13 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-10-05 02:21:13 - utils.decorators - ERROR - OpenAI API error in wrapper: Error code: 400 - {'error': {'message': "Invalid schema for response_format 'mapping_prediction': In context=(), 'additionalProperties' is required to be supplied and to be false.", 'type': 'invalid_request_error', 'param': 'response_format', 'code': None}}
+2025-10-05 02:21:13 - utils.decorators - ERROR - wrapper failed after 1.02s: Error code: 400 - {'error': {'message': "Invalid schema for response_format 'mapping_prediction': In context=(), 'additionalProperties' is required to be supplied and to be false.", 'type': 'invalid_request_error', 'param': 'response_format', 'code': None}}
+2025-10-05 02:21:13 - utils.decorators - ERROR - run failed after 3.73s: Error code: 400 - {'error': {'message': "Invalid schema for response_format 'mapping_prediction': In context=(), 'additionalProperties' is required to be supplied and to be false.", 'type': 'invalid_request_error', 'param': 'response_format', 'code': None}}
+2025-10-05 02:22:23 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:22:26 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:22:26 - loaders.snowflake_loader - INFO - ✅ Connection test successful!
+2025-10-05 02:22:26 - loaders.snowflake_loader - INFO -    Version: 9.30.0
+2025-10-05 02:22:26 - loaders.snowflake_loader - INFO -    Database: INSURANCE
+2025-10-05 02:22:26 - loaders.snowflake_loader - INFO -    Schema: ETL_MAPPER
+2025-10-05 02:22:26 - loaders.snowflake_loader - INFO -    Role: ACCOUNTADMIN
+2025-10-05 02:22:26 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:22:29 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.SILVER with role ACCOUNTADMIN
+2025-10-05 02:22:29 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:22:30 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:22:30 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:22:30 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:22:30 - utils.product_detector - INFO - ✅ Detected product: HO003 with 53.1% confidence
+2025-10-05 02:22:30 - utils.product_detector - INFO - ✅ Detected product: CP001 with 42.1% confidence
+2025-10-05 02:22:30 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:22:30 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:22:30 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:22:30 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:22:30 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 02:22:30 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 02:22:30 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:22:30 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:22:30 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:22:30 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:22:30 - utils.product_detector - INFO - Loaded 4 mappings from old_mappings_homeowners.csv
+2025-10-05 02:22:30 - utils.product_detector - INFO - ✅ Loaded 4 total mappings from 1 files
+2025-10-05 02:22:30 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:22:30 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:22:30 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:22:30 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:22:30 - utils.product_detector - INFO - Loaded 3 mappings from old_mappings_commercial.csv
+2025-10-05 02:22:30 - utils.product_detector - INFO - ✅ Loaded 3 total mappings from 1 files
+2025-10-05 02:22:30 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:22:30 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:22:31 - utils.decorators - INFO - Starting run...
+2025-10-05 02:22:31 - main - INFO - 🔍 Auto-detecting product type...
+2025-10-05 02:22:31 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:22:31 - main - INFO - ✅ Detected: PA001 with 52.8% confidence
+2025-10-05 02:22:31 - main - INFO - 📊 Extracting XML metadata...
+2025-10-05 02:22:31 - main - INFO - ✅ Extracted 19 XML nodes
+2025-10-05 02:22:31 - main - INFO - ☁️ Loading to Snowflake stage layer...
+2025-10-05 02:22:31 - loaders.snowflake_loader - INFO - ✅ Loaded XML data to ETL_MAPPER.STAGE_XML_PA001
+2025-10-05 02:22:31 - main - INFO - ✅ Loaded to ETL_MAPPER.STAGE_XML_PA001
+2025-10-05 02:22:31 - main - INFO - 🗄️ Fetching Silver layer schema from Snowflake...
+2025-10-05 02:22:31 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:22:32 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:22:32 - main - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:22:32 - main - INFO - 📚 Finding relevant reference mappings...
+2025-10-05 02:22:32 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:22:32 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:22:32 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 02:22:32 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 02:22:32 - main - INFO - ✅ Loaded 8 relevant historical mappings
+2025-10-05 02:22:32 - main - INFO - 💰 Estimating API costs...
+2025-10-05 02:22:32 - main - INFO - 💵 Estimated cost: $0.1281
+2025-10-05 02:22:32 - main - INFO - 🤖 Predicting mappings with OpenAI...
+2025-10-05 02:22:32 - utils.decorators - INFO - Starting wrapper...
+2025-10-05 02:22:32 - utils.validators - INFO - XML metadata validation passed: 19 nodes
+2025-10-05 02:22:32 - mapper.openai_mapper - INFO - Estimated cost: $0.1281
+2025-10-05 02:22:34 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-10-05 02:22:34 - utils.decorators - ERROR - OpenAI API error in wrapper: Error code: 400 - {'error': {'message': "Invalid schema for response_format 'mapping_prediction': In context=(), 'required' is required to be supplied and to be an array including every key in properties. Missing 'transformation_logic'.", 'type': 'invalid_request_error', 'param': 'response_format', 'code': None}}
+2025-10-05 02:22:34 - utils.decorators - ERROR - wrapper failed after 1.53s: Error code: 400 - {'error': {'message': "Invalid schema for response_format 'mapping_prediction': In context=(), 'required' is required to be supplied and to be an array including every key in properties. Missing 'transformation_logic'.", 'type': 'invalid_request_error', 'param': 'response_format', 'code': None}}
+2025-10-05 02:22:34 - utils.decorators - ERROR - run failed after 2.89s: Error code: 400 - {'error': {'message': "Invalid schema for response_format 'mapping_prediction': In context=(), 'required' is required to be supplied and to be an array including every key in properties. Missing 'transformation_logic'.", 'type': 'invalid_request_error', 'param': 'response_format', 'code': None}}
+2025-10-05 02:23:59 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:24:02 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:24:02 - loaders.snowflake_loader - INFO - ✅ Connection test successful!
+2025-10-05 02:24:02 - loaders.snowflake_loader - INFO -    Version: 9.30.0
+2025-10-05 02:24:02 - loaders.snowflake_loader - INFO -    Database: INSURANCE
+2025-10-05 02:24:02 - loaders.snowflake_loader - INFO -    Schema: ETL_MAPPER
+2025-10-05 02:24:02 - loaders.snowflake_loader - INFO -    Role: ACCOUNTADMIN
+2025-10-05 02:24:02 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:24:04 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.SILVER with role ACCOUNTADMIN
+2025-10-05 02:24:04 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:24:05 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:24:05 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:24:05 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:24:05 - utils.product_detector - INFO - ✅ Detected product: HO003 with 53.1% confidence
+2025-10-05 02:24:05 - utils.product_detector - INFO - ✅ Detected product: CP001 with 42.1% confidence
+2025-10-05 02:24:05 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:24:05 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:24:05 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:24:05 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:24:05 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 02:24:05 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 02:24:05 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:24:05 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:24:05 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:24:05 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:24:05 - utils.product_detector - INFO - Loaded 4 mappings from old_mappings_homeowners.csv
+2025-10-05 02:24:05 - utils.product_detector - INFO - ✅ Loaded 4 total mappings from 1 files
+2025-10-05 02:24:05 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:24:05 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:24:05 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:24:05 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:24:05 - utils.product_detector - INFO - Loaded 3 mappings from old_mappings_commercial.csv
+2025-10-05 02:24:05 - utils.product_detector - INFO - ✅ Loaded 3 total mappings from 1 files
+2025-10-05 02:24:06 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:24:06 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:24:06 - utils.decorators - INFO - Starting run...
+2025-10-05 02:24:06 - main - INFO - 🔍 Auto-detecting product type...
+2025-10-05 02:24:06 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:24:06 - main - INFO - ✅ Detected: PA001 with 52.8% confidence
+2025-10-05 02:24:06 - main - INFO - 📊 Extracting XML metadata...
+2025-10-05 02:24:06 - main - INFO - ✅ Extracted 19 XML nodes
+2025-10-05 02:24:06 - main - INFO - ☁️ Loading to Snowflake stage layer...
+2025-10-05 02:24:07 - loaders.snowflake_loader - INFO - ✅ Loaded XML data to ETL_MAPPER.STAGE_XML_PA001
+2025-10-05 02:24:07 - main - INFO - ✅ Loaded to ETL_MAPPER.STAGE_XML_PA001
+2025-10-05 02:24:07 - main - INFO - 🗄️ Fetching Silver layer schema from Snowflake...
+2025-10-05 02:24:07 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:24:08 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:24:08 - main - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:24:08 - main - INFO - 📚 Finding relevant reference mappings...
+2025-10-05 02:24:08 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:24:08 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:24:08 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 02:24:08 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 02:24:08 - main - INFO - ✅ Loaded 8 relevant historical mappings
+2025-10-05 02:24:08 - main - INFO - 💰 Estimating API costs...
+2025-10-05 02:24:08 - main - INFO - 💵 Estimated cost: $0.1281
+2025-10-05 02:24:08 - main - INFO - 🤖 Predicting mappings with OpenAI...
+2025-10-05 02:24:08 - utils.decorators - INFO - Starting wrapper...
+2025-10-05 02:24:08 - utils.validators - INFO - XML metadata validation passed: 19 nodes
+2025-10-05 02:24:08 - mapper.openai_mapper - INFO - Estimated cost: $0.1281
+2025-10-05 02:24:10 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2025-10-05 02:24:10 - utils.decorators - ERROR - OpenAI API error in wrapper: Error code: 400 - {'error': {'message': "Invalid schema for response_format 'mapping_prediction': In context=(), 'required' is required to be supplied and to be an array including every key in properties. Missing 'transformation_logic'.", 'type': 'invalid_request_error', 'param': 'response_format', 'code': None}}
+2025-10-05 02:24:10 - utils.decorators - ERROR - wrapper failed after 1.94s: Error code: 400 - {'error': {'message': "Invalid schema for response_format 'mapping_prediction': In context=(), 'required' is required to be supplied and to be an array including every key in properties. Missing 'transformation_logic'.", 'type': 'invalid_request_error', 'param': 'response_format', 'code': None}}
+2025-10-05 02:24:10 - utils.decorators - ERROR - run failed after 4.36s: Error code: 400 - {'error': {'message': "Invalid schema for response_format 'mapping_prediction': In context=(), 'required' is required to be supplied and to be an array including every key in properties. Missing 'transformation_logic'.", 'type': 'invalid_request_error', 'param': 'response_format', 'code': None}}
+2025-10-05 02:26:17 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:26:20 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:26:20 - loaders.snowflake_loader - INFO - ✅ Connection test successful!
+2025-10-05 02:26:20 - loaders.snowflake_loader - INFO -    Version: 9.30.0
+2025-10-05 02:26:20 - loaders.snowflake_loader - INFO -    Database: INSURANCE
+2025-10-05 02:26:20 - loaders.snowflake_loader - INFO -    Schema: ETL_MAPPER
+2025-10-05 02:26:20 - loaders.snowflake_loader - INFO -    Role: ACCOUNTADMIN
+2025-10-05 02:26:20 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:26:22 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.SILVER with role ACCOUNTADMIN
+2025-10-05 02:26:22 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:26:23 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:26:24 - loaders.snowflake_loader - INFO - Snowflake connection closed
+2025-10-05 02:26:24 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:26:24 - utils.product_detector - INFO - ✅ Detected product: HO003 with 53.1% confidence
+2025-10-05 02:26:24 - utils.product_detector - INFO - ✅ Detected product: CP001 with 42.1% confidence
+2025-10-05 02:26:24 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:26:24 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:26:24 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:26:24 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:26:24 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 02:26:24 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 02:26:24 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:26:24 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:26:24 - utils.product_detector - INFO - Found 1 relevant mapping files for HO003
+2025-10-05 02:26:24 - utils.product_detector - INFO -   - old_mappings_homeowners.csv (score: 6.0)
+2025-10-05 02:26:24 - utils.product_detector - INFO - Loaded 4 mappings from old_mappings_homeowners.csv
+2025-10-05 02:26:24 - utils.product_detector - INFO - ✅ Loaded 4 total mappings from 1 files
+2025-10-05 02:26:24 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:26:24 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:26:24 - utils.product_detector - INFO - Found 1 relevant mapping files for CP001
+2025-10-05 02:26:24 - utils.product_detector - INFO -   - old_mappings_commercial.csv (score: 4.0)
+2025-10-05 02:26:24 - utils.product_detector - INFO - Loaded 3 mappings from old_mappings_commercial.csv
+2025-10-05 02:26:24 - utils.product_detector - INFO - ✅ Loaded 3 total mappings from 1 files
+2025-10-05 02:26:24 - utils.logging_config - INFO - Logging configured at INFO level
+2025-10-05 02:26:24 - loaders.snowflake_loader - INFO - ✅ Connected to Snowflake: INSURANCE.ETL_MAPPER with role ACCOUNTADMIN
+2025-10-05 02:26:24 - utils.decorators - INFO - Starting run...
+2025-10-05 02:26:24 - main - INFO - 🔍 Auto-detecting product type...
+2025-10-05 02:26:24 - utils.product_detector - INFO - ✅ Detected product: PA001 with 52.8% confidence
+2025-10-05 02:26:24 - main - INFO - ✅ Detected: PA001 with 52.8% confidence
+2025-10-05 02:26:24 - main - INFO - 📊 Extracting XML metadata...
+2025-10-05 02:26:24 - main - INFO - ✅ Extracted 19 XML nodes
+2025-10-05 02:26:24 - main - INFO - ☁️ Loading to Snowflake stage layer...
+2025-10-05 02:26:25 - loaders.snowflake_loader - INFO - ✅ Loaded XML data to ETL_MAPPER.STAGE_XML_PA001
+2025-10-05 02:26:25 - main - INFO - ✅ Loaded to ETL_MAPPER.STAGE_XML_PA001
+2025-10-05 02:26:25 - main - INFO - 🗄️ Fetching Silver layer schema from Snowflake...
+2025-10-05 02:26:25 - utils.schema_manager - INFO - Fetching schema from INSURANCE.SILVER
+2025-10-05 02:26:26 - utils.schema_manager - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:26:26 - main - INFO - ✅ Fetched 137 columns from 7 tables
+2025-10-05 02:26:26 - main - INFO - 📚 Finding relevant reference mappings...
+2025-10-05 02:26:26 - utils.product_detector - INFO - Found 1 relevant mapping files for PA001
+2025-10-05 02:26:26 - utils.product_detector - INFO -   - old_mappings_personal_auto.csv (score: 5.5)
+2025-10-05 02:26:26 - utils.product_detector - INFO - Loaded 8 mappings from old_mappings_personal_auto.csv
+2025-10-05 02:26:26 - utils.product_detector - INFO - ✅ Loaded 8 total mappings from 1 files
+2025-10-05 02:26:26 - main - INFO - ✅ Loaded 8 relevant historical mappings
+2025-10-05 02:26:26 - main - INFO - 💰 Estimating API costs...
+2025-10-05 02:26:26 - main - INFO - 💵 Estimated cost: $0.1281
+2025-10-05 02:26:26 - main - INFO - 🤖 Predicting mappings with OpenAI...
+2025-10-05 02:26:26 - utils.decorators - INFO - Starting wrapper...
+2025-10-05 02:26:26 - utils.validators - INFO - XML metadata validation passed: 19 nodes
+2025-10-05 02:26:26 - mapper.openai_mapper - INFO - Estimated cost: $0.1281
+2025-10-05 02:26:35 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-05 02:26:35 - mapper.openai_mapper - INFO - Actual cost: $0.0118
+2025-10-05 02:26:35 - mapper.openai_mapper - INFO - Cumulative cost: $0.0118
+2025-10-05 02:26:35 - utils.decorators - INFO - wrapper completed in 9.81s
+2025-10-05 02:26:35 - main - INFO - 💾 Saving results...
+2025-10-05 02:26:35 - main - INFO - 📁 Saved 9 mappings to output/mappings_PA001_20251005_022635.csv
+2025-10-05 02:26:35 - main - INFO - ✅ Pipeline completed successfully!
+2025-10-05 02:26:35 - utils.decorators - INFO - run completed in 11.33s

@@ -1,0 +1,10 @@
+source_node,target_table,target_column,transformation_logic,confidence_score,reasoning
+/Session/TransactionInfo/TransactionID,SILVER.QUOTE,quote_id,,0.9,"The sample value 'TXN-QT-20251005-001' indicates a transaction that is related to quotes. Historically, 'QuoteID' from XML maps to 'quote_id' in SILVER.QUOTE."
+/Session/Data/Quote/QuoteNumber,SILVER.QUOTE,quote_number,,1.0,"There is a direct mapping in historical data for 'QuoteNumber' from XML to 'quote_number' in SILVER.QUOTE, both semantically and contextually confirmed."
+/Session/Data/Quote/Status,SILVER.QUOTE,quote_status,,0.85,"'Status' from XML corresponds to 'quote_status' in SILVER.QUOTE, reflecting the state of the quote, with similar naming conventions and data types."
+/Session/Data/Quote/Product/ProductCode,SILVER.QUOTE,product_code,,0.95,ProductCode from XML logically maps to 'product_code' in SILVER.QUOTE as both refer to the identification of the product associated with the quote.
+/Session/Data/Risk/RiskID,SILVER.RISK,risk_id,,1.0,Direct mapping exists in historical data where 'RiskID' in XML translates to 'risk_id' in SILVER.RISK. Consistent with unique identifier role.
+/Session/Data/Risk/Vehicle/Make,SILVER.RISK,vehicle_make,,1.0,"Historical mapping affirmed between XML node 'Make' and SILVER.RISK 'vehicle_make', as it denotes the manufacturer."
+/Session/Data/Risk/Vehicle/Model,SILVER.RISK,vehicle_model,,1.0,Direct match in historical mappings where 'Model' from XML is mapped to 'vehicle_model' in SILVER.RISK. Both pertain to the vehicle's model.
+/Session/Data/Risk/Vehicle/VIN,SILVER.RISK,vehicle_vin,,1.0,VIN in XML aligns directly with 'vehicle_vin' in SILVER.RISK. Both represent the vehicle identification number.
+/Session/TransactionInfo/SourceSystem,SILVER.COVERAGE,source_system,,0.7,"SourceSystem indicates the origin of the data, aligning with 'source_system' in SILVER.COVERAGE, though typically pertains to provenance of transactions."

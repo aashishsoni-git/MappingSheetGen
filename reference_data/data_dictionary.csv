@@ -1,0 +1,29 @@
+table_name,column_name,data_type,description,business_rules,sample_values
+SILVER.POLICY,policy_id,VARCHAR(50),Unique identifier,Must be unique,POL-AUTO-2025-00123
+SILVER.POLICY,policy_number,VARCHAR(100),Policy number,Not null,AUTO-99887
+SILVER.POLICY,product_code,VARCHAR(50),Product code,Must match catalog,PA001
+SILVER.POLICY,policy_type,VARCHAR(50),Policy type,From list,PersonalAuto
+SILVER.POLICY,effective_date,DATE,Start date,Valid date,2025-11-01
+SILVER.POLICY,premium_amount,NUMBER,Premium amount,Positive number,1250.00
+SILVER.QUOTE,quote_id,VARCHAR(50),Quote identifier,Must be unique,Q-AUTO-2025-00123
+SILVER.QUOTE,quote_number,VARCHAR(100),Quote number,Not null,QT-PA-00123
+SILVER.QUOTE,quote_status,VARCHAR(50),Quote status,From list,Quoted
+SILVER.QUOTE,product_code,VARCHAR(50),Product code,Must match catalog,PA001
+SILVER.QUOTE,quoted_premium,NUMBER,Premium amount,Positive,1250.00
+SILVER.RISK,risk_id,VARCHAR(50),Risk identifier,Must be unique,RSK-AUTO-001
+SILVER.RISK,policy_id,VARCHAR(50),Policy FK,Can be null,POL-AUTO-2025-00123
+SILVER.RISK,risk_type,VARCHAR(100),Risk type,Product specific,Vehicle
+SILVER.RISK,vehicle_make,VARCHAR(100),Manufacturer,Auto only,Toyota
+SILVER.RISK,vehicle_model,VARCHAR(100),Model,Auto only,Camry
+SILVER.RISK,vehicle_vin,VARCHAR(50),VIN,17 chars,1HGBH41JXMN109186
+SILVER.RISK,construction_type,VARCHAR(100),Construction,Property only,Frame
+SILVER.RISK,building_year,INTEGER,Build year,1800-current,1995
+SILVER.COVERAGE,coverage_id,VARCHAR(50),Coverage ID,Must be unique,COV-AUTO-001
+SILVER.COVERAGE,policy_id,VARCHAR(50),Policy FK,Can be null,POL-AUTO-2025-00123
+SILVER.COVERAGE,coverage_code,VARCHAR(50),Coverage code,From catalog,BI
+SILVER.COVERAGE,coverage_name,VARCHAR(200),Coverage name,Not null,Bodily Injury Liability
+SILVER.COVERAGE,coverage_limit,NUMBER,Coverage limit,Positive,100000
+SILVER.PAYMENT,payment_id,VARCHAR(50),Payment ID,Must be unique,PAY-HO-001
+SILVER.PAYMENT,policy_id,VARCHAR(50),Policy FK,Can be null,POL-HO-2025-00234
+SILVER.PAYMENT,payment_amount,NUMBER,Payment amount,Positive,1850.00
+SILVER.PAYMENT,due_date,DATE,Due date,Not null,2025-11-01
