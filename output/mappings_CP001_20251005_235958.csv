@@ -1,0 +1,11 @@
+source_node,target_table,target_column,transformation_logic,confidence_score,reasoning
+/Session/TransactionInfo/TransactionID,SILVER.POLICY,transaction_id,,0.95,Direct mapping from historical data for unique transaction identifier.
+/Session/TransactionInfo/SourceSystem,SILVER.POLICY,source_system,,0.95,Direct mapping from historical data for source system name.
+/Session/Data/PolicyData/ID,SILVER.POLICY,policy_id,,0.95,Direct mapping from historical data for unique policy identifier.
+/Session/Data/PolicyData/Number,SILVER.POLICY,policy_number,UPPER(value),0.9,Historical data shows uppercase transformation for policy numbers.
+/Session/Data/PolicyData/LineOfBusiness,SILVER.POLICY,policy_type,,0.9,Direct mapping based on semantic meaning and historical patterns.
+/Session/Data/PolicyData/StatusCode,SILVER.POLICY,policy_status,,0.9,Direct mapping based on historical data for policy status.
+/Session/Data/PolicyData/ProductDetails/ProdCode,SILVER.POLICY,product_code,,0.9,Direct mapping for product code based on historical data.
+/Session/Data/PolicyData/PolicyDates/InceptionDate,SILVER.POLICY,effective_date,TO_DATE(value),0.9,Date conversion needed as per historical mapping patterns.
+/Session/Data/PolicyData/PolicyDates/TerminationDate,SILVER.POLICY,expiration_date,TO_DATE(value),0.9,"Date conversion needed for expiration date, following historical patterns."
+/Session/Data/PolicyData/PremiumInfo/TotalPremium,SILVER.POLICY,premium_amount,"CAST(value AS NUMBER(15,2))",0.9,Decimal conversion is consistent with historical mappings for premium amounts.

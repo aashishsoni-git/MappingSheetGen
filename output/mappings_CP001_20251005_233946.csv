@@ -1,0 +1,11 @@
+source_node,target_table,target_column,transformation_logic,confidence_score,reasoning
+/Session/TransactionInfo/TransactionID,SILVER.POLICY,transaction_id,,0.95,Direct mapping based on historical pattern and unique transaction identifier.
+/Session/TransactionInfo/SourceSystem,SILVER.POLICY,source_system,,0.95,Direct mapping as it matches the source system name used in historical mappings.
+/Session/Data/PolicyData/ID,SILVER.POLICY,policy_id,,0.95,Direct mapping based on historical pattern for policy ID.
+/Session/Data/PolicyData/Number,SILVER.POLICY,policy_number,UPPER(value),0.9,Uppercase transformation is a common pattern for policy numbers in historical mappings.
+/Session/Data/PolicyData/LineOfBusiness,SILVER.POLICY,policy_type,,0.9,Direct mapping based on semantic meaning and historical pattern for policy type.
+/Session/Data/PolicyData/StatusCode,SILVER.POLICY,policy_status,,0.9,Direct mapping as it matches the policy status used in historical mappings.
+/Session/Data/PolicyData/ProductDetails/ProdCode,SILVER.POLICY,product_code,,0.95,Direct mapping based on historical pattern for product code.
+/Session/Data/PolicyData/PolicyDates/InceptionDate,SILVER.POLICY,effective_date,TO_DATE(value),0.9,Date conversion is a common pattern for effective dates in historical mappings.
+/Session/Data/PolicyData/PolicyDates/TerminationDate,SILVER.POLICY,expiration_date,TO_DATE(value),0.9,Date conversion is a common pattern for expiration dates in historical mappings.
+/Session/Data/PolicyData/PremiumInfo/TotalPremium,SILVER.POLICY,premium_amount,"CAST(value AS NUMBER(15,2))",0.9,Decimal conversion is a common pattern for premium amounts in historical mappings.

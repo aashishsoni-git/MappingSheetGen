@@ -1,0 +1,102 @@
+source_node,target_table,target_column,transformation_logic,confidence_score,reasoning
+/Session/TransactionInfo/TransactionID,SILVER.POLICY,POLICY_ID,,0.9,TransactionID can be mapped to POLICY_ID as both represent unique identifiers.
+/Session/TransactionInfo/TransactionType,SILVER.POLICY,POLICY_TYPE,,0.9,TransactionType can be mapped to POLICY_TYPE as both represent the type of policy.
+/Session/TransactionInfo/TransactionDate,SILVER.POLICY,EFFECTIVE_DATE,,0.9,TransactionDate can be mapped to EFFECTIVE_DATE as both represent the date when the policy becomes effective.
+/Session/TransactionInfo/TransactionStatus,SILVER.POLICY,POLICY_STATUS,,0.9,TransactionStatus can be mapped to POLICY_STATUS as both represent the current status of the policy.
+/Session/TransactionInfo/SourceSystem,SILVER.POLICY,DISTRIBUTION_CHANNEL,,0.9,SourceSystem can be mapped to DISTRIBUTION_CHANNEL as both represent the source or channel of the policy.
+/Session/TransactionInfo/ProcessedBy,SILVER.POLICY,CREATED_BY,,0.9,ProcessedBy can be mapped to CREATED_BY as both represent the entity that created the policy.
+/Session/Data/Agent/AgentCode,SILVER.POLICY,ACCOUNT_ID,,0.9,AgentCode can be mapped to ACCOUNT_ID as both represent unique identifiers for the agent.
+/Session/Data/Agent/AgentName,SILVER.POLICY,UNDERWRITING_COMPANY,,0.9,AgentName can be mapped to UNDERWRITING_COMPANY as both represent the name of the entity underwriting the policy.
+/Session/Data/Agent/CommissionRate,SILVER.POLICY,PREMIUM_AMOUNT,,0.9,CommissionRate can be mapped to PREMIUM_AMOUNT as both represent the amount to be paid for the policy.
+/Session/Data/Agent/CommissionAmount,SILVER.POLICY,TOTAL_INSURED_VALUE,,0.9,CommissionAmount can be mapped to TOTAL_INSURED_VALUE as both represent the total value insured under the policy.
+/Session/Data/Policy/PolicyID,SILVER.POLICY,POLICY_ID,,0.9,Direct mapping from PolicyID to POLICY_ID
+/Session/Data/Policy/PolicyNumber,SILVER.POLICY,POLICY_NUMBER,,0.9,Direct mapping from PolicyNumber to POLICY_NUMBER
+/Session/Data/Policy/PolicyType,SILVER.POLICY,POLICY_TYPE,,0.9,Direct mapping from PolicyType to POLICY_TYPE
+/Session/Data/Policy/Product/ProductCode,SILVER.POLICY,PRODUCT_CODE,,0.9,Direct mapping from ProductCode to PRODUCT_CODE
+/Session/Data/Policy/Product/ProductName,SILVER.POLICY,PRODUCT_NAME,,0.9,Direct mapping from ProductName to PRODUCT_NAME
+/Session/Data/Policy/PolicyStatus,SILVER.POLICY,POLICY_STATUS,,0.9,Direct mapping from PolicyStatus to POLICY_STATUS
+/Session/Data/Policy/Dates/EffectiveDate,SILVER.POLICY,EFFECTIVE_DATE,,0.9,Direct mapping from EffectiveDate to EFFECTIVE_DATE
+/Session/Data/Policy/Dates/ExpirationDate,SILVER.POLICY,EXPIRATION_DATE,,0.9,Direct mapping from ExpirationDate to EXPIRATION_DATE
+/Session/Data/Policy/Dates/RenewalDate,SILVER.POLICY,RENEWAL_DATE,,0.9,Direct mapping from RenewalDate to RENEWAL_DATE
+/Session/Data/Policy/PolicyTerm,SILVER.POLICY,POLICY_TERM_MONTHS,,0.9,Direct mapping from PolicyTerm to POLICY_TERM_MONTHS
+/Session/Data/QuoteReference/QuoteID,SILVER.QUOTE,QUOTE_ID,,0.9,Direct mapping from QuoteID to QUOTE_ID
+/Session/Data/QuoteReference/QuoteNumber,SILVER.QUOTE,QUOTE_NUMBER,,0.9,Direct mapping from QuoteNumber to QUOTE_NUMBER
+/Session/Data/QuoteReference/QuoteDate,SILVER.QUOTE,QUOTE_DATE,,0.9,Direct mapping from QuoteDate to QUOTE_DATE
+/Session/Data/QuoteReference/ConversionDate,SILVER.QUOTE,EFFECTIVE_DATE,,0.9,Direct mapping from ConversionDate to EFFECTIVE_DATE
+,SILVER.QUOTE,QUOTE_STATUS,,0.9,No direct mapping available for QUOTE_STATUS
+,SILVER.QUOTE,PRODUCT_CODE,,0.9,No direct mapping available for PRODUCT_CODE
+,SILVER.QUOTE,PRODUCT_NAME,,0.9,No direct mapping available for PRODUCT_NAME
+,SILVER.QUOTE,EXPIRY_DATE,,0.9,No direct mapping available for EXPIRY_DATE
+,SILVER.QUOTE,QUOTED_PREMIUM,,0.9,No direct mapping available for QUOTED_PREMIUM
+,SILVER.QUOTE,DISCOUNT_AMOUNT,,0.9,No direct mapping available for DISCOUNT_AMOUNT
+,SILVER.QUOTE,TAX_AMOUNT,,0.9,No direct mapping available for TAX_AMOUNT
+,SILVER.QUOTE,TOTAL_PREMIUM,,0.9,No direct mapping available for TOTAL_PREMIUM
+,SILVER.QUOTE,ACCOUNT_ID,,0.9,No direct mapping available for ACCOUNT_ID
+,SILVER.QUOTE,AGENT_CODE,,0.9,No direct mapping available for AGENT_CODE
+,SILVER.QUOTE,AGENT_NAME,,0.9,No direct mapping available for AGENT_NAME
+,SILVER.QUOTE,UNDERWRITER_NAME,,0.9,No direct mapping available for UNDERWRITER_NAME
+,SILVER.QUOTE,BUSINESS_TYPE,,0.9,No direct mapping available for BUSINESS_TYPE
+,SILVER.QUOTE,DISTRIBUTION_CHANNEL,,0.9,No direct mapping available for DISTRIBUTION_CHANNEL
+,SILVER.QUOTE,CONVERSION_STATUS,,0.9,No direct mapping available for CONVERSION_STATUS
+,SILVER.QUOTE,CONVERTED_POLICY_ID,,0.9,No direct mapping available for CONVERTED_POLICY_ID
+/Session/Data/Risks/Risk/RiskID,SILVER.RISK,RISK_ID,,0.9,Direct mapping from RiskID to RISK_ID
+/Session/Data/Risks/Risk/RiskNumber,SILVER.RISK,RISK_NUMBER,,0.9,Direct mapping from RiskNumber to RISK_NUMBER
+/Session/Data/Risks/Risk/RiskType,SILVER.RISK,RISK_TYPE,,0.9,Direct mapping from RiskType to RISK_TYPE
+/Session/Data/Risks/Risk/RiskDescription,SILVER.RISK,RISK_DESCRIPTION,,0.9,Direct mapping from RiskDescription to RISK_DESCRIPTION
+/Session/Data/Risks/Risk/Location/AddressLine1,SILVER.RISK,RISK_ADDRESS_LINE1,,0.9,Direct mapping from AddressLine1 to RISK_ADDRESS_LINE1
+/Session/Data/Risks/Risk/Location/AddressLine2,SILVER.RISK,RISK_ADDRESS_LINE2,,0.9,Direct mapping from AddressLine2 to RISK_ADDRESS_LINE2
+/Session/Data/Risks/Risk/Location/City,SILVER.RISK,RISK_CITY,,0.9,Direct mapping from City to RISK_CITY
+/Session/Data/Risks/Risk/Location/State,SILVER.RISK,RISK_STATE,,0.9,Direct mapping from State to RISK_STATE
+/Session/Data/Risks/Risk/Location/ZipCode,SILVER.RISK,RISK_ZIP,,0.9,Direct mapping from ZipCode to RISK_ZIP
+/Session/Data/Risks/Risk/Location/Country,SILVER.RISK,RISK_COUNTRY,,0.9,Direct mapping from Country to RISK_COUNTRY
+/Session/Data/Risks/Risk/PropertyDetails/PropertyType,SILVER.RISK,PROPERTY_VALUE,,0.9,Direct mapping from PropertyType to PROPERTY_VALUE
+/Session/Data/Coverages/Coverage/CoverageID,SILVER.COVERAGE,COVERAGE_ID,,0.9,Direct mapping of CoverageID to COVERAGE_ID
+/Session/Data/Coverages/Coverage/RiskID,SILVER.COVERAGE,RISK_ID,,0.9,Direct mapping of RiskID to RISK_ID
+/Session/Data/Coverages/Coverage/CoverageCode,SILVER.COVERAGE,COVERAGE_CODE,,0.9,Direct mapping of CoverageCode to COVERAGE_CODE
+/Session/Data/Coverages/Coverage/CoverageName,SILVER.COVERAGE,COVERAGE_NAME,,0.9,Direct mapping of CoverageName to COVERAGE_NAME
+/Session/Data/Coverages/Coverage/CoverageType,SILVER.COVERAGE,COVERAGE_TYPE,,0.9,Direct mapping of CoverageType to COVERAGE_TYPE
+/Session/Data/Coverages/Coverage/CoverageCategory,SILVER.COVERAGE,COVERAGE_CATEGORY,,0.9,Direct mapping of CoverageCategory to COVERAGE_CATEGORY
+/Session/Data/Coverages/Coverage/Limit,SILVER.COVERAGE,COVERAGE_LIMIT,,0.9,Direct mapping of Limit to COVERAGE_LIMIT
+/Session/Data/Coverages/Coverage/Deductible,SILVER.COVERAGE,COVERAGE_DEDUCTIBLE,,0.9,Direct mapping of Deductible to COVERAGE_DEDUCTIBLE
+/Session/Data/Coverages/Coverage/Premium,SILVER.COVERAGE,COVERAGE_PREMIUM,,0.9,Direct mapping of Premium to COVERAGE_PREMIUM
+/Session/Data/Coverages/Coverage/EffectiveDate,SILVER.COVERAGE,EFFECTIVE_DATE,,0.9,Direct mapping of EffectiveDate to EFFECTIVE_DATE
+/Session/Data/Coverages/Coverage/ExpirationDate,SILVER.COVERAGE,EXPIRATION_DATE,,0.9,Direct mapping of ExpirationDate to EXPIRATION_DATE
+/Session/Data/Coverages/Coverage/CoinsurancePercent,SILVER.COVERAGE,COINSURANCE_PERCENTAGE,,0.9,Direct mapping of CoinsurancePercent to COINSURANCE_PERCENTAGE
+/Session/Data/Coverages/Coverage/IsMandatory,SILVER.COVERAGE,IS_MANDATORY,,0.9,Direct mapping of IsMandatory to IS_MANDATORY
+/Session/Data/Coverages/Coverage/CoverageBasis,SILVER.COVERAGE,COVERAGE_BASIS,,0.9,Direct mapping of CoverageBasis to COVERAGE_BASIS
+/Session/Data/Payment/PaymentID,SILVER.PAYMENT,PAYMENT_ID,,0.9,Direct mapping from PaymentID to PAYMENT_ID
+/Session/Data/Payment/PaymentNumber,SILVER.PAYMENT,PAYMENT_NUMBER,,0.9,Direct mapping from PaymentNumber to PAYMENT_NUMBER
+/Session/Data/Payment/PaymentType,SILVER.PAYMENT,PAYMENT_TYPE,,0.9,Direct mapping from PaymentType to PAYMENT_TYPE
+/Session/Data/Payment/PaymentMethod,SILVER.PAYMENT,PAYMENT_METHOD,,0.9,Direct mapping from PaymentMethod to PAYMENT_METHOD
+/Session/Data/Payment/PaymentStatus,SILVER.PAYMENT,PAYMENT_STATUS,,0.9,Direct mapping from PaymentStatus to PAYMENT_STATUS
+/Session/Data/Payment/PaymentTerm,SILVER.PAYMENT,PAYMENT_TERM,,0.9,Direct mapping from PaymentTerm to PAYMENT_TERM
+/Session/Data/Payment/PaymentFrequency,SILVER.PAYMENT,PAYMENT_FREQUENCY,,0.9,Direct mapping from PaymentFrequency to PAYMENT_FREQUENCY
+/Session/Data/Payment/TotalInstallments,SILVER.PAYMENT,TOTAL_INSTALLMENTS,,0.9,Direct mapping from TotalInstallments to TOTAL_INSTALLMENTS
+/Session/Data/Payment/InstallmentAmount,SILVER.PAYMENT,PAYMENT_AMOUNT,,0.9,Direct mapping from InstallmentAmount to PAYMENT_AMOUNT
+/Session/Data/Payment/FirstPaymentDate,SILVER.PAYMENT,PAYMENT_DATE,,0.9,Direct mapping from FirstPaymentDate to PAYMENT_DATE
+/Session/Data/Payment/OutstandingAmount,SILVER.PAYMENT,OUTSTANDING_AMOUNT,,0.9,Direct mapping from OutstandingAmount to OUTSTANDING_AMOUNT
+/Session/Data/Payment/BankDetails/AccountHolderName,SILVER.PAYMENT,ACCOUNT_HOLDER_NAME,,0.9,Direct mapping from AccountHolderName to ACCOUNT_HOLDER_NAME
+/Session/Data/Payment/BankDetails/BankName,SILVER.PAYMENT,BANK_NAME,,0.9,Direct mapping from BankName to BANK_NAME
+/Session/Data/Payment/BankDetails/AccountNumber,SILVER.PAYMENT,ACCOUNT_NUMBER,,0.9,Direct mapping from AccountNumber to ACCOUNT_NUMBER
+/Session/Data/Payment/BankDetails/RoutingNumber,SILVER.PAYMENT,ROUTING_NUMBER,,0.9,Direct mapping from RoutingNumber to ROUTING_NUMBER
+/Session/Data/Payment/BankDetails/AccountType,SILVER.PAYMENT,CARD_TYPE,,0.9,Direct mapping from AccountType to CARD_TYPE
+/Session/Data/PolicyAdmin,SILVER.POLICY,POLICY_ID,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,POLICY_NUMBER,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,POLICY_TYPE,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,PRODUCT_CODE,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,PRODUCT_NAME,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,POLICY_STATUS,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,EFFECTIVE_DATE,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,EXPIRATION_DATE,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,CANCELLATION_DATE,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,RENEWAL_DATE,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,POLICY_TERM_MONTHS,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,PREMIUM_AMOUNT,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,TOTAL_INSURED_VALUE,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,UNDERWRITING_COMPANY,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,DISTRIBUTION_CHANNEL,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,ACCOUNT_ID,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin,SILVER.POLICY,QUOTE_ID,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin/CreatedDate,SILVER.POLICY,CREATED_DATE,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin/ModifiedBy,SILVER.POLICY,MODIFIED_DATE,,0.9,Direct mapping from XML to SILVER.POLICY
+/Session/Data/PolicyAdmin/CreatedBy,SILVER.POLICY,CREATED_BY,,0.9,Direct mapping from XML to SILVER.POLICY

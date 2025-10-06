@@ -12,8 +12,6 @@ import pandas as pd
 import os
 import logging
 from dotenv import load_dotenv
-from datetime import datetime
-
 
 load_dotenv()
 setup_logging(log_level='INFO', log_file='logs/etl_mapper.log')
@@ -119,39 +117,29 @@ class ETLMappingPipeline:
         logger.info("✅ Pipeline completed successfully!")
         return predictions
     
-    def _save_results(self, predictions, product_code: str):
-        """Save mapping results to output directory"""
-        timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        output_file = f"output/mappings_{product_code}_{timestamp}.csv"
-        
+    def _save_results(self, predictions, product_code):
+        """Save predictions to CSV"""
         os.makedirs('output', exist_ok=True)
         
-        # Convert predictions.mappings to DataFrame
-        mappings_list = []
-        for m in predictions.mappings:
-            mappings_list.append({
-                'source_node': m.source_node,
-                'target_table': m.target_table,
-                'target_column': m.target_column,
-                'transformation_logic': m.transformation_logic if m.transformation_logic else '',
-                'confidence_score': m.confidence_score,
-                'reasoning': m.reasoning
-            })
+        timestamp = pd.Timestamp.now().strftime('%Y%m%d_%H%M%S')
+        output_file = f'output/mappings_{product_code}_{timestamp}.csv'
         
-        mappings_df = pd.DataFrame(mappings_list)
-        
-        # Save to CSV
+        mappings_df = pd.DataFrame([m.dict() for m in predictions.mappings])
         mappings_df.to_csv(output_file, index=False)
         
-        logger.info(f"✅ Saved {len(mappings_df)} mappings to {output_file}")
+        logger.info(f"📁 Saved {len(mappings_df)} mappings to {output_file}")
         
-        # Print summary (with safe access)
-        if len(mappings_df) > 0:
-            avg_conf = mappings_df['confidence_score'].mean()
-            print(f"Average confidence: {avg_conf:.1%}")
-        
-        return output_file
-
+        # Print summary
+        print("\n" + "="*80)
+        print(f"MAPPING PREDICTIONS - {product_code}")
+        print("="*80)
+        print(f"Total mappings: {len(mappings_df)}")
+        print(f"Average confidence: {mappings_df['confidence_score'].mean():.1%}")
+        print(f"High confidence (≥80%): {len(mappings_df[mappings_df['confidence_score'] >= 0.8])}")
+        print(f"Medium confidence (50-80%): {len(mappings_df[(mappings_df['confidence_score'] >= 0.5) & (mappings_df['confidence_score'] < 0.8)])}")
+        print(f"Low confidence (<50%): {len(mappings_df[mappings_df['confidence_score'] < 0.5])}")
+        print(f"\nOutput file: {output_file}")
+        print("="*80 + "\n")
 
 
 if __name__ == "__main__":

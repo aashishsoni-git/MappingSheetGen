@@ -1,330 +1,423 @@
-"""
-ETL Execution Engine - Executes approved mappings
-"""
-import snowflake.connector
-import pandas as pd
-from datetime import datetime  # ✅ ADD THIS
-from typing import Dict, List, Callable, Optional
+# etl/executor.py - COMPLETE FIXED VERSION
+
+# At the top of executor.py, add file logging setup
 import logging
-import json
+from datetime import datetime
+import pandas as pd
+from typing import Dict, List
+import uuid
+import os
+
+# ✅ Setup file logging
+log_dir = "logs"
+os.makedirs(log_dir, exist_ok=True)
+log_file = os.path.join(log_dir, f"etl_executor_{datetime.now().strftime('%Y%m%d')}.log")
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler(log_file),
+        logging.StreamHandler()
+    ]
+)
 
 logger = logging.getLogger(__name__)
+logger.info(f"ETL Executor initialized. Log file: {log_file}")
+
 
 
 class ETLExecutor:
-    """Execute approved mappings and load to Silver layer"""
+    """Enhanced ETL Executor that inserts data and generates reusable views"""
     
-    def __init__(self, snowflake_config: Dict):
+    def __init__(self, snowflake_config: dict):
         self.config = snowflake_config
+        self._ensure_tables_exist()
+        
+    def get_connection(self):
+        """Create Snowflake connection"""
+        import snowflake.connector
+        return snowflake.connector.connect(
+            account=self.config['account'],
+            user=self.config['user'],
+            password=self.config['password'],
+            warehouse=self.config['warehouse'],
+            database=self.config['database'],
+            schema=self.config['schema'],
+            role=self.config.get('role')
+        )
     
-    def execute_etl_pipeline(self, xml_id: str, mappings: pd.DataFrame, 
-                            mode: str = "Execute & Load",
-                            batch_size: int = 1000,
-                            progress_callback: Optional[Callable] = None) -> Dict:
-        """
-        Execute approved mappings and load to Silver layer
-        
-        Args:
-            xml_id: XML identifier
-            mappings: DataFrame with approved mappings
-            mode: "Validate Only" or "Execute & Load"
-            batch_size: Records per batch
-            progress_callback: Function to report progress
-        
-        Returns:
-            Execution results dictionary
-        """
-        conn = snowflake.connector.connect(**self.config)
+    def _ensure_tables_exist(self):
+        """Ensure required tables exist on initialization"""
+        conn = self.get_connection()
         cursor = conn.cursor()
         
-        execution_id = f"EXEC-{datetime.now().strftime('%Y%m%d%H%M%S')}"
-        
         try:
-            if progress_callback:
-                progress_callback(0.1, "🔍 Generating SQL statements...")
-            
-            # Step 1: Generate SQL from mappings
-            sql_statements = self._generate_sql(xml_id, mappings)
-            
-            if progress_callback:
-                progress_callback(0.3, "✅ Validating SQL...")
-            
-            # Step 2: Validate SQL (always)
-            validation_results = self._validate_sql(cursor, sql_statements)
-            
-            if not validation_results['valid']:
-                return {
-                    'status': 'Failed',
-                    'error': 'SQL validation failed',
-                    'details': validation_results
-                }
-            
-            if mode == "Validate Only":
-                return {
-                    'status': 'Validated',
-                    'sql_statements': sql_statements,
-                    'validation': validation_results
-                }
-            
-            if progress_callback:
-                progress_callback(0.5, "⚡ Executing transformations...")
-            
-            # Step 3: Execute transformations
-            results = {
-                'execution_id': execution_id,
-                'xml_id': xml_id,
-                'status': 'Success',
-                'rows_processed': 0,
-                'rows_inserted': 0,
-                'rows_updated': 0,
-                'rows_failed': 0,
-                'start_time': datetime.now()
-            }
-            
-            # Group by target table
-            table_count = len(mappings.groupby('target_table'))
-            current_table = 0
-            
-            for target_table, group in mappings.groupby('target_table'):
-                if progress_callback:
-                    progress = 0.5 + (0.3 * (current_table / table_count))
-                    progress_callback(progress, f"📊 Loading {target_table}...")
-                
-                table_result = self._load_to_table(
-                    cursor,
-                    xml_id,
-                    target_table,
-                    group
+            # Create VIEW_DEFINITIONS table
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS INSURANCE.ETL_MAPPER.VIEW_DEFINITIONS (
+                    view_id VARCHAR(50) PRIMARY KEY,
+                    xml_id VARCHAR(50),
+                    target_table VARCHAR(500),
+                    view_name VARCHAR(500),
+                    view_query TEXT,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
+                    created_by VARCHAR(100),
+                    is_active BOOLEAN DEFAULT TRUE
                 )
-                
-                results['rows_processed'] += table_result['rows_processed']
-                results['rows_inserted'] += table_result['rows_inserted']
-                results['rows_failed'] += table_result['rows_failed']
-                
-                current_table += 1
+            """)
             
-            if progress_callback:
-                progress_callback(0.9, "🔍 Reconciling data...")
-            
-            # Step 4: Data reconciliation
-            recon_results = self._reconcile_data(cursor, xml_id, mappings)
-            
-            # Step 5: Log execution
-            self._log_execution(cursor, results, recon_results)
+            # Create EXECUTION_HISTORY table
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS INSURANCE.ETL_MAPPER.EXECUTION_HISTORY (
+                    execution_id VARCHAR(50) PRIMARY KEY,
+                    xml_id VARCHAR(50),
+                    executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
+                    tables_processed INT,
+                    total_rows_inserted INT,
+                    successful_tables TEXT,
+                    failed_tables TEXT,
+                    status VARCHAR(50)
+                )
+            """)
             
             conn.commit()
-            
-            results['end_time'] = datetime.now()
-            results['duration_sec'] = (results['end_time'] - results['start_time']).total_seconds()
-            results['reconciliation'] = recon_results
-            
-            if progress_callback:
-                progress_callback(1.0, "✅ Complete!")
-            
-            return results
+            logger.info("✅ Required tables ensured")
             
         except Exception as e:
-            conn.rollback()
-            logger.error(f"ETL execution failed: {e}")
-            
-            if progress_callback:
-                progress_callback(1.0, f"❌ Failed: {str(e)}")
-            
-            return {
-                'status': 'Failed',
-                'error': str(e),
-                'execution_id': execution_id
-            }
+            logger.error(f"Error ensuring tables: {e}")
         finally:
             cursor.close()
             conn.close()
     
-    def _generate_sql(self, xml_id: str, mappings_df: pd.DataFrame) -> List[str]:
-        """Generate INSERT/MERGE SQL statements from mappings"""
-        sql_statements = []
+    def execute_mappings(self, xml_id: str, mappings_df: pd.DataFrame) -> Dict:
+        """
+        Execute ETL mappings:
+        1. Insert data from staging to Silver layer
+        2. Generate and save VIEW queries for reuse
+        """
+        execution_id = str(uuid.uuid4())[:8]
+        conn = self.get_connection()
+        cursor = conn.cursor()
         
-        for target_table, group in mappings_df.groupby('target_table'):
-            # Build column list
-            columns = group['target_column'].tolist()
-            
-            # Build SELECT with transformations
-            select_parts = []
-            for _, row in group.iterrows():
-                source_node = row['source_node']
-                transformation = row['transformation_logic']
-                target_col = row['target_column']
-                
-                if transformation and transformation.strip():
-                    # Apply transformation
-                    # Replace 'value' with actual XML path
-                    trans = transformation.replace('value', f"xml_content:{source_node}")
-                    select_part = f"{trans} AS {target_col}"
-                else:
-                    # Direct mapping
-                    select_part = f"xml_content:{source_node}::STRING AS {target_col}"
-                
-                select_parts.append(select_part)
-            
-            # Generate MERGE statement (upsert)
-            primary_key = columns[0]  # Assume first column is PK
-            
-            sql = f"""
-MERGE INTO {target_table} AS target
-USING (
-    SELECT 
-        {',\n        '.join(select_parts)}
-    FROM INSURANCE.ETL_MAPPER.STAGE_XML_RAW
-    WHERE xml_id = '{xml_id}'
-) AS source
-ON target.{primary_key} = source.{primary_key}
-WHEN MATCHED THEN
-    UPDATE SET {', '.join([f'{col} = source.{col}' for col in columns[1:]])}
-WHEN NOT MATCHED THEN
-    INSERT ({', '.join(columns)})
-    VALUES ({', '.join([f'source.{col}' for col in columns])})
-            """
-            
-            sql_statements.append(sql.strip())
-        
-        return sql_statements
-    
-    def _validate_sql(self, cursor, sql_statements: List[str]) -> Dict:
-        """Validate SQL without executing"""
-        results = {'valid': True, 'errors': [], 'validated_statements': 0}
-        
-        for idx, sql in enumerate(sql_statements):
-            try:
-                # Snowflake doesn't support EXPLAIN for MERGE
-                # So we'll do a dry-run check
-                cursor.execute(sql.replace('MERGE', 'MERGE /*+ DRY_RUN */'))
-                results['validated_statements'] += 1
-            except Exception as e:
-                results['valid'] = False
-                results['errors'].append({
-                    'statement_index': idx,
-                    'error': str(e),
-                    'sql': sql[:200]  # First 200 chars
-                })
-        
-        return results
-    
-    def _load_to_table(self, cursor, xml_id: str, target_table: str, 
-                       mappings: pd.DataFrame) -> Dict:
-        """Load data to specific table"""
-        sql = self._generate_sql(xml_id, mappings)[0]
+        summary = {
+            'execution_id': execution_id,
+            'tables_processed': 0,
+            'total_rows': 0,
+            'successful_tables': [],
+            'failed_tables': [],
+            'errors': [],
+            'view_queries': {}
+        }
         
         try:
-            cursor.execute(sql)
-            rows_affected = cursor.rowcount
+            # Group mappings by target table
+            tables = mappings_df['target_table'].unique()
+            logger.info(f"Processing {len(tables)} tables for xml_id: {xml_id}")
             
-            return {
-                'table': target_table,
-                'rows_processed': rows_affected,
-                'rows_inserted': rows_affected,
-                'rows_updated': 0,
-                'rows_failed': 0
-            }
-        except Exception as e:
-            logger.error(f"Failed to load {target_table}: {e}")
-            return {
-                'table': target_table,
-                'rows_processed': 0,
-                'rows_inserted': 0,
-                'rows_updated': 0,
-                'rows_failed': 1,
-                'error': str(e)
-            }
-    
-    def _reconcile_data(self, cursor, xml_id: str, mappings_df: pd.DataFrame) -> Dict:
-        """Reconcile source vs target data counts"""
-        recon_results = {}
-        
-        # Get source count (assuming 1 XML = 1 record for simplicity)
-        cursor.execute(f"""
-            SELECT COUNT(*) 
-            FROM INSURANCE.ETL_MAPPER.STAGE_XML_RAW 
-            WHERE xml_id = '{xml_id}'
-        """)
-        source_count = cursor.fetchone()[0]
-        
-        # Get target counts per table
-        for target_table in mappings_df['target_table'].unique():
-            try:
-                # Get latest records for this XML
-                cursor.execute(f"""
-                    SELECT COUNT(*) 
-                    FROM {target_table}
-                    WHERE created_date >= (
-                        SELECT upload_timestamp 
-                        FROM INSURANCE.ETL_MAPPER.STAGE_XML_RAW 
-                        WHERE xml_id = '{xml_id}'
-                    )
-                """)
-                target_count = cursor.fetchone()[0]
-                
-                recon_results[target_table] = {
-                    'source_count': source_count,
-                    'target_count': target_count,
-                    'match_count': min(source_count, target_count),
-                    'mismatch_count': abs(source_count - target_count),
-                    'status': 'Pass' if source_count == target_count else 'Warning'
-                }
-            except Exception as e:
-                logger.warning(f"Could not reconcile {target_table}: {e}")
-                recon_results[target_table] = {
-                    'error': str(e),
-                    'status': 'Failed'
-                }
-        
-        return recon_results
-    
-    def _log_execution(self, cursor, results: Dict, recon: Dict):
-        """Log execution to tracking table"""
-        try:
-            cursor.execute("""
-                INSERT INTO INSURANCE.ETL_MAPPER.ETL_EXECUTION_LOG 
-                (execution_id, xml_id, target_table, execution_start, execution_end,
-                 rows_processed, rows_inserted, rows_updated, rows_failed, 
-                 execution_status, error_message, executed_by)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-            """, (
-                results['execution_id'],
-                results['xml_id'],
-                'ALL',  # Aggregate for all tables
-                results['start_time'],
-                results.get('end_time'),
-                results['rows_processed'],
-                results['rows_inserted'],
-                results.get('rows_updated', 0),
-                results['rows_failed'],
-                results['status'],
-                results.get('error'),
-                'system'
-            ))
-            
-            # Log reconciliation
-            for table, recon_data in recon.items():
-                if 'error' not in recon_data:
-                    recon_id = f"RECON-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+            for table in tables:
+                try:
+                    table_mappings = mappings_df[mappings_df['target_table'] == table]
+                    logger.info(f"Processing table: {table} with {len(table_mappings)} mappings")
                     
-                    cursor.execute("""
-                        INSERT INTO INSURANCE.ETL_MAPPER.RECONCILIATION_RESULTS
-                        (recon_id, execution_id, source_count, target_count,
-                         match_count, mismatch_count, missing_in_target, extra_in_target,
-                         reconciliation_status, details, created_timestamp)
-                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, PARSE_JSON(%s), %s)
-                    """, (
-                        recon_id,
-                        results['execution_id'],
-                        recon_data['source_count'],
-                        recon_data['target_count'],
-                        recon_data['match_count'],
-                        recon_data['mismatch_count'],
-                        0,  # missing_in_target
-                        0,  # extra_in_target
-                        recon_data['status'],
-                        json.dumps({'table': table}),
-                        datetime.now()
-                    ))
+                    # ✅ Step 1: Insert data to Silver layer
+                    rows_inserted = self._insert_to_silver(
+                        cursor, xml_id, table, table_mappings
+                    )
+                    
+                    # ✅ Step 2: Generate reusable VIEW query
+                    view_query = self._generate_view_query(
+                        xml_id, table, table_mappings
+                    )
+                    
+                    # ✅ Step 3: Save VIEW definition to database
+                    self._save_view_definition(
+                        cursor, xml_id, table, view_query
+                    )
+                    
+                    summary['tables_processed'] += 1
+                    summary['total_rows'] += rows_inserted
+                    summary['successful_tables'].append(table)
+                    summary['view_queries'][table] = view_query
+                    
+                    # Update execution status
+                    self._update_mapping_status(
+                        cursor, xml_id, table, 'Success', execution_id
+                    )
+                    
+                    logger.info(f"✅ {table}: Inserted {rows_inserted} rows")
+                    
+                except Exception as e:
+                    logger.error(f"❌ Failed to process {table}: {e}")
+                    import traceback
+                    logger.error(traceback.format_exc())
+                    
+                    summary['failed_tables'].append(table)
+                    summary['errors'].append(str(e))
+                    
+                    self._update_mapping_status(
+                        cursor, xml_id, table, 'Failed', execution_id, str(e)
+                    )
+            
+            # Record execution in history
+            self._record_execution(cursor, execution_id, xml_id, summary)
+            
+            conn.commit()
+            
         except Exception as e:
-            logger.error(f"Failed to log execution: {e}")
+            conn.rollback()
+            logger.error(f"Execution failed: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
+            raise
+        finally:
+            cursor.close()
+            conn.close()
+        
+        return summary
+    
+    def _get_staging_data_info(self, cursor, xml_id: str) -> tuple:
+        """
+        Find and return the staging table structure
+        Returns: (staging_table_name, has_processed_flag)
+        """
+        # Check XML_STAGING table
+        try:
+            cursor.execute(f"""
+                SELECT COUNT(*) as cnt, 
+                       COUNT(CASE WHEN processed = TRUE THEN 1 END) as processed_cnt
+                FROM INSURANCE.ETL_MAPPER.XML_STAGING
+                WHERE xml_id = '{xml_id}'
+            """)
+            result = cursor.fetchone()
+            if result and result[0] > 0:
+                logger.info(f"Found {result[0]} rows in XML_STAGING, {result[1]} already processed")
+                return "INSURANCE.ETL_MAPPER.XML_STAGING", True
+        except Exception as e:
+            logger.debug(f"XML_STAGING check failed: {e}")
+        
+        # Check for dynamic staging table
+        try:
+            cursor.execute(f"""
+                SELECT COUNT(*) as cnt
+                FROM INSURANCE.ETL_MAPPER.STG_XML_{xml_id}
+            """)
+            result = cursor.fetchone()
+            if result and result[0] > 0:
+                logger.info(f"Found {result[0]} rows in STG_XML_{xml_id}")
+                return f"INSURANCE.ETL_MAPPER.STG_XML_{xml_id}", False
+        except Exception as e:
+            logger.debug(f"Dynamic staging table check failed: {e}")
+        
+        raise Exception(f"No staging data found for xml_id: {xml_id}")
+    
+    def _insert_to_silver(self, cursor, xml_id: str, table: str, mappings: pd.DataFrame) -> int:
+        """
+        Insert data from XML staging to Silver layer table
+        """
+        # Find staging table
+        staging_table, has_processed_flag = self._get_staging_data_info(cursor, xml_id)
+        logger.info(f"Using staging table: {staging_table}")
+        
+        # ✅ FIX 1: Remove duplicate columns - keep only the first occurrence
+        seen_columns = set()
+        unique_mappings = []
+        
+        for _, mapping in mappings.iterrows():
+            target_col = mapping['target_column']
+            if target_col not in seen_columns:
+                seen_columns.add(target_col)
+                unique_mappings.append(mapping)
+            else:
+                logger.warning(f"⚠️ Skipping duplicate column: {target_col}")
+        
+        if not unique_mappings:
+            logger.error(f"No unique mappings for {table}")
+            return 0
+        
+        # Build column mappings
+        columns = []
+        select_expressions = []
+        
+        for mapping in unique_mappings:
+            target_col = mapping['target_column']
+            source_node = mapping['source_node']
+            transformation = mapping.get('transformation_logic', '')
+            
+            columns.append(target_col)
+            
+            # Apply transformation if specified
+            if transformation and str(transformation).strip() and str(transformation) != 'None':
+                clean_transform = str(transformation).replace('\n', ' ').strip()
+                # ✅ FIX 2: Wrap with COALESCE to handle NULLs in non-nullable columns
+                select_expressions.append(f"COALESCE({clean_transform}, '') AS {target_col}")
+            else:
+                # ✅ FIX 3: Use proper nested path extraction with colon notation
+                # Handle nested paths like "Data.PolicyData.PolicyNumber"
+                path_parts = source_node.split('/')
+                
+                # Build the path using colon notation
+                if len(path_parts) > 1:
+                    # Nested path: stg.xml_data:Data:PolicyData:PolicyNumber
+                    path = ':'.join(path_parts)
+                    select_expressions.append(
+                        f"COALESCE(stg.xml_data:{path}::STRING, '') AS {target_col}"
+                    )
+                else:
+                    # Simple path: stg.xml_data:PolicyNumber
+                    select_expressions.append(
+                        f"COALESCE(stg.xml_data:{source_node}::STRING, '') AS {target_col}"
+                    )
+        
+        # Build INSERT statement
+        where_clause = f"WHERE stg.xml_id = '{xml_id}'"
+        if has_processed_flag:
+            where_clause += " AND stg.processed = FALSE"
+        
+        insert_sql = f"""
+        INSERT INTO {table} ({', '.join(columns)})
+        SELECT {', '.join(select_expressions)}
+        FROM {staging_table} stg
+        {where_clause}
+        """
+        
+        logger.info(f"Executing INSERT for {table}")
+        logger.debug(f"Columns ({len(columns)}): {columns}")
+        logger.debug(f"SQL: {insert_sql[:500]}...")
+        
+        try:
+            cursor.execute(insert_sql)
+            rows_inserted = cursor.rowcount
+            
+            logger.info(f"Inserted {rows_inserted} rows into {table}")
+            
+            # Mark staging records as processed if flag exists
+            if has_processed_flag and rows_inserted > 0:
+                cursor.execute(f"""
+                    UPDATE {staging_table}
+                    SET processed = TRUE, 
+                        processed_at = CURRENT_TIMESTAMP()
+                    WHERE xml_id = '{xml_id}'
+                    AND processed = FALSE
+                """)
+                logger.info(f"Marked {cursor.rowcount} staging rows as processed")
+            
+            return rows_inserted
+            
+        except Exception as e:
+            logger.error(f"Insert failed for {table}: {e}")
+            logger.error(f"Full SQL: {insert_sql}")
+            raise
+
+    
+    def _generate_view_query(self, xml_id: str, table: str, mappings: pd.DataFrame) -> str:
+        """Generate reusable VIEW query"""
+        staging_table = f"INSURANCE.ETL_MAPPER.XML_STAGING"
+        table_name = table.split('.')[-1]
+        view_name = f"INSURANCE.ETL_MAPPER.{table_name}_VW"
+        
+        # Build column mappings
+        select_expressions = []
+        
+        for _, mapping in mappings.iterrows():
+            target_col = mapping['target_column']
+            source_node = mapping['source_node']
+            transformation = mapping.get('transformation_logic', '')
+            
+            if transformation and str(transformation).strip() and str(transformation) != 'None':
+                clean_transform = str(transformation).replace('\n', ' ').strip()
+                select_expressions.append(f"    {clean_transform} AS {target_col}")
+            else:
+                clean_node = source_node.split('/')[-1] if '/' in source_node else source_node
+                select_expressions.append(
+                    f"    stg.xml_data:{clean_node}::STRING AS {target_col}"
+                )
+        
+        # Generate CREATE OR REPLACE VIEW statement
+        view_query = f"""-- Reusable VIEW for {table}
+-- Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+
+CREATE OR REPLACE VIEW {view_name} AS
+SELECT
+{',\n'.join(select_expressions)}
+FROM {staging_table} stg
+WHERE stg.target_table = '{table}'
+  AND stg.processed = FALSE;
+
+-- Usage Example:
+-- INSERT INTO {table} SELECT * FROM {view_name};
+"""
+        
+        return view_query
+    
+    def _save_view_definition(self, cursor, xml_id: str, table: str, view_query: str):
+        """Save VIEW definition to database"""
+        view_id = str(uuid.uuid4())[:8]
+        table_name = table.split('.')[-1]
+        view_name = f"{table_name}_VW"
+        
+        cursor.execute("""
+            INSERT INTO INSURANCE.ETL_MAPPER.VIEW_DEFINITIONS
+            (view_id, xml_id, target_table, view_name, view_query, created_by)
+            VALUES (%s, %s, %s, %s, %s, %s)
+        """, (view_id, xml_id, table, view_name, view_query, 'etl_executor'))
+        
+        logger.info(f"💾 Saved VIEW definition: {view_name}")
+    
+    def _update_mapping_status(self, cursor, xml_id: str, table: str, 
+                               status: str, execution_id: str, error: str = None):
+        """Update mapping execution status"""
+        cursor.execute("""
+            UPDATE INSURANCE.ETL_MAPPER.GENERATED_MAPPINGS
+            SET execution_status = %s,
+                last_execution_id = %s,
+                last_execution_at = CURRENT_TIMESTAMP(),
+                execution_error = %s
+            WHERE xml_id = %s AND target_table = %s
+        """, (status, execution_id, error, xml_id, table))
+    
+    def _record_execution(self, cursor, execution_id: str, xml_id: str, summary: Dict):
+        """Record execution in history table"""
+        status = 'Success' if not summary['failed_tables'] else 'Partial' if summary['successful_tables'] else 'Failed'
+        
+        cursor.execute("""
+            INSERT INTO INSURANCE.ETL_MAPPER.EXECUTION_HISTORY
+            (execution_id, xml_id, tables_processed, total_rows_inserted, 
+             successful_tables, failed_tables, status)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+        """, (
+            execution_id, xml_id, summary['tables_processed'],
+            summary['total_rows'], 
+            ','.join(summary['successful_tables']) if summary['successful_tables'] else '',
+            ','.join(summary['failed_tables']) if summary['failed_tables'] else '',
+            status
+        ))
+    
+    def get_saved_views(self, xml_id: str = None) -> pd.DataFrame:
+        """Retrieve saved VIEW definitions"""
+        conn = self.get_connection()
+        cursor = conn.cursor()
+        
+        query = """
+            SELECT view_id, xml_id, target_table, view_name, view_query, created_at
+            FROM INSURANCE.ETL_MAPPER.VIEW_DEFINITIONS
+            WHERE is_active = TRUE
+        """
+        
+        if xml_id:
+            query += f" AND xml_id = '{xml_id}'"
+        
+        query += " ORDER BY created_at DESC"
+        
+        try:
+            cursor.execute(query)
+            df = cursor.fetch_pandas_all()
+            if not df.empty:
+                df.columns = df.columns.str.lower()
+            return df
+        except Exception as e:
+            logger.error(f"Error loading saved views: {e}")
+            return pd.DataFrame(columns=['view_id', 'xml_id', 'target_table', 'view_name', 'view_query', 'created_at'])
+        finally:
+            cursor.close()
+            conn.close()

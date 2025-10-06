@@ -1,0 +1,13 @@
+source_node,target_table,target_column,transformation_logic,confidence_score,reasoning
+/Session/TransactionInfo/TransactionID,SILVER.POLICY,transaction_id,,0.95,The historical mappings show a direct mapping for TransactionID to transaction_id in SILVER.POLICY.
+/Session/TransactionInfo/SourceSystem,SILVER.POLICY,source_system,,0.95,The historical mappings indicate a direct mapping for SourceSystem to source_system in SILVER.POLICY.
+/Session/Data/PolicyData/ID,SILVER.POLICY,policy_id,,0.9,The historical mappings show a direct mapping for PolicyData/ID to policy_id in SILVER.POLICY.
+/Session/Data/PolicyData/Number,SILVER.POLICY,policy_number,UPPER(value),0.9,The historical mappings suggest using UPPER transformation for policy numbers.
+/Session/Data/PolicyData/LineOfBusiness,SILVER.POLICY,policy_type,,0.85,LineOfBusiness maps to policy_type based on semantic meaning and historical patterns.
+/Session/Data/PolicyData/StatusCode,SILVER.POLICY,policy_status,,0.85,StatusCode maps to policy_status as per historical mappings and semantic meaning.
+/Session/Data/PolicyData/ProductDetails/ProdCode,SILVER.POLICY,product_code,,0.9,Historical mappings show a direct mapping for ProdCode to product_code.
+/Session/Data/PolicyData/PolicyDates/InceptionDate,SILVER.POLICY,effective_date,TO_DATE(value),0.9,InceptionDate requires date conversion to match effective_date in SILVER.POLICY.
+/Session/Data/PolicyData/PremiumInfo/TotalPremium,SILVER.POLICY,premium_amount,"CAST(value AS NUMBER(15,2))",0.9,TotalPremium maps to premium_amount with a decimal conversion as per historical mappings.
+/Session/Data/PolicyData/UnderwritingInfo/UnderwriterID,SILVER.POLICY,underwriter_id,,0.8,UnderwriterID maps to underwriter_id based on semantic meaning and data dictionary.
+/Session/Data/PolicyData/UnderwritingInfo/UnderwriterName,SILVER.POLICY,created_by,,0.7,"UnderwriterName is mapped to created_by due to lack of a direct match, inferred from context."
+/Session/Data/PolicyData/PolicyDates/TerminationDate,SILVER.POLICY,expiration_date,TO_DATE(value),0.85,"TerminationDate maps to expiration_date with date conversion, inferred from business rules."

@@ -1,13 +1,13 @@
 """
-Database helper functions for ETL workflow - FIXED for Snowflake
+Database helper functions - FINAL FIX
 """
 import snowflake.connector
 import pandas as pd
 from datetime import datetime
-from typing import Dict, List, Optional
+from typing import Dict
 import logging
 import json
-import xml.etree.ElementTree as ET
+import os 
 
 logger = logging.getLogger(__name__)
 
@@ -22,70 +22,101 @@ class DatabaseHelper:
         """Get Snowflake connection"""
         return snowflake.connector.connect(**self.config)
     
+    # utils/database_helper.py - Add/Update these methods
+
     def save_xml_to_stage(self, xml_file_path: str, xml_content: str, 
-                         product_code: str, uploaded_by: str = "system") -> str:
+                        product_code: str, uploaded_by: str) -> str:
         """
-        Save XML to STAGE_XML_RAW table
-        
-        Returns:
-            xml_id: Unique identifier for this XML
+        Save XML to database AND load into staging table with VARIANT
         """
         conn = self.get_connection()
         cursor = conn.cursor()
         
         try:
-            # Generate unique ID
             xml_id = f"XML-{datetime.now().strftime('%Y%m%d%H%M%S')}"
             
-            # Parse XML to JSON (simplified)
-            try:
-                tree = ET.parse(xml_file_path)
-                root = tree.getroot()
-                xml_json = self._xml_to_json(root)
-                xml_json_str = json.dumps(xml_json)
-            except Exception as e:
-                logger.warning(f"Could not parse XML to JSON: {e}. Storing minimal info.")
-                xml_json_str = json.dumps({
-                    'filename': xml_file_path.split('/')[-1],
-                    'size': len(xml_content)
-                })
-            
-            metadata = json.dumps({
-                'filename': xml_file_path.split('/')[-1],
-                'size': len(xml_content)
-            })
-            
-            # ✅ FIX: Use %s for Snowflake (not ?)
+            # 1. Save XML metadata
             cursor.execute("""
-                INSERT INTO INSURANCE.ETL_MAPPER.STAGE_XML_RAW 
-                (xml_id, product_code, xml_filename, xml_content, 
-                 upload_timestamp, uploaded_by, processing_status, metadata)
-                VALUES (%s, %s, %s, PARSE_JSON(%s), %s, %s, %s, PARSE_JSON(%s))
-            """, (
-                xml_id,
-                product_code,
-                xml_file_path.split('/')[-1],
-                xml_json_str,
-                datetime.now(),
-                uploaded_by,
-                'Mapped',
-                metadata
-            ))
+                INSERT INTO INSURANCE.ETL_MAPPER.XML_FILES
+                (xml_id, file_name, file_path, product_code, uploaded_by, upload_date)
+                VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP())
+            """, (xml_id, os.path.basename(xml_file_path), xml_file_path, product_code, uploaded_by))
+            
+            # 2. ✅ Create staging table if not exists
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS INSURANCE.ETL_MAPPER.XML_STAGING (
+                    staging_id VARCHAR(50) PRIMARY KEY DEFAULT UUID_STRING(),
+                    xml_id VARCHAR(50) NOT NULL,
+                    xml_data VARIANT,
+                    target_table VARCHAR(500),
+                    processed BOOLEAN DEFAULT FALSE,
+                    processed_at TIMESTAMP,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
+                )
+            """)
+            
+            # 3. ✅ Parse and load XML into staging as VARIANT
+            # Parse XML to JSON-like structure
+            import xml.etree.ElementTree as ET
+            
+            root = ET.fromstring(xml_content)
+            
+            # Convert XML to dict/JSON structure
+            def xml_to_dict(element):
+                """Convert XML element to dictionary"""
+                result = {}
+                
+                # Add attributes
+                if element.attrib:
+                    result.update(element.attrib)
+                
+                # Add text content
+                if element.text and element.text.strip():
+                    if len(element) == 0:  # Leaf node
+                        return element.text.strip()
+                    result['_text'] = element.text.strip()
+                
+                # Add children
+                for child in element:
+                    child_data = xml_to_dict(child)
+                    if child.tag in result:
+                        # Handle multiple children with same tag
+                        if not isinstance(result[child.tag], list):
+                            result[child.tag] = [result[child.tag]]
+                        result[child.tag].append(child_data)
+                    else:
+                        result[child.tag] = child_data
+                
+                return result if result else element.text
+            
+            xml_dict = xml_to_dict(root)
+            
+            # 4. ✅ Insert parsed XML as VARIANT (JSON string)
+            import json
+            xml_json = json.dumps(xml_dict)
+            
+            cursor.execute("""
+                INSERT INTO INSURANCE.ETL_MAPPER.XML_STAGING
+                (xml_id, xml_data, target_table, processed)
+                VALUES (%s, PARSE_JSON(%s), %s, FALSE)
+            """, (xml_id, xml_json, 'UNKNOWN'))
+            
+            logger.info(f"✅ XML loaded into staging: {xml_id}")
             
             conn.commit()
-            logger.info(f"✅ Saved XML to stage: {xml_id}")
             return xml_id
             
         except Exception as e:
+            logger.error(f"Error saving XML to stage: {e}")
             conn.rollback()
-            logger.error(f"Failed to save XML: {e}")
             raise
         finally:
             cursor.close()
             conn.close()
+
     
     def save_mappings_to_db(self, xml_id: str, mappings_result) -> int:
-        """Save generated mappings to GENERATED_MAPPINGS table"""
+        """Save generated mappings"""
         conn = self.get_connection()
         cursor = conn.cursor()
         
@@ -116,7 +147,7 @@ class DatabaseHelper:
                 count += 1
             
             conn.commit()
-            logger.info(f"✅ Saved {count} mappings to database")
+            logger.info(f"✅ Saved {count} mappings")
             return count
             
         except Exception as e:
@@ -130,249 +161,259 @@ class DatabaseHelper:
     def load_pending_mappings(self) -> pd.DataFrame:
         """Load mappings with Pending approval status"""
         conn = self.get_connection()
-        
         try:
             query = """
-                SELECT 
-                    mapping_id,
-                    xml_id,
-                    source_node,
-                    target_table,
-                    target_column,
-                    transformation_logic,
-                    confidence_score,
-                    reasoning,
-                    approval_status,
-                    user_notes
+                SELECT mapping_id, xml_id, source_node, target_table, target_column,
+                       transformation_logic, confidence_score, reasoning, 
+                       approval_status, user_notes
                 FROM INSURANCE.ETL_MAPPER.GENERATED_MAPPINGS
                 WHERE approval_status = 'Pending'
-                ORDER BY xml_id, target_table, confidence_score DESC
+                ORDER BY xml_id, confidence_score DESC
             """
-            
             df = pd.read_sql(query, conn)
+            df.columns = df.columns.str.lower()  # Fix uppercase column names
             return df
-            
         except Exception as e:
-            logger.error(f"Failed to load pending mappings: {e}")
+            logger.error(f"Error: {e}")
             return pd.DataFrame()
         finally:
             conn.close()
     
+    # def load_approved_mappings(self) -> pd.DataFrame:
+    #     conn = self.get_connection()
+    #     try:
+    #         query = """
+    #             SELECT mapping_id, xml_id, source_node, target_table, target_column,
+    #                    transformation_logic, confidence_score, execution_status
+    #             FROM INSURANCE.ETL_MAPPER.GENERATED_MAPPINGS
+    #             WHERE approval_status = 'Approved'
+    #               AND execution_status IN ('Not Started', 'Failed')
+    #             ORDER BY xml_id
+    #         """
+    #         return pd.read_sql(query, conn)
+    #     except Exception as e:
+    #         logger.error(f"Error: {e}")
+    #         return pd.DataFrame()
+    #     finally:
+    #         conn.close()
+
     def load_approved_mappings(self) -> pd.DataFrame:
-        """Load approved mappings ready for execution"""
+        """Load approved mappings using Snowflake's native pandas support"""
         conn = self.get_connection()
-        
         try:
             query = """
-                SELECT 
-                    mapping_id,
-                    xml_id,
-                    source_node,
-                    target_table,
-                    target_column,
-                    transformation_logic,
-                    confidence_score,
-                    execution_status
+                SELECT mapping_id, xml_id, source_node, target_table, target_column,
+                    transformation_logic, confidence_score, execution_status
                 FROM INSURANCE.ETL_MAPPER.GENERATED_MAPPINGS
                 WHERE approval_status = 'Approved'
-                  AND execution_status IN ('Not Started', 'Failed')
-                ORDER BY xml_id, target_table
+                AND execution_status IN ('Not Started', 'Failed')
+                ORDER BY xml_id
             """
             
-            df = pd.read_sql(query, conn)
+            # ✅ Use Snowflake's native fetch_pandas_all() method
+            cursor = conn.cursor()
+            cursor.execute(query)
+            df = cursor.fetch_pandas_all()
+            cursor.close()
+            
+            # ✅ Normalize column names to lowercase
+            df.columns = df.columns.str.lower()
+            
+            logger.info(f"Loaded {len(df)} approved mappings")
+            logger.debug(f"Columns: {df.columns.tolist()}")
+            
             return df
             
         except Exception as e:
-            logger.error(f"Failed to load approved mappings: {e}")
-            return pd.DataFrame()
+            logger.error(f"Error loading approved mappings: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
+            
+            # Return empty DataFrame with correct structure
+            return pd.DataFrame(columns=[
+                'mapping_id', 'xml_id', 'source_node', 'target_table', 
+                'target_column', 'transformation_logic', 'confidence_score', 
+                'execution_status'
+            ])
         finally:
             conn.close()
+
     
-    def approve_mappings(self, xml_id: str, mappings_df: pd.DataFrame, 
-                        approved_by: str = "system") -> int:
-        """Approve mappings for execution"""
+    def approve_mappings(self, xml_id: str, mappings_df: pd.DataFrame, approved_by: str = "system") -> int:
         conn = self.get_connection()
         cursor = conn.cursor()
-        
         try:
             count = 0
             for _, row in mappings_df.iterrows():
                 cursor.execute("""
                     UPDATE INSURANCE.ETL_MAPPER.GENERATED_MAPPINGS
-                    SET approval_status = 'Approved',
-                        approved_by = %s,
-                        approved_date = %s,
-                        transformation_logic = %s,
-                        user_notes = %s
+                    SET approval_status = 'Approved', approved_by = %s, approved_date = %s,
+                        transformation_logic = %s, user_notes = %s
                     WHERE mapping_id = %s
-                """, (
-                    approved_by,
-                    datetime.now(),
-                    row.get('transformation_logic', ''),
-                    row.get('user_notes', ''),
-                    row['mapping_id']
-                ))
+                """, (approved_by, datetime.now(), row.get('transformation_logic', ''), 
+                     row.get('user_notes', ''), row['mapping_id']))
                 count += 1
-            
             conn.commit()
-            logger.info(f"✅ Approved {count} mappings")
             return count
-            
-        except Exception as e:
-            conn.rollback()
-            logger.error(f"Failed to approve mappings: {e}")
-            raise
         finally:
             cursor.close()
             conn.close()
     
     def reject_mappings(self, xml_id: str) -> int:
-        """Reject all mappings for an XML"""
         conn = self.get_connection()
         cursor = conn.cursor()
-        
         try:
-            cursor.execute("""
-                UPDATE INSURANCE.ETL_MAPPER.GENERATED_MAPPINGS
-                SET approval_status = 'Rejected'
-                WHERE xml_id = %s
-            """, (xml_id,))
-            
+            cursor.execute("UPDATE INSURANCE.ETL_MAPPER.GENERATED_MAPPINGS SET approval_status = 'Rejected' WHERE xml_id = %s", (xml_id,))
             count = cursor.rowcount
             conn.commit()
-            logger.info(f"✅ Rejected {count} mappings")
             return count
-            
-        except Exception as e:
-            conn.rollback()
-            logger.error(f"Failed to reject mappings: {e}")
-            raise
         finally:
             cursor.close()
             conn.close()
     
     def update_mappings(self, xml_id: str, mappings_df: pd.DataFrame) -> int:
-        """Update mapping details"""
         conn = self.get_connection()
         cursor = conn.cursor()
-        
         try:
             count = 0
             for _, row in mappings_df.iterrows():
                 cursor.execute("""
                     UPDATE INSURANCE.ETL_MAPPER.GENERATED_MAPPINGS
-                    SET transformation_logic = %s,
-                        user_notes = %s
+                    SET transformation_logic = %s, user_notes = %s
                     WHERE mapping_id = %s
-                """, (
-                    row.get('transformation_logic', ''),
-                    row.get('user_notes', ''),
-                    row['mapping_id']
-                ))
+                """, (row.get('transformation_logic', ''), row.get('user_notes', ''), row['mapping_id']))
                 count += 1
-            
             conn.commit()
-            logger.info(f"✅ Updated {count} mappings")
             return count
-            
-        except Exception as e:
-            conn.rollback()
-            logger.error(f"Failed to update mappings: {e}")
-            raise
         finally:
             cursor.close()
             conn.close()
     
     def load_execution_history(self, limit: int = 10) -> pd.DataFrame:
-        """Load recent execution history"""
         conn = self.get_connection()
-        
         try:
             query = f"""
-                SELECT 
-                    execution_id,
-                    xml_id,
-                    target_table,
-                    execution_start,
-                    execution_end,
-                    rows_processed,
-                    rows_inserted,
-                    rows_failed,
-                    execution_status,
-                    executed_by
+                SELECT execution_id, xml_id, target_table, execution_start, execution_end,
+                       rows_processed, rows_inserted, rows_failed, execution_status, executed_by
                 FROM INSURANCE.ETL_MAPPER.ETL_EXECUTION_LOG
-                ORDER BY execution_start DESC
-                LIMIT {limit}
+                ORDER BY execution_start DESC LIMIT {limit}
             """
-            
-            df = pd.read_sql(query, conn)
-            return df
-            
-        except Exception as e:
-            logger.error(f"Failed to load execution history: {e}")
+            return pd.read_sql(query, conn)
+        except:
             return pd.DataFrame()
         finally:
             conn.close()
     
     def load_reconciliation_results(self, limit: int = 10) -> pd.DataFrame:
-        """Load reconciliation results"""
         conn = self.get_connection()
-        
         try:
             query = f"""
-                SELECT 
-                    recon_id,
-                    execution_id,
-                    source_count,
-                    target_count,
-                    match_count,
-                    mismatch_count,
-                    missing_in_target,
-                    extra_in_target,
-                    reconciliation_status,
-                    details,
-                    created_timestamp
+                SELECT recon_id, execution_id, source_count, target_count, match_count,
+                       mismatch_count, missing_in_target, extra_in_target, 
+                       reconciliation_status, details, created_timestamp
                 FROM INSURANCE.ETL_MAPPER.RECONCILIATION_RESULTS
-                ORDER BY created_timestamp DESC
-                LIMIT {limit}
+                ORDER BY created_timestamp DESC LIMIT {limit}
             """
-            
-            df = pd.read_sql(query, conn)
-            return df
-            
-        except Exception as e:
-            logger.error(f"Failed to load reconciliation results: {e}")
+            return pd.read_sql(query, conn)
+        except:
             return pd.DataFrame()
         finally:
             conn.close()
-    
-    def _xml_to_json(self, element, max_depth: int = 5, current_depth: int = 0) -> Dict:
-        """Convert XML element to JSON (with depth limit)"""
-        if current_depth > max_depth:
-            return {"#text": "...truncated"}
+
+    def save_xml_to_stage_with_copy(self, xml_file_path: str, product_code: str, 
+                                    uploaded_by: str) -> str:
+        """
+        Load XML and parse into VARIANT - FIXED for large JSON
+        """
+        import xml.etree.ElementTree as ET
+        import json
         
-        result = {}
+        conn = self.get_connection()
+        cursor = conn.cursor()
         
-        # Add text content
-        if element.text and element.text.strip():
-            result['#text'] = element.text.strip()[:500]  # Limit text length
-        
-        # Add child elements (limit to 50 children)
-        child_count = 0
-        for child in element:
-            if child_count >= 50:
-                result['#truncated'] = f"...({len(list(element))} total)"
-                break
+        try:
+            xml_id = f"XML-{datetime.now().strftime('%Y%m%d%H%M%S')}"
             
-            child_data = self._xml_to_json(child, max_depth, current_depth + 1)
+            # 1. Create staging table if not exists
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS INSURANCE.ETL_MAPPER.XML_STAGING (
+                    staging_id VARCHAR(50) DEFAULT UUID_STRING(),
+                    xml_id VARCHAR(50) NOT NULL,
+                    xml_data VARIANT,
+                    target_table VARCHAR(500),
+                    processed BOOLEAN DEFAULT FALSE,
+                    processed_at TIMESTAMP,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP()
+                )
+            """)
             
-            if child.tag in result:
-                if not isinstance(result[child.tag], list):
-                    result[child.tag] = [result[child.tag]]
-                result[child.tag].append(child_data)
-            else:
-                result[child.tag] = child_data
+            # 2. Parse XML file
+            with open(xml_file_path, 'r', encoding='utf-8') as f:
+                xml_content = f.read()
             
-            child_count += 1
-        
-        return result if result else {"#text": ""}
+            root = ET.fromstring(xml_content)
+            
+            # 3. Convert XML to dict
+            def xml_to_dict(element):
+                result = {}
+                if element.attrib:
+                    result.update(element.attrib)
+                if element.text and element.text.strip():
+                    if len(element) == 0:
+                        return element.text.strip()
+                    result['_text'] = element.text.strip()
+                for child in element:
+                    child_data = xml_to_dict(child)
+                    if child.tag in result:
+                        if not isinstance(result[child.tag], list):
+                            result[child.tag] = [result[child.tag]]
+                        result[child.tag].append(child_data)
+                    else:
+                        result[child.tag] = child_data
+                return result if result else element.text
+            
+            xml_dict = xml_to_dict(root)
+            xml_json = json.dumps(xml_dict)
+            
+            # 4. ✅ Insert using parameter binding (FIXED - handles large strings)
+            cursor.execute("""
+                INSERT INTO INSURANCE.ETL_MAPPER.XML_STAGING
+                (xml_id, xml_data, processed)
+                SELECT %s, PARSE_JSON(%s), FALSE
+            """, (xml_id, xml_json))
+            
+            rows_inserted = cursor.rowcount
+            logger.info(f"✅ Loaded {rows_inserted} row(s) of XML into staging for {xml_id}")
+            
+            # 5. Save metadata
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS INSURANCE.ETL_MAPPER.XML_FILES (
+                    xml_id VARCHAR(50) PRIMARY KEY,
+                    file_name VARCHAR(500),
+                    file_path VARCHAR(1000),
+                    product_code VARCHAR(50),
+                    uploaded_by VARCHAR(100),
+                    upload_date TIMESTAMP
+                )
+            """)
+            
+            cursor.execute("""
+                INSERT INTO INSURANCE.ETL_MAPPER.XML_FILES
+                (xml_id, file_name, file_path, product_code, uploaded_by, upload_date)
+                VALUES (%s, %s, %s, %s, %s, CURRENT_TIMESTAMP())
+            """, (xml_id, os.path.basename(xml_file_path), xml_file_path, product_code, uploaded_by))
+            
+            conn.commit()
+            logger.info(f"✅ XML metadata saved for {xml_id}")
+            
+            return xml_id
+            
+        except Exception as e:
+            logger.error(f"Error loading XML: {e}")
+            import traceback
+            logger.error(traceback.format_exc())
+            conn.rollback()
+            raise
+        finally:
+            cursor.close()
+            conn.close()
