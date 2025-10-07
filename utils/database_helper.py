@@ -417,3 +417,53 @@ class DatabaseHelper:
         finally:
             cursor.close()
             conn.close()
+
+    def save_xml_raw_bronze(self, xml_file_path: str, product_code: str, 
+                        uploaded_by: str) -> str:
+        """
+        Store raw XML in Bronze layer (best practice)
+        """
+        conn = self.get_connection()
+        cursor = conn.cursor()
+        
+        try:
+            xml_id = f"XML-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+            
+            # Create Bronze table for raw XML
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS INSURANCE.ETL_MAPPER.XML_RAW_BRONZE (
+                    xml_id VARCHAR(50) PRIMARY KEY,
+                    file_name VARCHAR(500),
+                    raw_xml TEXT,
+                    xml_variant VARIANT,
+                    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP(),
+                    product_code VARCHAR(50),
+                    uploaded_by VARCHAR(100)
+                )
+            """)
+            
+            # Read raw XML
+            with open(xml_file_path, 'r', encoding='utf-8') as f:
+                raw_xml = f.read()
+            
+            file_name = os.path.basename(xml_file_path)
+            
+            # Insert raw XML and parsed VARIANT
+            cursor.execute("""
+                INSERT INTO INSURANCE.ETL_MAPPER.XML_RAW_BRONZE
+                (xml_id, file_name, raw_xml, xml_variant, product_code, uploaded_by)
+                SELECT %s, %s, %s, PARSE_XML(%s), %s, %s
+            """, (xml_id, file_name, raw_xml, raw_xml, product_code, uploaded_by))
+            
+            logger.info(f"✅ Stored raw XML in Bronze: {xml_id}")
+            
+            conn.commit()
+            return xml_id
+            
+        except Exception as e:
+            logger.error(f"Error storing raw XML: {e}")
+            conn.rollback()
+            raise
+        finally:
+            cursor.close()
+            conn.close()

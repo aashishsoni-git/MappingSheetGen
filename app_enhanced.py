@@ -166,7 +166,7 @@ with tab1:
                     status_text.text("📦 Loading XML to staging table...")
                     
                     # ✅ This will load XML data into staging table
-                    xml_id = db_helper.save_xml_to_stage_with_copy(
+                    xml_id = db_helper.save_xml_raw_bronze(
                         xml_file, 
                         detected_product, 
                         'streamlit_user'
@@ -304,87 +304,6 @@ with tab2:
         st.error(f"Error loading mappings: {e}")
 
 
-# # TAB 3: Execute ETL
-# with tab3:
-#     st.header("⚡ Step 3: Execute ETL to Silver Layer")
-    
-#     try:
-#         approved_mappings = db_helper.load_approved_mappings()
-        
-#         # ✅ Check if DataFrame is empty OR missing xml_id column
-#         if approved_mappings.empty:
-#             st.info("ℹ️ No approved mappings. Approve mappings in Step 2 first.")
-#         elif 'xml_id' not in approved_mappings.columns:
-#             st.error("❌ Database schema issue: 'xml_id' column missing from approved mappings.")
-#             st.warning("💡 Check that `load_approved_mappings()` in database_helper.py includes xml_id in the SELECT query.")
-            
-#             # Debug: Show what columns ARE present
-#             with st.expander("🔍 Debug: Available Columns"):
-#                 st.write("Columns returned:", list(approved_mappings.columns))
-#                 st.dataframe(approved_mappings.head())
-#         else:
-#             xml_ids = approved_mappings['xml_id'].unique()
-            
-#             st.info(f"📊 Found {len(approved_mappings)} approved mappings for {len(xml_ids)} XML file(s)")
-            
-#             selected_xml = st.selectbox(
-#                 "Select XML to execute:",
-#                 xml_ids,
-#                 format_func=lambda x: f"{x} ({len(approved_mappings[approved_mappings['xml_id']==x])} mappings)"
-#             )
-            
-#             xml_mappings = approved_mappings[approved_mappings['xml_id'] == selected_xml]
-            
-#             st.subheader(f"📋 Mappings for {selected_xml}")
-#             st.dataframe(xml_mappings[['source_node', 'target_table', 'target_column', 'transformation_logic', 'confidence_score']], 
-#                         use_container_width=True, height=300)
-            
-#             # Show summary
-#             tables = xml_mappings['target_table'].unique()
-#             st.markdown(f"**Target Tables:** {', '.join(tables)}")
-            
-#             col1, col2 = st.columns([1, 3])
-            
-#             with col1:
-#                 if st.button("🚀 Execute ETL", type="primary"):
-#                     with st.spinner("⏳ Executing ETL..."):
-#                         try:
-#                             summary = etl_executor.execute_mappings(selected_xml, xml_mappings)
-                            
-#                             st.success(f"""
-#                             ✅ **ETL Execution Complete!**
-#                             - Execution ID: `{summary['execution_id']}`
-#                             - Tables Processed: {summary['tables_processed']}
-#                             - Total Rows Inserted: {summary['total_rows']}
-#                             """)
-                            
-#                             if summary['successful_tables']:
-#                                 st.write("**✅ Successful Tables:**")
-#                                 for table in summary['successful_tables']:
-#                                     st.write(f"  - {table}")
-                            
-#                             if summary['failed_tables']:
-#                                 st.error("**❌ Failed Tables:**")
-#                                 for i, table in enumerate(summary['failed_tables']):
-#                                     st.write(f"  - {table}: {summary['errors'][i]}")
-                            
-#                             st.balloons()
-#                             st.rerun()
-                            
-#                         except Exception as e:
-#                             st.error(f"❌ Execution failed: {e}")
-#                             with st.expander("🔍 Error Details"):
-#                                 import traceback
-#                                 st.code(traceback.format_exc())
-            
-#             with col2:
-#                 st.info("💡 This will insert data from staging tables into Silver layer tables using the approved mappings.")
-            
-#     except Exception as e:
-#         st.error(f"Error: {e}")
-#         with st.expander("🔍 Debug"):
-#             import traceback
-#             st.code(traceback.format_exc())
 
 # Initialize session state for debug logs
 if 'debug_logs' not in st.session_state:
@@ -393,7 +312,7 @@ if 'last_execution_summary' not in st.session_state:
     st.session_state.last_execution_summary = None
 
 # TAB 3: Execute ETL
-with tab3:
+# with tab3:
     st.header("⚡ Step 3: Execute ETL to Silver Layer")
     
     # ✅ Persistent Debug Panel
@@ -621,6 +540,363 @@ with tab3:
         with st.expander("🔍 Debug"):
             import traceback
             st.code(traceback.format_exc())
+
+# In TAB 3, find this section:
+# In TAB 3, find this section:
+# ==================== TAB 3: Execute ETL ====================
+# ==================== TAB 3: Execute ETL ====================
+with tab3:
+    st.header("⚙️ Step 3: Generate SQL VIEWs")
+    
+    # ========== Debug Console (Persistent) ==========
+    st.subheader("🐛 Debug Console (Persistent)")
+    
+    if 'debug_logs' not in st.session_state:
+        st.session_state.debug_logs = []
+    
+    debug_container = st.container()
+    with debug_container:
+        if st.session_state.debug_logs:
+            for log in st.session_state.debug_logs[-20:]:  # Show last 20 logs
+                st.text(log)
+        else:
+            st.info("No debug logs yet. Click 'Generate SQL VIEWs' to see logs.")
+    
+    # Show last execution summary
+    if 'last_execution' in st.session_state:
+        st.markdown("### Last Execution:")
+        exec_summary = st.session_state.last_execution
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("Execution ID", exec_summary.get('execution_id', 'N/A'))
+        with col2:
+            st.metric("VIEWs Created", len(exec_summary.get('views_created', [])))
+        with col3:
+            st.metric("Errors", len(exec_summary.get('errors', [])))
+    
+    st.markdown("---")
+    
+    # ========== Load Approved Mappings ==========
+    try:
+        approved_mappings = db_helper.load_approved_mappings()
+        
+        if approved_mappings.empty:
+            st.warning("⚠️ No approved mappings found. Please approve mappings in Step 2 first.")
+            st.stop()
+        
+        # Group by xml_id
+        xml_groups = approved_mappings.groupby('xml_id').agg({
+            'mapping_id': 'count',
+            'target_table': lambda x: x.nunique()
+        }).reset_index()
+        xml_groups.columns = ['xml_id', 'mapping_count', 'table_count']
+        
+        st.success(f"📊 Found {len(xml_groups)} approved mapping set(s) for {len(xml_groups)} XML file(s)")
+        
+    except Exception as e:
+        st.error(f"Failed to load approved mappings: {e}")
+        st.stop()
+    
+    # ========== XML Selector ==========
+    st.subheader("Select XML to process:")
+    
+    xml_options = [
+        f"{row['xml_id']} ({row['mapping_count']} mappings, {row['table_count']} tables)"
+        for _, row in xml_groups.iterrows()
+    ]
+    
+    selected_option = st.selectbox("Choose XML file:", options=xml_options, key="xml_selector_tab3")
+    selected_xml = selected_option.split(' ')[0]  # Extract xml_id
+    
+    # Get mappings for selected XML
+    xml_mappings = approved_mappings[approved_mappings['xml_id'] == selected_xml].copy()
+    
+    # ========== Debug: Mapping Structure ==========
+    with st.expander("🔍 Debug: Mapping Structure", expanded=False):
+        st.write(f"**Total mappings:** {len(xml_mappings)}")
+        st.write(f"**Columns in DataFrame:** {list(xml_mappings.columns)}")
+        st.dataframe(xml_mappings.head())
+    
+    # ========== Show Mapping Summary ==========
+    st.markdown(f"### 📋 Mappings for {selected_xml}")
+    
+    table_groups = xml_mappings.groupby('target_table').size()
+    col1, col2 = st.columns([1, 3])
+    
+    with col1:
+        st.write(f"**Target Tables ({len(table_groups)}):**")
+        for table in table_groups.index:
+            st.write(f"- {table}")
+    
+    with col2:
+        st.write(f"**Mapping counts by table:**")
+        st.dataframe(table_groups, use_container_width=True)
+    
+    # ========== XML & Mapping Debug Button ==========
+    st.markdown("---")
+    st.subheader("🔍 Debug XML Extraction")
+    
+    if st.button("🔍 Show XML & Mapping Debug Info", key="debug_xml_btn"):
+        with st.expander("📋 Debug Information", expanded=True):
+            conn = etl_executor.get_connection()
+            cursor = conn.cursor()
+            
+            try:
+                # 1. Show XML data
+                st.markdown("#### 1️⃣ Raw XML from Bronze Table")
+                cursor.execute(f"""
+                    SELECT raw_xml, LENGTH(raw_xml) as xml_length
+                    FROM INSURANCE.ETL_MAPPER.XML_RAW_BRONZE
+                    WHERE xml_id = '{selected_xml}'
+                """)
+                result = cursor.fetchone()
+                
+                if result:
+                    xml_content = result[0]
+                    xml_length = result[1]
+                    
+                    st.info(f"✅ XML Found - Size: {xml_length:,} bytes")
+                    st.code(xml_content[:2000], language='xml')  # Show first 2000 chars
+                    
+                    if xml_length > 2000:
+                        st.caption(f"... (showing first 2,000 of {xml_length:,} bytes)")
+                    
+                    # 2. Show what mappings expect for each table
+                    st.markdown("#### 2️⃣ Mappings by Table")
+                    
+                    for table in xml_mappings['target_table'].unique():
+                        with st.expander(f"📊 {table.split('.')[-1]}"):
+                            table_maps = xml_mappings[xml_mappings['target_table'] == table]
+                            st.dataframe(table_maps[['source_node', 'target_column', 'confidence_score']])
+                    
+                    # 3. Test extractions for POLICY table specifically
+                    st.markdown("#### 3️⃣ Test Extraction Results (POLICY Table)")
+                    policy_maps = xml_mappings[xml_mappings['target_table'] == 'SILVER.POLICY']
+                    
+                    if not policy_maps.empty:
+                        for _, mapping in policy_maps.iterrows():
+                            node = mapping['source_node']
+                            col = mapping['target_column']
+                            
+                            # Skip ID columns
+                            if '_ID' in col.upper():
+                                continue
+                            
+                            # Build the XMLGET query
+                            node_parts = node.split('/')
+                            xml_expr = "xml_variant"
+                            for part in node_parts:
+                                xml_expr = f"XMLGET({xml_expr}, '{part}')"
+                            
+                            test_sql = f"""
+                                SELECT {xml_expr}:"$"::STRING as value
+                                FROM INSURANCE.ETL_MAPPER.XML_RAW_BRONZE
+                                WHERE xml_id = '{selected_xml}'
+                            """
+                            
+                            try:
+                                cursor.execute(test_sql)
+                                value = cursor.fetchone()[0]
+                                
+                                if value and value.strip():
+                                    st.success(f"✅ **{col}** = `{value}`")
+                                    st.caption(f"   Path: `{node}`")
+                                else:
+                                    st.warning(f"⚠️ **{col}** = NULL or empty")
+                                    st.caption(f"   Path: `{node}` ← Check if this path is correct in XML")
+                            except Exception as e:
+                                st.error(f"❌ **{col}** extraction ERROR")
+                                st.caption(f"   Path: `{node}`")
+                                st.caption(f"   Error: {str(e)[:150]}")
+                    else:
+                        st.info("No POLICY table mappings found")
+                    
+                    # 4. Summary for all tables
+                    st.markdown("#### 4️⃣ Extraction Summary (All Tables)")
+                    
+                    summary_data = []
+                    for table in xml_mappings['target_table'].unique():
+                        table_maps = xml_mappings[xml_mappings['target_table'] == table]
+                        
+                        success_count = 0
+                        null_count = 0
+                        error_count = 0
+                        
+                        for _, mapping in table_maps.iterrows():
+                            if '_ID' in mapping['target_column'].upper():
+                                continue
+                            
+                            node = mapping['source_node']
+                            node_parts = node.split('/')
+                            xml_expr = "xml_variant"
+                            for part in node_parts:
+                                xml_expr = f"XMLGET({xml_expr}, '{part}')"
+                            
+                            try:
+                                cursor.execute(f"""
+                                    SELECT {xml_expr}:"$"::STRING
+                                    FROM INSURANCE.ETL_MAPPER.XML_RAW_BRONZE
+                                    WHERE xml_id = '{selected_xml}'
+                                """)
+                                value = cursor.fetchone()[0]
+                                if value and value.strip():
+                                    success_count += 1
+                                else:
+                                    null_count += 1
+                            except:
+                                error_count += 1
+                        
+                        summary_data.append({
+                            'Table': table.split('.')[-1],
+                            '✅ Extracted': success_count,
+                            '⚠️ NULL': null_count,
+                            '❌ Errors': error_count
+                        })
+                    
+                    import pandas as pd
+                    st.dataframe(pd.DataFrame(summary_data), use_container_width=True)
+                    
+                else:
+                    st.error(f"❌ No XML found in Bronze table for xml_id: {selected_xml}")
+                    st.info("💡 Go to Step 1 and upload the XML file again to populate Bronze table")
+                    
+            except Exception as e:
+                st.error(f"Debug failed: {e}")
+                import traceback
+                st.code(traceback.format_exc())
+            finally:
+                cursor.close()
+                conn.close()
+    
+    # ========== Pre-execution Debug ==========
+    st.markdown("---")
+    with st.expander("🔍 Pre-execution Debug", expanded=False):
+        st.write(f"**xml_id:** {selected_xml}")
+        st.write(f"**mappings count:** {len(xml_mappings)}")
+        st.write(f"**unique tables:** {xml_mappings['target_table'].nunique()}")
+        st.write(f"**tables:** {list(xml_mappings['target_table'].unique())}")
+    
+    # ========== Generate VIEWs Button ==========
+    st.markdown("---")
+    
+    col1, col2 = st.columns([2, 1])
+    with col1:
+        execute_button = st.button("🚀 Generate SQL VIEWs", type="primary", key="execute_etl_btn")
+    with col2:
+        st.info("💡 This will:\n- Generate SQL VIEWs from mappings\n- Create VIEWs in Snowflake\n- Test extraction (no data loading yet)")
+    
+        if execute_button:
+        # Clear previous logs
+            st.session_state.debug_logs = []
+            st.session_state.debug_logs.append(f"{'='*60}")
+            st.session_state.debug_logs.append(f"[{datetime.now()}] VIEW GENERATION STARTED")
+            st.session_state.debug_logs.append(f"[{datetime.now()}] XML ID: {selected_xml}")
+            st.session_state.debug_logs.append(f"[{datetime.now()}] Mappings: {len(xml_mappings)}")
+            st.session_state.debug_logs.append(f"[{datetime.now()}] Tables: {list(xml_mappings['target_table'].unique())}")
+            
+            progress = st.progress(0)
+            status_text = st.empty()
+            
+            try:
+                status_text.text("⏳ Connecting to Snowflake...")
+                progress.progress(20)
+                
+                status_text.text("⏳ Generating SQL VIEWs...")
+                progress.progress(40)
+                
+                # Execute
+                result = etl_executor.execute_mappings(selected_xml, xml_mappings)
+                
+                progress.progress(80)
+                st.session_state.debug_logs.append(f"[{datetime.now()}] Generation completed")
+                st.session_state.debug_logs.append(f"[{datetime.now()}] VIEWs created: {len(result.get('views_created', []))}")
+                st.session_state.debug_logs.append(f"[{datetime.now()}] Errors: {len(result.get('errors', []))}")
+                
+                # Store in session state for persistence
+                st.session_state.last_execution = result
+                
+                progress.progress(100)
+                status_text.empty()
+                progress.empty()
+                
+                # Display results
+                if result.get('views_created'):
+                    st.success(f"✅ SQL VIEWs Generated Successfully! ({len(result['views_created'])} VIEWs)")
+                elif result.get('errors'):
+                    st.error(f"❌ VIEW Generation Failed! ({len(result['errors'])} errors)")
+                else:
+                    st.warning("⚠️ No VIEWs created and no errors reported")
+                
+                # Show metrics
+                col1, col2, col3 = st.columns(3)
+                with col1:
+                    st.metric("Execution ID", result['execution_id'])
+                with col2:
+                    st.metric("VIEWs Created", len(result.get('views_created', [])))
+                with col3:
+                    st.metric("Errors", len(result.get('errors', [])))
+                
+                # Show created VIEWs
+                if result.get('views_created'):
+                    st.markdown("### ✅ Created VIEWs:")
+                    for view in result['views_created']:
+                        st.code(f"SELECT * FROM {view} LIMIT 10;", language='sql')
+                    
+                    # Show the SQL for each VIEW
+                    st.markdown("### 📜 VIEW SQL Definitions:")
+                    for table, sql in result.get('view_sqls', {}).items():
+                        with st.expander(f"📊 {table.split('.')[-1]} VIEW SQL", expanded=False):
+                            st.code(sql, language='sql')
+                            
+                            # Test button
+                            view_name = [v for v in result['views_created'] if table.split('.')[-1] in v]
+                            if view_name:
+                                if st.button(f"🧪 Test {table.split('.')[-1]}", key=f"test_{table}"):
+                                    with st.spinner(f"Testing {table.split('.')[-1]}..."):
+                                        try:
+                                            test_conn = etl_executor.get_connection()
+                                            test_cursor = test_conn.cursor()
+                                            test_cursor.execute(f"SELECT * FROM {view_name[0]} LIMIT 5")
+                                            test_data = test_cursor.fetchall()
+                                            test_cols = [desc[0] for desc in test_cursor.description]
+                                            test_cursor.close()
+                                            test_conn.close()
+                                            
+                                            if test_data:
+                                                import pandas as pd
+                                                st.success(f"✅ Found {len(test_data)} row(s)")
+                                                st.dataframe(pd.DataFrame(test_data, columns=test_cols))
+                                            else:
+                                                st.warning("⚠️ VIEW exists but returned no data")
+                                        except Exception as e:
+                                            st.error(f"❌ Test failed: {e}")
+                
+                # Show errors - PERSISTENT
+                if result.get('errors'):
+                    st.markdown("### ❌ Errors During VIEW Creation:")
+                    for idx, error in enumerate(result['errors']):
+                        st.session_state.debug_logs.append(f"[{datetime.now()}] ERROR {idx+1}: {error}")
+                        with st.expander(f"Error {idx+1}", expanded=True):
+                            st.error(error)
+                
+            except Exception as e:
+                st.session_state.debug_logs.append(f"[{datetime.now()}] FATAL ERROR: {str(e)}")
+                st.error(f"❌ VIEW generation failed: {e}")
+                
+                with st.expander("🔍 Full Error Trace", expanded=True):
+                    import traceback
+                    error_trace = traceback.format_exc()
+                    st.code(error_trace)
+                    st.session_state.debug_logs.append(f"[{datetime.now()}] Traceback: {error_trace}")
+
+                
+                st.rerun()
+    
+    # ========== Footer ==========
+    st.markdown("---")
+    st.caption("ETL Mapping Generator v2.0 | © 2025")
+
+
 
 
 

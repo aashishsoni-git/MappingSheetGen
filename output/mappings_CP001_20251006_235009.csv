@@ -1,0 +1,70 @@
+source_node,target_table,target_column,transformation_logic,confidence_score,reasoning
+/Session/TransactionInfo/TransactionID,SILVER.POLICY,POLICY_ID,,0.9,Transaction ID maps to Policy ID
+/Session/TransactionInfo/TransactionType,SILVER.POLICY,POLICY_TYPE,,0.9,Transaction Type maps to Policy Type
+/Session/TransactionInfo/TransactionDate,SILVER.POLICY,EFFECTIVE_DATE,,0.9,Transaction Date maps to Effective Date
+/Session/TransactionInfo/TransactionStatus,SILVER.POLICY,POLICY_STATUS,,0.9,Transaction Status maps to Policy Status
+/Session/TransactionInfo/SourceSystem,SILVER.POLICY,DISTRIBUTION_CHANNEL,,0.9,Source System maps to Distribution Channel
+/Session/Data/BrokerData/BrokerID,SILVER.POLICY,ACCOUNT_ID,,0.9,Broker ID maps to Account ID
+/Session/Data/BrokerData/BrokerName,SILVER.POLICY,CREATED_BY,,0.9,Broker Name maps to Created By
+/Session/Data/BrokerData/BrokerType,SILVER.POLICY,PRODUCT_CODE,,0.9,Broker Type maps to Product Code
+/Session/Data/BrokerData/BrokerageFirm,SILVER.POLICY,UNDERWRITING_COMPANY,,0.9,Brokerage Firm maps to Underwriting Company
+/Session/Data/BrokerData/CommissionRate,SILVER.POLICY,PREMIUM_AMOUNT,,0.9,Commission Rate maps to Premium Amount
+/Session/Data/BrokerData/CommissionAmount,SILVER.POLICY,TOTAL_INSURED_VALUE,,0.9,Commission Amount maps to Total Insured Value
+/Session/TransactionInfo/ProcessedBy,SILVER.POLICY,MODIFIED_DATE,,0.9,Processed By maps to Modified Date
+/Session/TransactionInfo/SourceVersion,SILVER.POLICY,QUOTE_ID,,0.9,Source Version maps to Quote ID
+/Session/Data/PolicyData/ID,SILVER.POLICY,POLICY_ID,,0.9,Direct mapping from Policy ID
+/Session/Data/PolicyData/Number,SILVER.POLICY,POLICY_NUMBER,,0.9,Direct mapping from Policy Number
+/Session/Data/PolicyData/Version,SILVER.POLICY,POLICY_TYPE,,0.9,Policy Version mapped to Policy Type
+/Session/Data/PolicyData/ProductDetails/ProdCode,SILVER.POLICY,PRODUCT_CODE,,0.9,Direct mapping from Product Code
+/Session/Data/PolicyData/ProductDetails/ProdDescription,SILVER.POLICY,PRODUCT_NAME,,0.9,Product Description mapped to Product Name
+/Session/Data/PolicyData/StatusCode,SILVER.POLICY,POLICY_STATUS,,0.9,Direct mapping from Policy Status Code
+/Session/Data/PolicyData/PolicyDates/InceptionDate,SILVER.POLICY,EFFECTIVE_DATE,,0.9,Inception Date mapped to Effective Date
+/Session/Data/PolicyData/PolicyDates/TerminationDate,SILVER.POLICY,EXPIRATION_DATE,,0.9,Termination Date mapped to Expiration Date
+/Session/Data/PolicyData/PolicyDates/BindDate,SILVER.POLICY,CANCELLATION_DATE,,0.9,Bind Date mapped to Cancellation Date
+/Session/Data/PolicyData/PolicyDates/QuoteDate,SILVER.POLICY,RENEWAL_DATE,,0.9,Quote Date mapped to Renewal Date
+/Session/Data/PolicyData/TermLength,SILVER.POLICY,POLICY_TERM_MONTHS,,0.9,Direct mapping from Term Length
+/Session/Data/QuoteData/QuoteIdentifier,SILVER.QUOTE,QUOTE_ID,,0.9,Direct mapping from QuoteIdentifier to QUOTE_ID
+/Session/Data/QuoteData/QuoteNumber,SILVER.QUOTE,QUOTE_NUMBER,,0.9,Direct mapping from QuoteNumber to QUOTE_NUMBER
+/Session/Data/QuoteData/QuoteStatus,SILVER.QUOTE,QUOTE_STATUS,,0.9,Direct mapping from QuoteStatus to QUOTE_STATUS
+/Session/Data/QuoteData/QuoteDate,SILVER.QUOTE,QUOTE_DATE,,0.9,Direct mapping from QuoteDate to QUOTE_DATE
+/Session/Data/QuoteData/QuoteExpiryDate,SILVER.QUOTE,EXPIRY_DATE,,0.9,Direct mapping from QuoteExpiryDate to EXPIRY_DATE
+/Session/Data/QuoteData/ConversionDate,SILVER.QUOTE,EFFECTIVE_DATE,,0.9,Direct mapping from ConversionDate to EFFECTIVE_DATE
+/Session/Data/RiskData/RiskIdentifier,SILVER.RISK,RISK_ID,,0.9,Direct mapping from RiskIdentifier to RISK_ID
+/Session/Data/RiskData/RiskSequence,SILVER.RISK,RISK_NUMBER,,0.9,Direct mapping from RiskSequence to RISK_NUMBER
+/Session/Data/RiskData/RiskClass,SILVER.RISK,RISK_TYPE,,0.9,Direct mapping from RiskClass to RISK_TYPE
+/Session/Data/RiskData/RiskSummary,SILVER.RISK,RISK_DESCRIPTION,,0.9,Direct mapping from RiskSummary to RISK_DESCRIPTION
+/Session/Data/RiskData/LocationDetails/LocationNumber,SILVER.RISK,POLICY_ID,,0.9,Assuming LocationNumber to be equivalent to POLICY_ID
+/Session/Data/RiskData/LocationDetails/LocationName,SILVER.RISK,QUOTE_ID,,0.9,Assuming LocationName to be equivalent to QUOTE_ID
+/Session/Data/RiskData/LocationDetails/AddressLine1,SILVER.RISK,RISK_ADDRESS_LINE1,,0.9,Direct mapping from AddressLine1 to RISK_ADDRESS_LINE1
+/Session/Data/RiskData/LocationDetails/AddressLine2,SILVER.RISK,RISK_ADDRESS_LINE2,,0.9,Direct mapping from AddressLine2 to RISK_ADDRESS_LINE2
+/Session/Data/RiskData/LocationDetails/City,SILVER.RISK,RISK_CITY,,0.9,Direct mapping from City to RISK_CITY
+/Session/Data/RiskData/LocationDetails/State,SILVER.RISK,RISK_STATE,,0.9,Direct mapping from State to RISK_STATE
+/Session/Data/RiskData/LocationDetails/ZipCode,SILVER.RISK,RISK_ZIP,,0.9,Direct mapping from ZipCode to RISK_ZIP
+/Session/Data/RiskData/LocationDetails/Country,SILVER.RISK,RISK_COUNTRY,,0.9,Direct mapping from Country to RISK_COUNTRY
+/Session/Data/CoverageData/CoverageRecord/CoverageIdentifier,SILVER.COVERAGE,COVERAGE_ID,,0.9,Direct mapping from CoverageIdentifier to COVERAGE_ID
+/Session/Data/CoverageData/CoverageRecord/RiskIdentifier,SILVER.COVERAGE,RISK_ID,,0.9,Direct mapping from RiskIdentifier to RISK_ID
+/Session/Data/CoverageData/CoverageRecord/CoverageSymbol,SILVER.COVERAGE,COVERAGE_CODE,,0.9,Direct mapping from CoverageSymbol to COVERAGE_CODE
+/Session/Data/CoverageData/CoverageRecord/CoverageDescription,SILVER.COVERAGE,COVERAGE_NAME,,0.9,Direct mapping from CoverageDescription to COVERAGE_NAME
+/Session/Data/CoverageData/CoverageRecord/CoverageClass,SILVER.COVERAGE,COVERAGE_TYPE,,0.9,Direct mapping from CoverageClass to COVERAGE_TYPE
+/Session/Data/CoverageData/CoverageRecord/MaxLimit,SILVER.COVERAGE,COVERAGE_LIMIT,,0.9,Direct mapping from MaxLimit to COVERAGE_LIMIT
+/Session/Data/CoverageData/CoverageRecord/CoverageDeductible,SILVER.COVERAGE,COVERAGE_DEDUCTIBLE,,0.9,Direct mapping from CoverageDeductible to COVERAGE_DEDUCTIBLE
+/Session/Data/CoverageData/CoverageRecord/CoveragePremium,SILVER.COVERAGE,COVERAGE_PREMIUM,,0.9,Direct mapping from CoveragePremium to COVERAGE_PREMIUM
+/Session/Data/CoverageData/CoverageRecord/CoinsurancePercent,SILVER.COVERAGE,COINSURANCE_PERCENTAGE,,0.9,Direct mapping from CoinsurancePercent to COINSURANCE_PERCENTAGE
+/Session/Data/CoverageData/CoverageRecord/CoverageStartDate,SILVER.COVERAGE,EFFECTIVE_DATE,,0.9,Direct mapping from CoverageStartDate to EFFECTIVE_DATE
+/Session/Data/CoverageData/CoverageRecord/CoverageEndDate,SILVER.COVERAGE,EXPIRATION_DATE,,0.9,Direct mapping from CoverageEndDate to EXPIRATION_DATE
+/Session/Data/CoverageData/CoverageRecord/IsMandatory,SILVER.COVERAGE,IS_MANDATORY,,0.9,Direct mapping from IsMandatory to IS_MANDATORY
+/Session/Data/CoverageData/CoverageRecord/CoverageBasis,SILVER.COVERAGE,COVERAGE_BASIS,,0.9,Direct mapping from CoverageBasis to COVERAGE_BASIS
+/Session/Data/PaymentData/PaymentIdentifier,SILVER.PAYMENT,PAYMENT_ID,,0.9,Direct mapping from PaymentIdentifier to PAYMENT_ID
+/Session/Data/PaymentData/PaymentNumber,SILVER.PAYMENT,PAYMENT_NUMBER,,0.9,Direct mapping from PaymentNumber to PAYMENT_NUMBER
+/Session/Data/PaymentData/TransactionType,SILVER.PAYMENT,PAYMENT_TYPE,,0.9,Direct mapping from TransactionType to PAYMENT_TYPE
+/Session/Data/PaymentData/PaymentMode,SILVER.PAYMENT,PAYMENT_METHOD,,0.9,Direct mapping from PaymentMode to PAYMENT_METHOD
+/Session/Data/PaymentData/StatusDescription,SILVER.PAYMENT,PAYMENT_STATUS,,0.9,Direct mapping from StatusDescription to PAYMENT_STATUS
+/Session/Data/PaymentData/ScheduledDate,SILVER.PAYMENT,PAYMENT_DATE,,0.9,Direct mapping from ScheduledDate to PAYMENT_DATE
+/Session/Data/PaymentData/TransactionAmount,SILVER.PAYMENT,PAYMENT_AMOUNT,,0.9,Direct mapping from TransactionAmount to PAYMENT_AMOUNT
+/Session/Data/PaymentData/BillingPlan,SILVER.PAYMENT,PAYMENT_TERM,,0.9,Direct mapping from BillingPlan to PAYMENT_TERM
+/Session/Data/PaymentData/TotalInstallments,SILVER.PAYMENT,TOTAL_INSTALLMENTS,,0.9,Direct mapping from TotalInstallments to TOTAL_INSTALLMENTS
+/Session/Data/PaymentData/PaymentAccountInfo/NameOnAccount,SILVER.PAYMENT,ACCOUNT_HOLDER_NAME,,0.9,Direct mapping from NameOnAccount to ACCOUNT_HOLDER_NAME
+/Session/Data/PaymentData/PaymentAccountInfo/FinancialInstitution,SILVER.PAYMENT,BANK_NAME,,0.9,Direct mapping from FinancialInstitution to BANK_NAME
+/Session/Data/PaymentData/PaymentAccountInfo/AccountNumber,SILVER.PAYMENT,ACCOUNT_NUMBER,,0.9,Direct mapping from AccountNumber to ACCOUNT_NUMBER
+/Session/Data/PaymentData/PaymentAccountInfo/RoutingNumber,SILVER.PAYMENT,ROUTING_NUMBER,,0.9,Direct mapping from RoutingNumber to ROUTING_NUMBER
+/Session/Data/PaymentData/PaymentAccountInfo/AccountType,SILVER.PAYMENT,CARD_TYPE,,0.9,Direct mapping from AccountType to CARD_TYPE
